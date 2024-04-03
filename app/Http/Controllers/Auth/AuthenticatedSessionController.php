@@ -34,10 +34,18 @@ class AuthenticatedSessionController extends Controller
             return redirect()->back()->with($notification);
         }
 
-
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if($request->user()->role_id == config('constants.roles.admin_role_id')){
+            return redirect(route('admin.dashboard'));
+        }
+        else if($request->user()->role_id == config('constants.roles.staff_role_id')){
+            return redirect(route('staff.loans'));
+        }
+        else if($request->user()->role_id == config('constants.roles.user_role_id')){
+            return redirect(route('dashboard'));
+        }
+//        else return redirect()->intended(route('dashboard', absolute:false));
     }
 
     /**

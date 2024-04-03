@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Auth as AuthMiddleware;
 
-Route::get('/', function () {
+Route::middleware(AuthMiddleware::class)->get('/', function () {
     return view('guest.home');
 })->name('home');
 
@@ -18,3 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/staff.php';
+require __DIR__.'/user.php';

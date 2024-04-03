@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public $ADMIN_ROLE_ID = 3;
+
     /**
      * The attributes that are mass assignable.
      *
