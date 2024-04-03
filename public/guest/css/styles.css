@@ -1,0 +1,55 @@
+body{
+  font-size: 14px!important;
+}
+
+/* Header */
+
+nav{
+  background: #FFF8ED;
+}
+
+header{
+  background: #FFF8ED;
+}
+
+a, p{
+  color: #3C2695!important;
+}
+
+.logo-quick{
+  font-size: 30px;
+  color: #F65038;
+}
+
+.logo-funds{
+  font-size: 30px;
+  color: #9F98D7;
+}
+
+.header-title{
+  color: #F65038;
+  font-size: 5rem;
+}
+
+.signin-button{
+  color: white!important;
+  border-radius: 2rem;
+}
+
+#contact{
+  background: url('../images/gradient.png');
+  background-size: cover;
+}
+
+.text-primary{
+  color: #F65038!important;
+}
+
+footer{
+  background: url('../images/footer.png');
+  background-size: cover;
+}
+
+.footer-desc{
+  font-size: 1.2rem;
+}
