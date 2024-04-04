@@ -15,7 +15,7 @@ class Staff
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->user() && $request->user()->role_id <= config('constants.roles.staff_role_id')){
+        if($request->user() && $request->user()->role_id >= config('constants.roles.staff_role_id')){
             return $next($request);
         }
         return redirect(route('login.get'));

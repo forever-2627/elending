@@ -4,14 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    public $ADMIN_ROLE_ID = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phone_number'
     ];
 
     /**
@@ -45,5 +46,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function get_list(){
+//        $table_roles = (new Role())->getTable();
+//        $table_users = (new User())->getTable();
+//        $users = User::query()
+//            ->with();
+//        return $users;
     }
 }

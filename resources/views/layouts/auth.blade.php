@@ -27,13 +27,13 @@
     <link href="{{ asset('frontend/assets/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/color/orange.css') }}" id="jssDefault" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/color/pink.css') }}" id="jssDefault" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
+    @stack('styles')
 
 </head>
 

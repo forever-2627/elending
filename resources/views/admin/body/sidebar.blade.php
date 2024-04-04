@@ -28,7 +28,7 @@
 				 </a>
 			 </li>
              <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="{{route('staff.users')}}" class="nav-link">
                      <i class="link-icon" data-feather="users"></i>
                      <span class="link-title">User Management</span>
                  </a>

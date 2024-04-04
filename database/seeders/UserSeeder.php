@@ -18,19 +18,25 @@ class UserSeeder extends Seeder
                 [
                     'email'=>'admin@admin.com',
                     'name'=>'Administrator',
+                    'phone_number' => '333-3333-3333',
+                    'address' => 'Admin Address',
                     'password'=>Hash::make('admin'),
                     'role_id'=>3
                 ],
                 [
                     'email'=>'staff@staff.com',
                     'name'=>'Staff',
+                    'phone_number' => '222-2222-2222',
+                    'address' => 'Staff Address',
                     'password'=>Hash::make('staff'),
                     'role_id'=>2
                 ],
                 [
                     'email'=>'user@user.com',
-                    'name'=>'User',
-                    'password'=>Hash::make('user'),
+                    'name'=>'User1',
+                    'phone_number' => '111-1111-1111',
+                    'address' => 'User1 Address',
+                    'password'=>Hash::make('user1'),
                     'role_id'=>1
                 ]
             ]
