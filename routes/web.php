@@ -9,7 +9,7 @@ Route::middleware(AuthMiddleware::class)->get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect(\route('user.dashboard'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

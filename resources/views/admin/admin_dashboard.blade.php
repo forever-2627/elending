@@ -48,6 +48,11 @@
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
+  <style>
+    .overflowx-enable{
+      overflow-x: auto!important;
+    }
+  </style>
   @stack('styles')
 
 </head>
@@ -150,5 +155,12 @@
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 @stack('script')
+<script>
+    $(document).ready(function () {
+        setTimeout(function() {
+            $($('#dataTableExample_wrapper').children('div')[1]).addClass('overflowx-enable');
+        }, 500);
+    });
+</script>
 </body>
 </html>    

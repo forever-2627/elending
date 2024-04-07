@@ -34,7 +34,7 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="{{route('staff.notifications')}}" class="nav-link">
                      <i class="link-icon" data-feather="bell"></i>
                      <span class="link-title">Notifications</span>
                  </a>

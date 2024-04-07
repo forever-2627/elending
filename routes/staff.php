@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Staff as StaffMiddleware;
 use App\Http\Controllers\Staff\LoanController as StaffLoanController;
 use App\Http\Controllers\Staff\UserController;
+use App\Http\Controllers\Staff\NotificationController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
@@ -28,4 +29,9 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/users/edit/{id}', [UserController::class, 'edit'])->name('staff.users.edit');
     Route::post('staff/users/edit', [UserController::class, 'update'])->name('staff.users.update');
     Route::get('staff/users/delete/{id}', [UserController::class, 'delete'])->name('staff.users.delete');
+
+    //Notifications
+    Route::get('staff/notifications', [NotificationController::class, 'index'])->name('staff.notifications');
+    Route::get('staff/notifications/view/{id}', [NotificationController::class, 'view'])->name('staff.notifications.view');
+    Route::get('staff/notifications/check/{id}', [NotificationController::class, 'check'])->name('staff.notifications.check');
 });

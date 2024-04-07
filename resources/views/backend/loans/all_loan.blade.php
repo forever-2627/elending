@@ -1,18 +1,14 @@
 @extends('admin.admin_dashboard')
 @section('admin')
     @push('styles')
-        <style>
-            tr{
-                vertical-align: middle;
-            }
-        </style>
+
     @endpush
 
     <div class="page-content">
 
         <nav class="page-breadcrumb">
-            <ol class="breadcrumb">
-                <a href="{{route('staff.loans.create')}}" class="btn btn-inverse-info"> Add Loan </a>
+            <ol class="breadcrumb justify-content-end">
+                <a href="{{route('staff.loans.create')}}" class="btn btn-inverse-info"> <i class="feather icon-plus"></i> Add Loan </a>
             </ol>
         </nav>
 
@@ -22,7 +18,7 @@
                     <div class="card-body">
                         <h6 class="card-title">All Loans</h6>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow: hidden;">
                             <table id="dataTableExample" class="table">
                                 <thead>
                                 <tr>
@@ -114,10 +110,7 @@
 
 
     @push('script')
-        <script>
-            $(document).ready(() => {
-                localStorage.setItem('nav-item', 'agent-propertloans
-        </script>
+
     @endpush
 
 
