@@ -14,7 +14,7 @@
 		 @if(auth()->user()->role_id == config('constants.roles.admin_role_id'))
 			 <li class="nav-item nav-category">Admin</li>
 			 <li class="nav-item">
-				 <a href="#" class="nav-link">
+				 <a href="{{route('admin.dashboard')}}" class="nav-link">
 					 <i class="link-icon" data-feather="box"></i>
 					 <span class="link-title">Dashboard</span>
 				 </a>
