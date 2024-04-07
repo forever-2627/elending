@@ -12,7 +12,7 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <a href="" class="btn btn-inverse-info"> Add Loan </a>
+                <a href="{{route('staff.loans.create')}}" class="btn btn-inverse-info"> Add Loan </a>
             </ol>
         </nav>
 
@@ -65,11 +65,11 @@
                                     <td>32000PHP</td>
                                     <td>
 
-                                        <a href="" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+                                        <a href="{{route('staff.loans.view', 1)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
 
-                                        <a href="" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
+                                        <a href="{{route('staff.loans.edit', 1)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
 
-                                        <a href="" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                                        <a href="{{route('staff.loans.delete', 1)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
                                     </td>
                                 </tr>
                                 @php

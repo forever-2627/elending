@@ -22,7 +22,7 @@
 		 @endif
 			 <li class="nav-item nav-category">Main</li>
 			 <li class="nav-item">
-				 <a href="#" class="nav-link">
+				 <a href="{{route('staff.loans')}}" class="nav-link">
 					 <i class="link-icon" data-feather="dollar-sign"></i>
 					 <span class="link-title">Loan Management</span>
 				 </a>
