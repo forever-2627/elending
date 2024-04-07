@@ -8,11 +8,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Staff as StaffMiddleware;
-use App\Http\Controllers\Staff\LoanController;
+use App\Http\Controllers\Staff\LoanController as StaffLoanController;
 use App\Http\Controllers\Staff\UserController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
-    Route::get('/loans', [LoanController::class, 'index'])->name('staff.loans');
+    Route::get('staff/loans', [StaffLoanController::class, 'index'])->name('staff.loans');
 
     //Users Route
     Route::get('/users', [UserController::class, 'index'])->name('staff.users');

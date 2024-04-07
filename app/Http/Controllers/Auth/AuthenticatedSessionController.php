@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
             return redirect(route('staff.loans'));
         }
         else if($request->user()->role_id == config('constants.roles.user_role_id')){
-            return redirect(route('dashboard'));
+            return redirect(route('user.dashboard'));
         }
 //        else return redirect()->intended(route('dashboard', absolute:false));
     }

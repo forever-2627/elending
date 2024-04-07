@@ -11,6 +11,8 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
+                width: 100%;
+                height: 100%;
             }
 
             .auth-overlay{
@@ -20,15 +22,6 @@
             .inner-box{
                 background-color: #5276b270!important;
             }
-
-            /*input{*/
-                /*background: #496db180;*/
-                /*border: 1px solid #7897d3!important;*/
-            /*}*/
-
-            /*input::selection{*/
-                /*background: #496db180;*/
-            /*}*/
 
             .btn-primary{
                 background: #3f62cb!important;
@@ -51,12 +44,10 @@
                                 <label class="text-white" for="email">Email</label>
                                 <input type="text" name="email" id="email" required="">
                             </div>
-
                             <div class="form-group">
                                 <label class="text-white" for="password">Password</label>
                                 <input type="password" name="password" id="password" required="">
                             </div>
-
                             <div class="form-group message-btn">
                                 <button type="submit" class="btn btn-primary w-100 py-3">Sign In</button>
                             </div>

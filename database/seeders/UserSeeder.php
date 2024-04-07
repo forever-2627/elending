@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                     'role_id'=>2
                 ],
                 [
-                    'email'=>'user@user.com',
+                    'email'=>'user1@user.com',
                     'name'=>'User1',
                     'phone_number' => '111-1111-1111',
                     'address' => 'User1 Address',

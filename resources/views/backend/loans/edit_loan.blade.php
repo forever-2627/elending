@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Property </h6>
 
-                            <form method="post" action="{{ route('update.property') }}" id="myForm"
+                            <form method="post" action="{{ route('loans') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 

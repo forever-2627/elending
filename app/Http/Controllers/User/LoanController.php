@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class LoanController extends Controller
 {
     public function index(){
-        return view('backend.loans.all_loan');
+        return view('frontend.dashboard.loans');
     }
 }

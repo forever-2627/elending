@@ -275,7 +275,7 @@ var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules
 var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
 var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var createProperty = __webpack_require__(/*! ../internals/create-loans */ "./node_modules/core-js/internals/create-loans.js");
 var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
 
 // `Array.from` method
@@ -521,8 +521,8 @@ module.exports = function (it) {
 
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-loans-descriptor */ "./node_modules/core-js/internals/object-get-own-loans-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-loans */ "./node_modules/core-js/internals/object-define-loans.js");
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -566,7 +566,7 @@ module.exports = !fails(function () {
 
 var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
 var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-loans-descriptor */ "./node_modules/core-js/internals/create-loans-descriptor.js");
 var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
 var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
 
@@ -585,7 +585,7 @@ module.exports = function (IteratorConstructor, NAME, next) {
 
 /***/ "./node_modules/core-js/internals/create-property-descriptor.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
+  !*** ./node_modules/core-js/internals/create-loans-descriptor.js ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -604,7 +604,7 @@ module.exports = function (bitmap, value) {
 
 /***/ "./node_modules/core-js/internals/create-property.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/create-property.js ***!
+  !*** ./node_modules/core-js/internals/create-loans.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -612,8 +612,8 @@ module.exports = function (bitmap, value) {
 "use strict";
 
 var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-loans */ "./node_modules/core-js/internals/object-define-loans.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-loans-descriptor */ "./node_modules/core-js/internals/create-loans-descriptor.js");
 
 module.exports = function (object, key, value) {
   var propertyKey = toPrimitive(key);
@@ -793,7 +793,7 @@ module.exports = [
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-loans-descriptor */ "./node_modules/core-js/internals/object-get-own-loans-descriptor.js").f;
 var hide = __webpack_require__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
 var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
 var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
@@ -809,9 +809,9 @@ var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules
   options.forced      - export even if the native feature is available
   options.bind        - bind methods to the target, required for the `pure` version
   options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.unsafe      - use the simple assignment of loans instead of delete + defineProperty
   options.sham        - add a flag to not completely full polyfills
-  options.enumerable  - export as enumerable property
+  options.enumerable  - export as enumerable loans
   options.noTargetGet - prevent calling a getter on target
 */
 module.exports = function (options, source) {
@@ -966,8 +966,8 @@ module.exports = {};
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-loans */ "./node_modules/core-js/internals/object-define-loans.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-loans-descriptor */ "./node_modules/core-js/internals/create-loans-descriptor.js");
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -1352,7 +1352,7 @@ hiddenKeys[IE_PROTO] = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-loans */ "./node_modules/core-js/internals/object-define-loans.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
 
@@ -1371,7 +1371,7 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 /***/ "./node_modules/core-js/internals/object-define-property.js":
 /*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-define-property.js ***!
+  !*** ./node_modules/core-js/internals/object-define-loans.js ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1400,14 +1400,14 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 /***/ "./node_modules/core-js/internals/object-get-own-property-descriptor.js":
 /*!******************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  !*** ./node_modules/core-js/internals/object-get-own-loans-descriptor.js ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-loans-is-enumerable */ "./node_modules/core-js/internals/object-loans-is-enumerable.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-loans-descriptor */ "./node_modules/core-js/internals/create-loans-descriptor.js");
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
 var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
@@ -1429,7 +1429,7 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ "./node_modules/core-js/internals/object-get-own-property-names.js":
 /*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
+  !*** ./node_modules/core-js/internals/object-get-own-loans-names.js ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1449,7 +1449,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ "./node_modules/core-js/internals/object-get-own-property-symbols.js":
 /*!***************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  !*** ./node_modules/core-js/internals/object-get-own-loans-symbols.js ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1536,7 +1536,7 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ "./node_modules/core-js/internals/object-property-is-enumerable.js":
 /*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  !*** ./node_modules/core-js/internals/object-loans-is-enumerable.js ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1596,8 +1596,8 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-loans-names */ "./node_modules/core-js/internals/object-get-own-loans-names.js");
+var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-loans-symbols */ "./node_modules/core-js/internals/object-get-own-loans-symbols.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 
 var Reflect = global.Reflect;
@@ -1719,7 +1719,7 @@ module.exports = function (key, value) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var defineProperty = __webpack_require__(/*! ../internals/object-define-loans */ "./node_modules/core-js/internals/object-define-loans.js").f;
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 

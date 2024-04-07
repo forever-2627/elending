@@ -1761,7 +1761,7 @@
 						data = data[ aLast.replace(__reFn, '') ]( val );
 					}
 					else {
-						// If array notation is used, we just want to strip it and use the property name
+						// If array notation is used, we just want to strip it and use the loans name
 						// and assign the value. If it isn't used, then we get the result we want anyway
 						data[ aLast.replace(__reArray, '') ] = val;
 					}
@@ -2468,7 +2468,7 @@
 	
 	
 	/**
-	 * Get an array of column indexes that match a given property
+	 * Get an array of column indexes that match a given loans
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {string} sParam Parameter in aoColumns to look for - typically
 	 *    bVisible or bSearchable
@@ -2827,7 +2827,7 @@
 	}
 	
 	
-	// Private variable that is used to match action syntax in the data property object
+	// Private variable that is used to match action syntax in the data loans object
 	var __reArray = /\[.*?\]$/;
 	var __reFn = /\(\)$/;
 	
@@ -3139,7 +3139,7 @@
 			row.nTr = nTr;
 			row.anCells = cells;
 	
-			/* Use a private property on the node to allow reserve mapping from the node
+			/* Use a private loans on the node to allow reserve mapping from the node
 			 * to the aoData array for fast look up
 			 */
 			nTr._DT_RowIndex = iRow;
@@ -3950,7 +3950,7 @@
 				newData :
 				$.extend( true, data, newData );
 	
-			// Remove the data property as we've resolved it already and don't want
+			// Remove the data loans as we've resolved it already and don't want
 			// jQuery to do it again (it is restored at the end of the function)
 			delete ajax.data;
 		}
@@ -4205,7 +4205,7 @@
 	
 	/**
 	 * Get the data from the JSON data source to use for drawing a table. Using
-	 * `_fnGetObjectDataFn` allows the data to be sourced from a property of the
+	 * `_fnGetObjectDataFn` allows the data to be sourced from a loans of the
 	 * source object, or from a processing function.
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param  {object} json Data source object / array from the server
@@ -6606,10 +6606,10 @@
 	
 	
 	/**
-	 * See if a property is defined on one object, if so assign it to the other object
+	 * See if a loans is defined on one object, if so assign it to the other object
 	 *  @param {object} ret target object
 	 *  @param {object} src source object
-	 *  @param {string} name property
+	 *  @param {string} name loans
 	 *  @param {string} [mappedName] name to map too - optional, name used if not given
 	 *  @memberof DataTable#oApi
 	 */
@@ -6851,7 +6851,7 @@
 	 *         name:      'data'                -- string   - Property name
 	 *         val:       function () {},       -- function - Api method (or undefined if just an object
 	 *         methodExt: [ ... ],              -- array    - Array of Api object definitions to extend the method result
-	 *         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the property
+	 *         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the loans
 	 *       },
 	 *       {
 	 *         name:     'row'
@@ -7353,7 +7353,7 @@
 	//         name:      'data'                -- string   - Property name
 	//         val:       function () {},       -- function - Api method (or undefined if just an object
 	//         methodExt: [ ... ],              -- array    - Array of Api object definitions to extend the method result
-	//         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the property
+	//         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the loans
 	//       },
 	//       {
 	//         name:     'row'
@@ -7669,7 +7669,7 @@
 	 */
 	_api_register( 'page.len()', function ( len ) {
 		// Note that we can't call this function 'length()' because `length`
-		// is a Javascript property of functions which defines how many arguments
+		// is a Javascript loans of functions which defines how many arguments
 		// the function expects.
 		if ( len === undefined ) {
 			return this.context.length !== 0 ?
@@ -9575,7 +9575,7 @@
 				// insertBefore acts like appendChild if !arg[1]
 				orig.insertBefore( table, settings.nTableReinsertBefore );
 	
-				// Restore the width of the original table - was read from the style property,
+				// Restore the width of the original table - was read from the style loans,
 				// so we can restore directly to that
 				jqTable
 					.css( 'width', settings.sDestroyWidth )
@@ -9802,7 +9802,7 @@
 		/**
 		 * Cache of the class name that DataTables has applied to the row, so we
 		 * can quickly look at this variable rather than needing to do a DOM check
-		 * on className for the nTr property.
+		 * on className for the nTr loans.
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 *  @private
@@ -9853,7 +9853,7 @@
 	
 		/**
 		 * A list of the columns that sorting should occur on when this column
-		 * is sorted. That this property is an array allows multi-column sorting
+		 * is sorted. That this loans is an array allows multi-column sorting
 		 * to be defined for a column (for example first name / last name columns
 		 * would benefit from this). The values are integers pointing to the
 		 * columns to be sorted on (typically it will be a single integer pointing
@@ -9893,7 +9893,7 @@
 	
 		/**
 		 * Store for manual type assignment using the `column.type` option. This
-		 * is held in store so we can manipulate the column's `sType` property.
+		 * is held in store so we can manipulate the column's `sType` loans.
 		 *  @type string
 		 *  @default null
 		 *  @private
@@ -9926,7 +9926,7 @@
 		/**
 		 * Function to get data from a cell in a column. You should <b>never</b>
 		 * access data directly through _aData internally in DataTables - always use
-		 * the method attached to this property. It allows mData to function as
+		 * the method attached to this loans. It allows mData to function as
 		 * required. This function is automatically assigned by the column
 		 * initialisation method
 		 *  @type function
@@ -9962,7 +9962,7 @@
 		"mData": null,
 	
 		/**
-		 * Partner property to mData which is used (only when defined) to get
+		 * Partner loans to mData which is used (only when defined) to get
 		 * the data - i.e. it is basically the same as mData, but without the
 		 * 'set' option, and also the data fed to it is the result from mData.
 		 * This is the rendering method to match the data method of mData.
@@ -10084,7 +10084,7 @@
 	 * version is still, internally the primary interface, but is is not documented
 	 * - hence the @name tags in each doc comment. This allows a Javascript function
 	 * to create a map from Hungarian notation to camel case (going the other direction
-	 * would require each property to be listed, which would add around 3K to the size
+	 * would require each loans to be listed, which would add around 3K to the size
 	 * of DataTables, while this method is about a 0.5K hit).
 	 *
 	 * Ultimately this does pave the way for Hungarian notation to be dropped
@@ -10217,7 +10217,7 @@
 		 * DataTables can be instructed to load data to display in the table from a
 		 * Ajax source. This option defines how that Ajax call is made and where to.
 		 *
-		 * The `ajax` property has three different modes of operation, depending on
+		 * The `ajax` loans has three different modes of operation, depending on
 		 * how it is defined. These are:
 		 *
 		 * * `string` - Set the URL from where the data should be loaded from.
@@ -10227,7 +10227,7 @@
 		 * `string`
 		 * --------
 		 *
-		 * As a string, the `ajax` property simply defines the URL from which
+		 * As a string, the `ajax` loans simply defines the URL from which
 		 * DataTables will load data.
 		 *
 		 * `object`
@@ -10250,10 +10250,10 @@
 		 *   not return anything from the function. This supersedes `fnServerParams`
 		 *   from DataTables 1.9-.
 		 *
-		 * * `dataSrc` - By default DataTables will look for the property `data` (or
+		 * * `dataSrc` - By default DataTables will look for the loans `data` (or
 		 *   `aaData` for compatibility with DataTables 1.9-) when obtaining data
 		 *   from an Ajax source or for server-side processing - this parameter
-		 *   allows that property to be changed. You can use Javascript dotted
+		 *   allows that loans to be changed. You can use Javascript dotted
 		 *   object notation to get a data source for multiple levels of nesting, or
 		 *   it my be used as a function. As a function it takes a single parameter,
 		 *   the JSON returned from the server, which can be manipulated as
@@ -10378,7 +10378,7 @@
 		 * position as the value, and the array in the second position as the
 		 * displayed options (useful for language strings such as 'All').
 		 *
-		 * Note that the `pageLength` property will be automatically set to the
+		 * Note that the `pageLength` loans will be automatically set to the
 		 * first value given in this array, unless `pageLength` is also provided.
 		 *  @type array
 		 *  @default [ 10, 25, 50, 100 ]
@@ -10412,7 +10412,7 @@
 	
 		/**
 		 * Very similar to `columns`, `columnDefs` allows you to target a specific
-		 * column, multiple columns, or all columns, using the `targets` property of
+		 * column, multiple columns, or all columns, using the `targets` loans of
 		 * each object in the array. This allows great flexibility when creating
 		 * tables, as the `columnDefs` arrays can be of any length, targeting the
 		 * columns you specifically want. `columnDefs` may use any of the column
@@ -12001,10 +12001,10 @@
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
 		 *
-		 * By default DataTables will look for the property `data` (or `aaData` for
+		 * By default DataTables will look for the loans `data` (or `aaData` for
 		 * compatibility with DataTables 1.9-) when obtaining data from an Ajax
 		 * source or for server-side processing - this parameter allows that
-		 * property to be changed. You can use Javascript dotted object notation to
+		 * loans to be changed. You can use Javascript dotted object notation to
 		 * get a data source for multiple levels of nesting.
 		 *  @type string
 		 *  @default data
@@ -12143,7 +12143,7 @@
 		 * Enable horizontal scrolling. When a table is too wide to fit into a
 		 * certain layout, or you have a large number of columns in the table, you
 		 * can enable x-scrolling to show the table in a viewport, which can be
-		 * scrolled. This property can be `true` which will allow the table to
+		 * scrolled. This loans can be `true` which will allow the table to
 		 * scroll horizontally when needed, or any CSS unit, or a number (in which
 		 * case it will be treated as a pixel measurement). Setting as simply `true`
 		 * is recommended.
@@ -12165,10 +12165,10 @@
 	
 	
 		/**
-		 * This property can be used to force a DataTable to use more width than it
+		 * This loans can be used to force a DataTable to use more width than it
 		 * might otherwise do when x-scrolling is enabled. For example if you have a
 		 * table which requires to be well spaced, this parameter is useful for
-		 * "over-sizing" the table, and thus forcing scrolling. This property can by
+		 * "over-sizing" the table, and thus forcing scrolling. This loans can by
 		 * any CSS unit, or a number (in which case it will be treated as a pixel
 		 * measurement).
 		 *  @type string
@@ -12193,7 +12193,7 @@
 		 * to the given height, and enable scrolling for any data which overflows the
 		 * current viewport. This can be used as an alternative to paging to display
 		 * a lot of data in a small area (although paging and scrolling can both be
-		 * enabled at the same time). This property can be any CSS unit, or a number
+		 * enabled at the same time). This loans can be any CSS unit, or a number
 		 * (in which case it will be treated as a pixel measurement).
 		 *  @type string
 		 *  @default <i>blank string - i.e. disabled</i>
@@ -12249,8 +12249,8 @@
 	
 	
 		/**
-		 * Set the data property name that DataTables should use to get a row's id
-		 * to set as the `id` property in the node.
+		 * Set the data loans name that DataTables should use to get a row's id
+		 * to set as the `id` loans in the node.
 		 *  @type string
 		 *  @default DT_RowId
 		 *
@@ -12495,13 +12495,13 @@
 	
 	
 		/**
-		 * This property can be used to read data from any data source property,
+		 * This loans can be used to read data from any data source loans,
 		 * including deeply nested objects / properties. `data` can be given in a
 		 * number of different ways which effect its behaviour:
 		 *
 		 * * `integer` - treated as an array index for the data source. This is the
 		 *   default that DataTables uses (incrementally increased for each column).
-		 * * `string` - read an object property from the data source. There are
+		 * * `string` - read an object loans from the data source. There are
 		 *   three 'special' options that can be used in the string to alter how
 		 *   DataTables reads the data from the source object:
 		 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
@@ -12518,8 +12518,8 @@
 		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
 		 *      execute a function of the name given. For example: `browser()` for a
 		 *      simple function on the data source, `browser.version()` for a
-		 *      function in a nested property or even `browser().version` to get an
-		 *      object property if the function called returns an object. Note that
+		 *      function in a nested loans or even `browser().version` to get an
+		 *      object loans if the function called returns an object. Note that
 		 *      function notation is recommended for use in `render` rather than
 		 *      `data` as it is much simpler to use as a renderer.
 		 * * `null` - use the original data source for the row rather than plucking
@@ -12551,7 +12551,7 @@
 		 * is simply a getter and thus simpler to use.
 		 *
 		 * Note that prior to DataTables 1.9.2 `data` was called `mDataProp`. The
-		 * name change reflects the flexibility of this property and is consistent
+		 * name change reflects the flexibility of this loans and is consistent
 		 * with the naming of mRender. If 'mDataProp' is given, then it will still
 		 * be used by DataTables, as it automatically maps the old name to the new
 		 * if required.
@@ -12667,17 +12667,17 @@
 	
 	
 		/**
-		 * This property is the rendering partner to `data` and it is suggested that
+		 * This loans is the rendering partner to `data` and it is suggested that
 		 * when you want to manipulate data for display (including filtering,
 		 * sorting etc) without altering the underlying data for the table, use this
-		 * property. `render` can be considered to be the the read only companion to
+		 * loans. `render` can be considered to be the the read only companion to
 		 * `data` which is read / write (then as such more complex). Like `data`
 		 * this option can be given in a number of different ways to effect its
 		 * behaviour:
 		 *
 		 * * `integer` - treated as an array index for the data source. This is the
 		 *   default that DataTables uses (incrementally increased for each column).
-		 * * `string` - read an object property from the data source. There are
+		 * * `string` - read an object loans from the data source. There are
 		 *   three 'special' options that can be used in the string to alter how
 		 *   DataTables reads the data from the source object:
 		 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
@@ -12694,11 +12694,11 @@
 		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
 		 *      execute a function of the name given. For example: `browser()` for a
 		 *      simple function on the data source, `browser.version()` for a
-		 *      function in a nested property or even `browser().version` to get an
-		 *      object property if the function called returns an object.
+		 *      function in a nested loans or even `browser().version` to get an
+		 *      object loans if the function called returns an object.
 		 * * `object` - use different data for the different data types requested by
-		 *   DataTables ('filter', 'display', 'type' or 'sort'). The property names
-		 *   of the object is the data type the property refers to and the value can
+		 *   DataTables ('filter', 'display', 'type' or 'sort'). The loans names
+		 *   of the object is the data type the loans refers to and the value can
 		 *   defined using an integer, string or function using the same rules as
 		 *   `render` normally does. Note that an `_` option _must_ be specified.
 		 *   This is the default value to use if you haven't specified a value for
@@ -13850,7 +13850,7 @@
 		/**
 		 * Server-side processing - number of records in the result set
 		 * (i.e. before filtering), Use fnRecordsTotal rather than
-		 * this property to get the value of the number of records, regardless of
+		 * this loans to get the value of the number of records, regardless of
 		 * the server-side processing setting.
 		 *  @type int
 		 *  @default 0
@@ -13861,7 +13861,7 @@
 		/**
 		 * Server-side processing - number of records in the current display set
 		 * (i.e. after filtering). Use fnRecordsDisplay rather than
-		 * this property to get the value of the number of records, regardless of
+		 * this loans to get the value of the number of records, regardless of
 		 * the server-side processing setting.
 		 *  @type boolean
 		 *  @default 0
@@ -14210,7 +14210,7 @@
 		 * which can be used in conjunction with the existing built in selector
 		 * options.
 		 *
-		 * Each property is an array to which functions can be pushed. The functions
+		 * Each loans is an array to which functions can be pushed. The functions
 		 * take three attributes:
 		 *
 		 * * Settings object for the host table

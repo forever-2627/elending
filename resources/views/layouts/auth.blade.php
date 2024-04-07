@@ -20,15 +20,15 @@
 
     <!-- Stylesheets -->
     <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/flaticon.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/owl.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('frontend/assets/css/flaticon.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('frontend/assets/css/owl.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('frontend/assets/css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('frontend/assets/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/color/pink.css') }}" id="jssDefault" rel="stylesheet">
-    <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('frontend/assets/css/color/pink.css') }}" id="jssDefault" rel="stylesheet">--}}
+{{--    <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
 
@@ -57,25 +57,19 @@
 
 <!-- jequery plugins -->
 <script src="{{ asset('frontend/assets/js/jquery.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
+{{--<script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>--}}
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/owl.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/wow.js') }}"></script>
+{{--<script src="{{ asset('frontend/assets/js/owl.js') }}"></script>--}}
+{{--<script src="{{ asset('frontend/assets/js/wow.js') }}"></script>--}}
 <script src="{{ asset('frontend/assets/js/validation.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/jquery.fancybox.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/appear.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/scrollbar.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/isotope.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js') }}"></script>
+{{--<script src="{{ asset('frontend/assets/js/scrollbar.js') }}"></script>--}}
+{{--<script src="{{ asset('frontend/assets/js/isotope.js') }}"></script>--}}
+{{--<script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>--}}
+{{--<script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js') }}"></script>--}}
 <script src="{{ asset('frontend/assets/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/nav-tool.js') }}"></script>
-
-<!-- map script -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
-<script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
-
 
 <!-- main-js -->
 <script src="{{ asset('frontend/assets/js/script.js') }}"></script>

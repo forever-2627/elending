@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Add Property </h6>
 
-                            <form method="post" action="{{ route('store.property') }}" id="myForm"
+                            <form method="post" action="{{ route('loans') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -465,8 +465,6 @@
 	
 	<script>
 		$(document).ready(() => {
-			localStorage.setItem('nav-item', 'agent-property')
-		})
-	</script>
+			localStorage.setItem('nav-item', 'agent-property'loans</script>
 @endpush
 @endsection

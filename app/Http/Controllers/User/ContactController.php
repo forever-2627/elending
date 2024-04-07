@@ -5,9 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ContactController extends Controller
 {
     public function index(){
-        return view('dashboard');
+        return view('frontend.dashboard.contact');
     }
 }
