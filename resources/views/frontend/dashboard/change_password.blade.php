@@ -75,8 +75,8 @@
                                             <label>Confirm New Password</label>
                                             <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation">
                                         </div>
-                                        <div class="form-group message-btn">
-                                            <button type="submit" class="theme-btn btn-one">Save Changes </button>
+                                        <div class="form-group message-btn d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary py-3"><i class="fa fa-save"></i> Save Changes </button>
                                         </div>
                                     </form>
                                 </div>

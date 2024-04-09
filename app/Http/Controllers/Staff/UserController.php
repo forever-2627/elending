@@ -24,14 +24,16 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $username = $request->username;
+        $surname = $request->surname;
+        $given_name = $request->given_name;
         $email = $request->email;
         $phone_number = $request->phone_number;
         $address = $request->address;
         $password = $request->password;
         try{
             User::create([
-                'name' => $username,
+                'surname' => $surname,
+                'given_name'=>$given_name,
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'address' => $address,
@@ -59,14 +61,16 @@ class UserController extends Controller
 
     public function update(Request $request){
         $user_id = $request->user_id;
-        $username = $request->username;
+        $surname = $request->surname;
+        $given_name = $request->given_name;
         $email = $request->email;
         $phone_number = $request->phone_number;
         $address = $request->address;
         $password = $request->password;
         try{
             User::updateOrCreate(['id' => $user_id],[
-                'name' => $username,
+                'surname' => $surname,
+                'given_name'=>$given_name,
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'address' => $address,

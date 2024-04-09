@@ -57,6 +57,9 @@
                                             <label for="message">Message</label>
                                             <textarea id="message" type="text" name="message" rows="10" placeholder="Please input your message to administrator here."></textarea>
                                         </div>
+                                        <div class="form-group message-btn d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary py-3"><i class="fa fa-save"></i> Save Changes </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

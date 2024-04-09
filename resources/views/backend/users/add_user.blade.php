@@ -12,35 +12,33 @@
                             <form id="myForm" method="POST" action="{{ route('staff.users.store') }}" class="forms-sample">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label for="username" class="form-label">Name</label>
-                                    <input id="username" type="text" name="username" class="form-control" >
+                                    <label for="surname" class="form-label">Surname</label>
+                                    <input id="surname" type="text" name="surname" class="form-control" >
                                 </div>
-
+                                <div class="form-group mb-3">
+                                    <label for="given_name" class="form-label">Given Name</label>
+                                    <input id="given_name" type="text" name="given_name" class="form-control" >
+                                </div>
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input id="email" type="email" name="email" class="form-control" >
                                 </div>
-
                                 <div class="form-group mb-3">
                                     <label for="phone_number" class="form-label">Phone Number</label>
                                     <input id="phone_number" type="text" name="phone_number" class="form-control" >
                                 </div>
-
                                 <div class="form-group mb-3">
                                     <label for="address" class="form-label">Address   </label>
                                     <input id="address" type="text" name="address" class="form-control" >
                                 </div>
-
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input id="password" type="text" name="password" class="form-control" >
                                 </div>
-
                                 <div class="form-group mb-3">
                                     <label for="password_confirm" class="form-label">Password Confirmation</label>
                                     <input id="password_confirm" type="text" name="password_confirm" class="form-control" >
                                 </div>
-
                                 <button type="submit" class="btn btn-primary float-end"><i class="feather icon-save me-2"></i> Save</button>
                             </form>
                         </div>
@@ -56,7 +54,10 @@
             $(document).ready(function (){
                 $('#myForm').validate({
                     rules: {
-                        username: {
+                        surname: {
+                            required : true,
+                        },
+                        given_name: {
                             required : true,
                         },
                         email: {
@@ -78,8 +79,11 @@
                         }
                     },
                     messages :{
-                        username: {
-                            required : 'User Name is required!',
+                        surname: {
+                            required : 'Surname is required!',
+                        },
+                        given_name: {
+                            required : 'Given Name is required!',
                         },
                         email: {
                             required : 'Email Address is required!',
@@ -112,7 +116,6 @@
                     },
                 });
             });
-
         </script>
     @endpush
 @endsection

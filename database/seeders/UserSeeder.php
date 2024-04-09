@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
                 [
                     'email'=>'admin@admin.com',
-                    'name'=>'Administrator',
+                    'surname'=>'Happy',
+                    'given_name'=>'Administrator',
                     'phone_number' => '333-3333-3333',
                     'address' => 'Admin Address',
                     'password'=>Hash::make('admin'),
@@ -25,7 +26,8 @@ class UserSeeder extends Seeder
                 ],
                 [
                     'email'=>'staff@staff.com',
-                    'name'=>'Staff',
+                    'surname'=>'Happy',
+                    'given_name'=>'Staff',
                     'phone_number' => '222-2222-2222',
                     'address' => 'Staff Address',
                     'password'=>Hash::make('staff'),
@@ -33,7 +35,8 @@ class UserSeeder extends Seeder
                 ],
                 [
                     'email'=>'user1@user.com',
-                    'name'=>'User1',
+                    'surname'=>'Happy',
+                    'given_name'=>'User1',
                     'phone_number' => '111-1111-1111',
                     'address' => 'User1 Address',
                     'password'=>Hash::make('user1'),

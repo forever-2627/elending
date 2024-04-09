@@ -23,7 +23,8 @@
                                 <thead>
                                 <tr>
                                     <th>No </th>
-                                    <th>Name </th>
+                                    <th>Given Name </th>
+                                    <th>Surname </th>
                                     <th>Email </th>
                                     <th>Address </th>
                                     <th>Phone Number </th>
@@ -35,7 +36,8 @@
                                 @foreach($users as $key => $user)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->given_name }}</td>
+                                        <td>{{ $user->surname }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->address }}</td>
                                         <td>{{ $user->phone_number }}</td>

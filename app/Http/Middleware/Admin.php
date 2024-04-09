@@ -19,6 +19,10 @@ class Admin
         if($request->user() && $request->user()->role_id == config('constants.roles.admin_role_id')){
             return $next($request);
         }
+
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()->route('login');
+        }
         return redirect(route('login.get'));
     }
 }

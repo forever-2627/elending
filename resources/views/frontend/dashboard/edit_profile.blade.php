@@ -29,7 +29,7 @@
                                 <div class="post d-flex align-items-center flex-column">
                                     <figure class="post-thumb"><a href="#">
                                             <img src="{{ (!empty($user->photo)) ? url('upload/user_images/'.$user->photo) : url('upload/no_image.jpg') }}" alt=""></a></figure>
-                                    <h5><a href="#">{{ $user->name }} </a></h5>
+                                    <h5><a href="#">{{ $user->given_name . ' ' . $user->surname }} </a></h5>
                                     <p>{{ $user->email }} </p>
                                 </div>
                             </div>
@@ -50,8 +50,12 @@
                                     <form action="" method="post" class="default-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input id="username" type="text" name="username" value="{{$user->name}}" >
+                                            <label for="surname">Surname</label>
+                                            <input id="surname" type="text" name="surname" value="{{$user->surname}}" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="given_name">Given Name</label>
+                                            <input id="given_name" type="text" name="given_name" value="{{$user->given_name}}" >
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>

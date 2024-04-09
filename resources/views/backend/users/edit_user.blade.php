@@ -13,8 +13,13 @@
                                 @csrf
                                 <input id="user_id" type="hidden" name="user_id" class="form-control" value="{{$user->id}}">
                                 <div class="form-group mb-3">
-                                    <label for="username" class="form-label">Name</label>
-                                    <input id="username" type="text" name="username" class="form-control" value="{{$user->name}}">
+                                    <label for="surname" class="form-label">Surname</label>
+                                    <input id="surname" type="text" name="surname" class="form-control" value="{{$user->surname}}">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="given_name" class="form-label">Given Name</label>
+                                    <input id="given_name" type="text" name="given_name" class="form-control" value="{{$user->given_name}}">
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -55,7 +60,10 @@
             $(document).ready(function (){
                 $('#myForm').validate({
                     rules: {
-                        username: {
+                        surname: {
+                            required : true,
+                        },
+                        given_name: {
                             required : true,
                         },
                         email: {
@@ -77,8 +85,11 @@
                         }
                     },
                     messages :{
-                        username: {
-                            required : 'User Name is required!',
+                        surname: {
+                            required : 'Surname is required!',
+                        },
+                        given_name: {
+                            required : 'Given Name is required!',
                         },
                         email: {
                             required : 'Email Address is required!',
