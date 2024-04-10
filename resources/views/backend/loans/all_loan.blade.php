@@ -42,59 +42,31 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>000013</td>
-                                    <td>User1</td>
-                                    <td>user1123</td>
-                                    <td>user1@outlook.com</td>
-                                    <td>111-111-1111</td>
-                                    <td>User1 Address</td>
-                                    <td>54000PHP</td>
-                                    <td>2024.04.07</td>
-                                    <td>Weekly</td>
-                                    <td>4</td>
-                                    <td>2024.04.07</td>
-                                    <td>56000PHP</td>
-                                    <td>58000PHP</td>
-                                    <td>26000PHP</td>
-                                    <td>32000PHP</td>
-                                    <td>
-
-                                        <a href="{{route('staff.loans.view', 1)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-
-                                        <a href="{{route('staff.loans.edit', 1)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
-
-                                        <a href="{{route('staff.loans.delete', 1)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
-                                    </td>
-                                </tr>
-                                @php
-                                 $property = [];
-                                @endphp
-                                @foreach($property as $key => $item)
+                                @foreach($loans as $key => $item)
+                                    @php
+                                        $user = \App\Models\User::find($item->user_id);
+                                    @endphp
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td><img src="{{ asset($item->property_thambnail) }}" style="width:70px; height:40px;"> </td>
-                                        <td>{{ $item->property_name }}</td>
-                                        <td>{{ $item['type']['type_name'] }}</td>
-                                        <td>{{ $item->property_status }}</td>
-                                        <td>{{ $item->city }}</td>
-                                        <td>{{ $item->property_code }}</td>
+                                        <td>{{ sprintf('%06d', $item->id)  }}</td>
+                                        <td>{{ $user->surname }}</td>
+                                        <td>{{ $user->given_name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phone_number }}</td>
+                                        <td>{{ $user->address }}</td>
+                                        <td>{{ $item->loan_amount }}</td>
+                                        <td>{{ $item->loan_issued }}</td>
+                                        <td>{{ ucfirst($item->payment_frequency) }}</td>
+                                        <td>{{ $item->nof_payments }}</td>
+                                        <td>{{ $item->payment_start_date }}</td>
+                                        <td>{{ $item->payment_amount }}</td>
+                                        <td>{{ $item->total_to_be_repaid }}</td>
+                                        <td>{{ $item->amount_repaid_to_date }}</td>
+                                        <td>{{ $item->outstanding_balance }}</td>
                                         <td>
-                                            @if($item->status == 1)
-                                                <span class="badge rounded-pill bg-success">Active</span>
-                                            @else
-                                                <span class="badge rounded-pill bg-danger">InActive</span>
-                                            @endif
-
-                                        </td>
-                                        <td>
-
-                                            <a href="" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-
-                                            <a href="" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
-
-                                            <a href="" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                                            <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+                                            <a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
+                                            <a href="{{route('staff.loans.delete', $item->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
                                         </td>
                                     </tr>
                                 @endforeach

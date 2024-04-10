@@ -75,12 +75,7 @@
                         address:{
                             required: true,
                         },
-                        password: {
-                            required : true,
-                            minlength: 5
-                        },
                         password_confirm:{
-                            required: true,
                             equalTo: '#password'
                         }
                     },
@@ -100,12 +95,7 @@
                         address:{
                             required: 'Address is required!',
                         },
-                        password: {
-                            required : 'Password is required!',
-                            minlength: 'Password length must be at least 5 characters!'
-                        },
                         password_confirm:{
-                            required: 'Please input this field!',
                             equalTo: 'This field must be same as password!'
                         }
                     },

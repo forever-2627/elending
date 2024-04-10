@@ -17,11 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- End fonts -->
 
-
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
-
-
+  <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
@@ -98,7 +96,6 @@
 <!-- End custom js for this page -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
 <script>
           @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -144,6 +141,7 @@
 <script src="{{ asset('backend/assets/js/select2.js') }}"></script>
 <script src="{{ asset('backend/assets/js/typeahead.js') }}"></script>
 <script src="{{ asset('backend/assets/js/tags-input.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/jquery-ui.js') }}"></script>
 
 <!-- Input Tags -->
 

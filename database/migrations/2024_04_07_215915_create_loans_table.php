@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('sequence_number');
             $table->integer('user_id');
+            $table->string('payment_frequency');
             $table->string('loan_amount');
             $table->string('loan_issued');
-            $table->string('payment_frequency');
+            $table->integer('nof_payments');
+            $table->string('payment_start_date');
+            $table->string('payment_amount');
+            $table->string('total_to_be_repaid');
+            $table->string('amount_repaid_to_date');
+            $table->string('outstanding_balance');
             $table->timestamps();
         });
     }

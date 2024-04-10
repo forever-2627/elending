@@ -61,6 +61,7 @@ class UserController extends Controller
 
     public function update(Request $request){
         $user_id = $request->user_id;
+        $user = User::find($user_id);
         $surname = $request->surname;
         $given_name = $request->given_name;
         $email = $request->email;
@@ -68,13 +69,13 @@ class UserController extends Controller
         $address = $request->address;
         $password = $request->password;
         try{
-            User::updateOrCreate(['id' => $user_id],[
+            $user->update([
                 'surname' => $surname,
                 'given_name'=>$given_name,
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'address' => $address,
-                'password' => Hash::make($password)
+                'password' => $password == '' ? $user->password : Hash::make($password)
             ]);
         }
         catch (\Exception $e){
