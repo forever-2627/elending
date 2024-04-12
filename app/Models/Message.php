@@ -13,6 +13,7 @@ class Message extends Model
       'username',
       'email',
       'phone_number',
+      'title',
       'message',
       'type',
       'read',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
@@ -10,10 +10,11 @@ class MessageController extends Controller
 {
     public function store(Request $request){
         $title = $request->title;
-        $username = $request->name;
-        $email = $request->email;
-        $phone_number = $request->phone_number;
         $message = $request->message;
+        $user = $request->user();
+        $username = $user->given_name . ' ' . $user->surname;
+        $email = $user->email;
+        $phone_number = $user->phone_number;
         try{
             Message::create([
                 'title' => $title,

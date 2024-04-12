@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('phone_number');
+            $table->string('title');
             $table->longText('message');
             $table->string('type');
             $table->tinyInteger('read')->default(0);

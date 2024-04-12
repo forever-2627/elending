@@ -91,6 +91,14 @@
                             @csrf
                             <div class="mb-4">
                                 <input
+                                        name="title"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Title"
+                                        required>
+                            </div>
+                            <div class="mb-4">
+                                <input
                                         name="name"
                                         type="text"
                                         class="form-control"

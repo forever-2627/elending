@@ -47,7 +47,7 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form action="" method="post" class="default-form" enctype="multipart/form-data">
+                                    <form action="{{route('user.message.store')}}" method="post" class="default-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="title">Title</label>
