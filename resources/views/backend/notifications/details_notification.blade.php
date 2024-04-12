@@ -15,30 +15,30 @@
 
                                 <tbody>
                                 <tr>
-                                    <td>No </td>
-                                    <td><code>1</code></td>
+                                    <td>Title </td>
+                                    <td><code>{{ucfirst($message->title)}}</code></td>
                                 </tr>
                                 <tr>
                                     <td>Notification Type </td>
-                                    <td><code>Guest Message</code></td>
+                                    <td><code>{{ucfirst($message->type)}} Message</code></td>
                                 </tr>
                                 <tr>
                                     <td>Username </td>
-                                    <td><code>Guest User</code></td>
+                                    <td><code>{{$message->username}}</code></td>
                                 </tr>
                                 <tr>
                                     <td>Email </td>
-                                    <td><code>guest@user.com</code></td>
+                                    <td><code>{{$message->email}}</code></td>
                                 </tr>
                                 <tr>
                                     <td>Phone Number </td>
-                                    <td><code>000-0000-0000</code></td>
+                                    <td><code>{{$message->phone_number}}</code></td>
                                 </tr>
                                 <tr>
                                     <td>Message </td>
                                     <td>
                                         <code style="text-wrap: balance;">
-                                            Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content. It helps designers plan out where the content will sit, without needing to wait for the content to be written and approved. It originally comes from a Latin text, but to today's reader, it's seen as gibberish
+                                            {{$message->message}}
                                         </code>
                                     </td>
                                 </tr>

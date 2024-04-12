@@ -22,7 +22,7 @@ class MessageController extends Controller
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'message' => $message,
-                'type' => 'guest',
+                'type' => 'user',
                 'read' => 0,
                 'received_time' => date("Y-m-d H:i:s")
             ]);

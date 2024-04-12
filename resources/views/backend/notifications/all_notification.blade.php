@@ -16,6 +16,7 @@
                                 <thead>
                                 <tr>
                                     <th>No </th>
+                                    <th>Title </th>
                                     <th>Type </th>
                                     <th>Status </th>
                                     <th>Received Time </th>
@@ -23,26 +24,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Guest Message</td>
-                                    <td><span class="badge bg-danger">Unread</span></td>
-                                    <td>2023.04.07</td>
-                                    <td>
-                                        <a href="{{route('staff.notifications.view', 1)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-                                        <a href="{{route('staff.notifications.check', 1)}}" class="btn btn-inverse-danger" id="delete" title="Check as Read"> <i data-feather="award"></i>  </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>User Message</td>
-                                    <td><span class="badge bg-success">Read</span></td>
-                                    <td>2023.04.07</td>
-                                    <td>
-                                        <a href="{{route('staff.notifications.view', 2)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-                                        <a href="{{route('staff.notifications.check', 2)}}" class="btn btn-inverse-danger" id="delete" title="Check as Read"> <i data-feather="award"></i>  </a>
-                                    </td>
-                                </tr>
+                                @foreach($messages as $key => $message)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{$message->title}}</td>
+                                        <td>{{ ucfirst($message->type) }} Message</td>
+                                        @if($message->read == 0)
+                                            <td><span class="badge bg-danger">Unread</span></td>
+                                        @else
+                                            <td><span class="badge bg-success">Read</span></td>
+                                        @endif
+
+                                        <td>{{$message->received_time}}</td>
+                                        <td>
+                                            <a href="{{route('staff.notifications.view', $message->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+                                            <a href="{{route('staff.notifications.check', $message->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
