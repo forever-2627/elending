@@ -40,11 +40,7 @@
                     <a class="nav-link" href="#contact">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a
-                            class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button"
-                            href="{{route('login.get')}}"
-                    >Sign In</a
-                    >
+                    <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button" href="{{route('login.get')}}">Sign In</a>
                 </li>
             </ul>
         </div>
@@ -91,30 +87,39 @@
             <div class="col-lg-6 col-sm-12 px-lg-6 px-sm-2">
                 <div class="card shadow-md py-5 px-3 border-5">
                     <div class="card-body">
-                        <form>
+                        <form action="{{route('guest.message.store')}}" method="post">
+                            @csrf
+                            <div class="mb-4">
+                                <input
+                                        name="name"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Your Name"
+                                        required>
+                            </div>
                             <div class="mb-4">
                                 <input
                                         type="text"
+                                        name="phone_number"
                                         class="form-control"
-                                        placeholder="Your Name">
+                                        placeholder="Phone Number"
+                                        required>
                             </div>
                             <div class="mb-4">
                                 <input
                                         type="email"
+                                        name="email"
                                         class="form-control"
-                                        placeholder="Phone Number">
-                            </div>
-                            <div class="mb-4">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address"
+                                        required>
                             </div>
                             <div class="mb-4">
                           <textarea
                                   class="form-control"
+                                  name="message"
                                   placeholder="Enter message"
                                   rows="8"
+                                  required
                           ></textarea>
                             </div>
                             <div class="d-flex justify-content-center">
@@ -182,5 +187,27 @@
 <script src="{{asset('guest/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('guest/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('guest/js/toastr.min.js')}}"></script>
+<script>
+            @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+
+        case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+
+        case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+
+        case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+    }
+    @endif
+</script>
 </body>
 </html>
