@@ -72,41 +72,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>2024.04.07</td>
-                                            <td>Weekly</td>
-                                            <td>54000PHP</td>
-                                            <td>30000PHP</td>
-                                            <td>24000PHP</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>2024.04.01</td>
-                                            <td>Weekly</td>
-                                            <td>34000PHP</td>
-                                            <td>21000PHP</td>
-                                            <td>13000PHP</td>
-                                        </tr>
-                                        @php
-                                            $srequest = [];
-                                        @endphp
-                                        @foreach($srequest as $key => $item)
-                                            <tr>
-                                                <th scope="row">{{ $key+1 }}</th>
-                                                <td>{{ $item['property']['property_name'] }}</td>
-                                                <td>{{ $item->tour_date }}</td>
-                                                <td>{{ $item->tour_time }}</td>
-                                                <td>
-                                                    @if($item->status == 1)
-                                                        <span class="badge rounded-pill bg-success">Confirm</span>
-
-                                                    @else
-                                                        <span class="badge rounded-pill bg-danger">Pending</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                            @foreach($loans as $key => $loan)
+                                                <tr>
+                                                    <th scope="row">{{$key + 1}}</th>
+                                                    <td>{{$loan->payment_start_date}}</td>
+                                                    <td>{{ucfirst($loan->payment_frequency)}}</td>
+                                                    <td>{{$loan->loan_amount}}</td>
+                                                    <td>{{$loan->loan_amount * 1 - $loan->outstanding_balance * 1}}</td>
+                                                    <td>{{$loan->outstanding_balance}}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
