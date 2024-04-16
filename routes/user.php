@@ -20,8 +20,9 @@ Route::middleware(UserMiddleware::class)->group(function (){
     Route::get('/user/loans', [ UserLoanController::class, 'index' ])->name('user.loans');
 
     Route::get('/user/edit_profile', [ UserProfileController::class, 'edit_profile' ])->name('user.profile.edit');
+    Route::post('/user/edit_profile', [UserProfileController::class, 'profile_update_request'])->name('user.profile.update');
     Route::get('/user/change_password', [ UserProfileController::class, 'change_password' ])->name('user.password.change');
-    Route::post('/user/edit_profile', [UserProfileController::class, 'update_request'])->name('user.profile.update');
+    Route::post('/user/change_password', [UserProfileController::class, 'password_update_request'])->name('user.password.update');
 
     Route::get('/user/contact', [ UserContactController::class, 'index' ])->name('user.contact');
     Route::post('/user/message', [ UserMessageController::class, 'store'])->name('user.message.store');

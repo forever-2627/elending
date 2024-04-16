@@ -4,12 +4,12 @@
 
 
     <!--Page Title-->
-    <section class="page-title centred" style="background-image: url({{ asset('frontend/assets/images/background/page-title-5.jpg') }});">
+    <section class="page-title centred" style="background-image: url({{ asset('frontend/assets/images/background/page-title.jpg') }});">
         <div class="auto-container">
             <div class="content-box clearfix">
                 <h1>Change Password  </h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li>Change Password</li>
                 </ul>
             </div>
@@ -55,21 +55,15 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form action="" method="post" class="default-form" enctype="multipart/form-data">
+                                    <form id="change_password_form" action="{{route('user.password.update')}}" method="post" class="default-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label>Old Password</label>
-                                            <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password">
-                                            @error('old_password')
-                                            <span class="text-danger"></span>
-                                            @enderror
+                                            <input type="password" name="old_password" class="form-control" id="old_password">
                                         </div>
                                         <div class="form-group">
                                             <label>New Password </label>
-                                            <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password">
-                                            @error('new_password')
-                                            <span class="text-danger"></span>
-                                            @enderror
+                                            <input type="password" name="new_password" class="form-control" id="new_password">
                                         </div>
                                         <div class="form-group">
                                             <label>Confirm New Password</label>
@@ -87,4 +81,50 @@
             </div>
         </div>
     </section>
+
+    @push('script')
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('#change_password_form').validate({
+                    rules: {
+                        old_password:{
+                            required : true,
+                        },
+                        new_password: {
+                            required : true,
+                            minlength: 5
+                        },
+                        new_password_confirmation:{
+                            required: true,
+                            equalTo: '#new_password'
+                        }
+                    },
+                    messages :{
+                        old_password:{
+                            required : 'Password is required!',
+                        },
+                        new_password: {
+                            required : 'Password is required!',
+                            minlength: 'Password length must be at least 5 characters!'
+                        },
+                        new_password_confirmation:{
+                            required: 'Please input this field!',
+                            equalTo: 'This field must be same as password!'
+                        }
+                    },
+                    errorElement : 'span',
+                    errorPlacement: function (error,element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight : function(element, errorClass, validClass){
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight : function(element, errorClass, validClass){
+                        $(element).removeClass('is-invalid');
+                    },
+                });
+            });
+        </script>
+    @endpush
 @endsection
