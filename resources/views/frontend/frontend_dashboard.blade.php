@@ -95,6 +95,7 @@
             }
         });
     </script>
+    @stack('script')
 </body><!-- End of .page_wrapper -->
 
 </html>

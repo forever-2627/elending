@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
+
   <!-- End fonts -->
 
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">

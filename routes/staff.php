@@ -9,8 +9,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Staff as StaffMiddleware;
 use App\Http\Controllers\Staff\LoanController as StaffLoanController;
-use App\Http\Controllers\Staff\UserController;
+use App\Http\Controllers\Staff\MessageController as StaffMessageController;
 use App\Http\Controllers\Staff\NotificationController;
+use App\Http\Controllers\Staff\UserController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
@@ -33,5 +34,11 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     //Notifications
     Route::get('staff/notifications', [NotificationController::class, 'index'])->name('staff.notifications');
     Route::get('staff/notifications/view/{id}', [NotificationController::class, 'view'])->name('staff.notifications.view');
+    Route::get('staff/notifications/confirm/{id}', [NotificationController::class, 'approve_update_profile'])->name('staff.notifications.approve.update.profile');
     Route::get('staff/notifications/check/{id}', [NotificationController::class, 'check'])->name('staff.notifications.check');
+
+    //Messages
+    Route::get('staff/messages', [StaffMessageController::class, 'index'])->name('staff.messages');
+    Route::get('staff/messages/view/{id}', [StaffMessageController::class, 'view'])->name('staff.messages.view');
+    Route::get('staff/messages/check/{id}', [StaffMessageController::class, 'check'])->name('staff.messages.check');
 });

@@ -4,41 +4,77 @@
 	</a>
 	<div class="navbar-content">
 		<ul class="navbar-nav gap-2">
-			<li class="nav-item dropdown">
-				@php
-					$unread_messages = \App\Models\Message::where(['read' => 0])->get();
-				@endphp
+            <li class="nav-item dropdown">
+                @php
+                    $unread_messages = \App\Models\Message::where(['read' => 0])->get();
+                @endphp
 
-				<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i data-feather="bell"></i>
-					@if($unread_messages->count() > 0)
-						<div class="indicator">
-							<div class="circle"></div>
-						</div>
-					@endif
-				</a>
-				<div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-					<div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-						<p>{{count($unread_messages)}} New Notifications</p>
-					</div>
-					<div class="p-1">
-						@foreach($unread_messages as $unread_message)
-							<a href="{{route('staff.notifications.view', $unread_message->id)}}" class="dropdown-item d-flex align-items-center py-2">
-								<div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-									<i class="icon-sm text-white" data-feather="alert-circle"></i>
-								</div>
-								<div class="flex-grow-1 me-2">
-									<p>{{$unread_message->title}}</p>
-									<p class="tx-12 text-muted">{{$unread_message->received_time}}</p>
-								</div>
-							</a>
-						@endforeach
-					</div>
-					<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-						<a href="{{route('staff.notifications')}}">View all</a>
-					</div>
-				</div>
-			</li>
+                <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i data-feather="message-circle"></i>
+                    @if($unread_messages->count() > 0)
+                        <div class="indicator">
+                            <div class="circle"></div>
+                        </div>
+                    @endif
+                </a>
+                <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
+                    <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
+                        <p>{{count($unread_messages)}} New Notifications</p>
+                    </div>
+                    <div class="p-1">
+                        @foreach($unread_messages as $unread_message)
+                            <a href="{{route('staff.messages.view', $unread_message->id)}}" class="dropdown-item d-flex align-items-center py-2">
+                                <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
+                                    <i class="icon-sm text-white" data-feather="alert-circle"></i>
+                                </div>
+                                <div class="flex-grow-1 me-2">
+                                    <p>{{$unread_message->title}}</p>
+                                    <p class="tx-12 text-muted">{{$unread_message->received_time}}</p>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                    <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
+                        <a href="{{route('staff.messages')}}">View all</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                @php
+                    $unread_messages = \App\Models\Message::where(['read' => 0])->get();
+                @endphp
+
+                <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i data-feather="bell"></i>
+                    @if($unread_messages->count() > 0)
+                        <div class="indicator">
+                            <div class="circle"></div>
+                        </div>
+                    @endif
+                </a>
+                <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
+                    <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
+                        <p>{{count($unread_messages)}} New Notifications</p>
+                    </div>
+                    <div class="p-1">
+                        @foreach($unread_messages as $unread_message)
+                            <a href="{{route('staff.messages.view', $unread_message->id)}}" class="dropdown-item d-flex align-items-center py-2">
+                                <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
+                                    <i class="icon-sm text-white" data-feather="alert-circle"></i>
+                                </div>
+                                <div class="flex-grow-1 me-2">
+                                    <p>{{$unread_message->title}}</p>
+                                    <p class="tx-12 text-muted">{{$unread_message->received_time}}</p>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                    <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
+                        <a href="{{route('staff.messages')}}">View all</a>
+                    </div>
+                </div>
+            </li>
 
 			@php
 				$id = Auth::user()->id;

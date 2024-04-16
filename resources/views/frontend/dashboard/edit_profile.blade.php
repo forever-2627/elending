@@ -47,7 +47,7 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form action="" method="post" class="default-form" enctype="multipart/form-data">
+                                    <form id="profile_form" action="{{route('user.profile.update')}}" method="post" class="default-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="surname">Surname</label>
@@ -63,21 +63,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="phone_number">Phone Number</label>
-                                            <input id="phone_number" type="text" name="phone" value="{{$user->phone_number}}">
+                                            <input id="phone_number" type="text" name="phone_number" value="{{$user->phone_number}}">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="address">Address</label>
                                             <input id="address" type="text" name="address" value="{{$user->address}}">
                                         </div>
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="formFile" class="form-label">Default file input example</label>--}}
-                                            {{--<input class="form-control" name="photo" type="file" id="image">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="formFile" class="form-label"> </label>--}}
-                                            {{--<img id="showImage"  src="" alt="" style="width: 100px; height: 100px;"></a>--}}
-                                        {{--</div>--}}
                                         <div class="form-group message-btn d-flex justify-content-end mb-0">
                                             <button type="submit" class="btn btn-primary py-3"><i class="fab fa fa-save me-2"></i> Save Changes </button>
                                         </div>
@@ -91,15 +83,57 @@
         </div>
     </section>
 
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function(){--}}
-            {{--$('#image').change(function(e){--}}
-                {{--var reader = new FileReader();--}}
-                {{--reader.onload = function(e){--}}
-                    {{--$('#showImage').attr('src',e.target.result);--}}
-                {{--}--}}
-                {{--reader.readAsDataURL(e.target.files['0']);--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
+    @push('script')
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('#profile_form').validate({
+                    rules: {
+                        surname: {
+                            required : true,
+                        },
+                        given_name: {
+                            required : true,
+                        },
+                        email: {
+                            required : true,
+                        },
+                        phone_number: {
+                            required : true,
+                        },
+                        address:{
+                            required: true,
+                        }
+                    },
+                    messages :{
+                        surname: {
+                            required : 'Surname is required!',
+                        },
+                        given_name: {
+                            required : 'Given Name is required!',
+                        },
+                        email: {
+                            required : 'Email Address is required!',
+                        },
+                        phone_number: {
+                            required : 'Phone Number is required!',
+                        },
+                        address:{
+                            required: 'Address is required!',
+                        }
+                    },
+                    errorElement : 'span',
+                    errorPlacement: function (error,element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight : function(element, errorClass, validClass){
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight : function(element, errorClass, validClass){
+                        $(element).removeClass('is-invalid');
+                    },
+                });
+            });
+        </script>
+    @endpush
 @endsection

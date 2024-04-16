@@ -34,11 +34,17 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a href="{{route('staff.notifications')}}" class="nav-link">
-                     <i class="link-icon" data-feather="bell"></i>
-                     <span class="link-title">Notifications</span>
+                 <a href="{{route('staff.messages')}}" class="nav-link">
+                     <i class="link-icon" data-feather="message-circle"></i>
+                     <span class="link-title">Messages</span>
                  </a>
              </li>
+			 <li class="nav-item">
+				 <a href="{{route('staff.notifications')}}" class="nav-link">
+					 <i class="link-icon" data-feather="bell"></i>
+					 <span class="link-title">Notifications</span>
+				 </a>
+			 </li>
 	 </ul>
  </div>
 </nav>
