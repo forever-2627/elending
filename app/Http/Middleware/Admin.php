@@ -20,9 +20,9 @@ class Admin
             return $next($request);
         }
 
-        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect()->route('login');
-        }
+//        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+//            return redirect()->route('login');
+//        }
         return redirect(route('login.get'));
     }
 }

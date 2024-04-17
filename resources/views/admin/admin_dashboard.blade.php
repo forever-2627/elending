@@ -2,81 +2,97 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-  <meta name="author" content="NobleUI">
-  <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="NobleUI">
+    <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Admin Panel - Best Loan </title>
+    <title>Admin Panel - Best Loan </title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
 
-  <!-- End fonts -->
+    <!-- End fonts -->
 
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
-  <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
+    <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
 
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
-  <!-- End plugin css for this page -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
+    <!-- End plugin css for this page -->
 
-  <!-- core:css -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/core/core.css') }}">
-  <!-- endinject -->
+    <!-- core:css -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/core/core.css') }}">
+    <!-- endinject -->
 
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
-  <!-- End plugin css for this page -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+    <!-- End plugin css for this page -->
 
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-  <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <!-- endinject -->
 
-  <!-- Layout styles -->
-  <link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
-  <!-- End layout styles -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
+    <!-- End layout styles -->
 
-  <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
-  <style>
-    .overflowx-enable{
-      overflow-x: auto!important;
-    }
-  </style>
-  @stack('styles')
+    <style>
+        .overflowx-enable{
+            overflow-x: auto!important;
+        }
+
+        .btn-calc{
+            position: fixed;
+            right: 1.3rem;
+            top: 41vh;
+            background: #5d69eba1;
+            border-radius: 50%;
+            z-index: 9;
+        }
+
+        .calc-card{
+            position: fixed;
+            right: 1rem;
+            top: 40vh;
+        }
+    </style>
+    @stack('styles')
 
 </head>
 <body>
 <div class="main-wrapper">
 
-  <!-- partial:partials/_sidebar.html -->
+    <!-- partial:partials/_sidebar.html -->
 @include('admin.body.sidebar')
 
 <!-- partial -->
 
-  <div class="page-wrapper">
+    <div class="page-wrapper">
 
-    <!-- partial:partials/_navbar.html -->
-  @include('admin.body.header')
-  <!-- partial -->
+        <!-- partial:partials/_navbar.html -->
+    @include('admin.body.header')
+    <!-- partial -->
 
-  @yield('admin')
+    @yield('admin')
 
-  <!-- partial:partials/_footer.html -->
-  @include('admin.body.footer')
-  <!-- partial -->
+    @include('admin.body.right')
+    <!-- partial:partials/_footer.html -->
+    @include('admin.body.footer')
+    <!-- partial -->
 
-  </div>
+    </div>
 </div>
 
 <!-- core:js -->
@@ -99,7 +115,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
-          @if(Session::has('message'))
+            @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
     switch(type){
         case 'info':
@@ -118,7 +134,7 @@
             toastr.error(" {{ Session::get('message') }} ");
             break;
     }
-  @endif
+    @endif
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -160,6 +176,30 @@
         setTimeout(function() {
             $($('#dataTableExample_wrapper').children('div')[1]).addClass('overflowx-enable');
         }, 500);
+    });
+
+    $('#calc_button').on('click', () => {
+        let status = $('#calc_status').val();
+        if(parseInt(status) === 0){
+            $('#calc_card').show(300);
+            $('#calc_status').val(1);
+        }
+        else{
+            $('#calc_card').hide(300);
+            $('#calc_status').val(0);
+        }
+    });
+
+    $('.calc-input').on('change', (e) => {
+        let loan_amount = parseFloat($('#loan_amount').val());
+        let loan_period = parseFloat($('#loan_period').val());
+        let interest_rate = parseFloat($('#interest_rate').val());
+        let processing_fee_percent = parseFloat($('#processing_fee').val());
+        // let payment_frequency = parseFloat($('#payment_frequency').val());
+        const interests = interest_rate * 0.01 * loan_amount * loan_period;
+        const processing_fee = processing_fee_percent * 0.01 * loan_amount;
+        const result = loan_amount + interests + processing_fee;
+        $('#result').val(result);
     });
 </script>
 </body>
