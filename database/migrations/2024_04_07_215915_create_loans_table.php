@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('payment_frequency');
             $table->string('loan_amount');
-            $table->string('loan_issued');
             $table->integer('nof_payments');
             $table->string('payment_start_date');
             $table->string('payment_amount');

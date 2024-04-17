@@ -19,7 +19,7 @@
                             <form method="post" action="{{route('staff.loans.store')}}" id="myForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="user_id">User</label>
                                             <select id="user_id" name="user_id" class="form-control">
@@ -36,12 +36,6 @@
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="loan_amount">Loan Amount</label>
                                             <input type="number" id="loan_amount" name="loan_amount" class="form-control" value="{{ old('loan_amount') }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-3">
-                                            <label class="form-label" for="loan_issued">Loan Issued</label>
-                                            <input type="number" id="loan_issued" name="loan_issued" class="form-control" value="{{ old('loan_issued') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -144,9 +138,6 @@
                     },
                     messages :{
                         loan_amount: {
-                            required : 'This field is required!',
-                        },
-                        loan_issued: {
                             required : 'This field is required!',
                         },
                         payment_frequency: {

@@ -30,7 +30,6 @@
                                     <th>Phone <br/>Number</th>
                                     <th>Address</th>
                                     <th>Loan <br/>Amount</th>
-                                    <th>Loan <br/>Issued</th>
                                     <th>Payment<br/> Frequency</th>
                                     <th>Number<br/> of Payments</th>
                                     <th>Payment <br/>Start Date</th>
@@ -55,7 +54,6 @@
                                         <td>{{ $user->phone_number }}</td>
                                         <td>{{ $user->address }}</td>
                                         <td>{{ $item->loan_amount }}</td>
-                                        <td>{{ $item->loan_issued }}</td>
                                         <td>{{ ucfirst($item->payment_frequency) }}</td>
                                         <td>{{ $item->nof_payments }}</td>
                                         <td>{{ $item->payment_start_date }}</td>

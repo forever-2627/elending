@@ -42,10 +42,6 @@
                                     <td><code>{{$loan->loan_amount}}</code></td>
                                 </tr>
                                 <tr>
-                                    <td>Loan Issued </td>
-                                    <td><code>{{$loan->loan_issued}}</code></td>
-                                </tr>
-                                <tr>
                                     <td>Payment Frequency </td>
                                     <td><code>{{$loan->payment_frequency}}</code></td>
                                 </tr>

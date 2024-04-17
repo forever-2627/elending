@@ -17,7 +17,6 @@ class LoanController extends Controller
     public function store(Request $request){
         $user_id = $request->user_id;
         $loan_amount = $request->loan_amount;
-        $loan_issued = $request->loan_issued;
         $payment_frequency = $request->payment_frequency;
         $nof_payments = $request->nof_payments;
         $payment_start_date = $request->payment_start_date;
@@ -29,7 +28,6 @@ class LoanController extends Controller
             Loan::create([
                 'user_id' => $user_id,
                 'loan_amount' => $loan_amount,
-                'loan_issued' => $loan_issued,
                 'payment_frequency' => $payment_frequency,
                 'nof_payments' => $nof_payments,
                 'payment_start_date' => $payment_start_date,
@@ -67,7 +65,6 @@ class LoanController extends Controller
         $loan = Loan::find($request->loan_id);
         $user_id = $request->user_id;
         $loan_amount = $request->loan_amount;
-        $loan_issued = $request->loan_issued;
         $payment_frequency = $request->payment_frequency;
         $nof_payments = $request->nof_payments;
         $payment_start_date = $request->payment_start_date;
@@ -79,7 +76,6 @@ class LoanController extends Controller
             $loan->update([
                 'user_id' => $user_id,
                 'loan_amount' => $loan_amount,
-                'loan_issued' => $loan_issued,
                 'payment_frequency' => $payment_frequency,
                 'nof_payments' => $nof_payments,
                 'payment_start_date' => $payment_start_date,

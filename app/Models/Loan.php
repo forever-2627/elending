@@ -13,7 +13,6 @@ class Loan extends Model
         'sequence_number',
         'user_id',
         'loan_amount',
-        'loan_issued',
         'payment_frequency',
         'nof_payments',
         'payment_start_date',

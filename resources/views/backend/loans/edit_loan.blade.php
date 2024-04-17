@@ -21,7 +21,7 @@
                                 @csrf
                                 <div class="row">
                                     <input type="hidden" name="loan_id" value="{{$loan->id}}">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="user_id">User</label>
                                             <select id="user_id" name="user_id" class="form-control">
@@ -44,12 +44,6 @@
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="loan_amount">Loan Amount</label>
                                             <input type="text" id="loan_amount" name="loan_amount" class="form-control" value="{{ $loan->loan_amount }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-3">
-                                            <label class="form-label" for="loan_issued">Loan Issued</label>
-                                            <input type="text" id="loan_issued" name="loan_issued" class="form-control" value="{{ $loan->loan_issued }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

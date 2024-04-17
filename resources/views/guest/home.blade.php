@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
     <link rel="icon" href="{{asset('guest/images/favicon.png')}}">
-    <title>Quick Funds</title>
+    <title>Best Loan</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <span class="logo-quick">Quick<span class="logo-funds">Funds</span></span>
+        <a class="navbar-brand p-0" href="#">
+            <img src="{{asset('upload/logo.png')}}" width="96"/>
         </a>
         <button
                 class="navbar-toggler"
