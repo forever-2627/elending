@@ -41,4 +41,8 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/messages', [StaffMessageController::class, 'index'])->name('staff.messages');
     Route::get('staff/messages/view/{id}', [StaffMessageController::class, 'view'])->name('staff.messages.view');
     Route::get('staff/messages/check/{id}', [StaffMessageController::class, 'check'])->name('staff.messages.check');
+
+    //Others
+    Route::get('staff/calculator', function (){ return view('admin.calculator');})->name('staff.calculator');
+
 });

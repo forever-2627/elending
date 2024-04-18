@@ -45,6 +45,13 @@
 					 <span class="link-title">Notifications</span>
 				 </a>
 			 </li>
+			 <li class="nav-item nav-category">Others</li>
+			 <li class="nav-item">
+				 <a href="{{route('staff.calculator')}}" class="nav-link">
+					 <span class="fal fa-calculator"></span>
+					 <span class="link-title">Calculator</span>
+				 </a>
+			 </li>
 	 </ul>
  </div>
 </nav>
