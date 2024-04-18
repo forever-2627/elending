@@ -8,9 +8,6 @@
 
     @stack('title')
 
-    <!-- Fav Icon -->
-    <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}" type="image/x-icon">
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Fonts -->
@@ -33,6 +30,7 @@
     <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="icon" href="{{asset('upload/favicon.png')}}">
     @stack('styles')
 
 </head>

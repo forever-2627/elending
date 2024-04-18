@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('guest/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
-    <link rel="icon" href="{{asset('guest/images/favicon.png')}}">
+    <link rel="icon" href="{{asset('upload/favicon.png')}}">
     <title>Best Loan</title>
 </head>
 <body>
