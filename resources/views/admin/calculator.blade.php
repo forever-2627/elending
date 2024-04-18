@@ -48,6 +48,7 @@
                                         <select name="payment_frequency" class="form-control calc-input" id="payment_frequency">
                                             <option selected value="1">Every Week</option>
                                             <option value="2">Every Two Weeks</option>
+                                            <option value="4">Every Month</option>
                                         </select>
                                     </div>
                                 </div>
