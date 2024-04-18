@@ -23,7 +23,8 @@ class Loan extends Model
     ];
 
     public function get_total_loaned(){
-        return 1234;
+
+        return Loan::sum('total_to_be_repaid');
     }
 
     public function get_delinquent_loans(){
@@ -31,10 +32,11 @@ class Loan extends Model
     }
 
     public function get_total_outstanding_loans(){
-        return 12345;
+        return Loan::sum('outstanding_balance');
     }
 
     public function get_current_month_payment(){
+        $current_month = date('m');
         return 12345;
     }
 

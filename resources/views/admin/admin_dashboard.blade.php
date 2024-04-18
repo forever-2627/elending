@@ -66,6 +66,7 @@
             position: fixed;
             right: 1rem;
             top: 40vh;
+            z-index: 3;
         }
     </style>
     @stack('styles')

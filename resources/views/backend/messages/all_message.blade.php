@@ -37,8 +37,8 @@
 
                                         <td>{{$message->received_time}}</td>
                                         <td>
-                                            <a href="{{route('staff.notifications.view', $message->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-                                            <a href="{{route('staff.notifications.check', $message->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
+                                            <a href="{{route('staff.messages.view', $message->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+                                            <a href="{{route('staff.messages.check', $message->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
                                         </td>
                                     </tr>
                                 @endforeach
