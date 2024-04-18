@@ -78,7 +78,7 @@
                                                     <td>{{$loan->payment_start_date}}</td>
                                                     <td>{{ucfirst($loan->payment_frequency)}}</td>
                                                     <td>{{$loan->loan_amount}}</td>
-                                                    <td>{{$loan->loan_amount * 1 - $loan->outstanding_balance * 1}}</td>
+                                                    <td>{{$loan->payment_amount}}</td>
                                                     <td>{{$loan->outstanding_balance}}</td>
                                                 </tr>
                                             @endforeach
