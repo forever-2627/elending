@@ -69,7 +69,6 @@
 
     @push('script')
         <script>
-
             $('.calc-input').on('change', () => {
                 let loan_amount = parseFloat($('#loan_amount').val());
                 let loan_period = parseFloat($('#loan_period').val());
