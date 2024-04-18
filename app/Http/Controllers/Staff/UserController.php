@@ -14,8 +14,13 @@ class UserController extends Controller
         $this->user = new User();
     }
 
-    public function index(){
-        $users = User::all();
+    public function index(Request $request){
+        if($request->user()->role_id == config('constants.roles.admin_role_id')){
+            $users = User::all();
+        }
+        else{
+            $users = User::where(['role_id' => config('constants.roles.user_role_id')] )->get();
+        }
         return view('backend.users.all_user', ['users' => $users]);
     }
 
@@ -29,6 +34,7 @@ class UserController extends Controller
         $email = $request->email;
         $phone_number = $request->phone_number;
         $address = $request->address;
+        $role_id = $request->user()->role_id == config('constants.roles.admin_role_id') ? $request->role_id : 1;
         $password = $request->password;
         try{
             User::create([
@@ -37,6 +43,7 @@ class UserController extends Controller
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'address' => $address,
+                'role_id' => $role_id * 1,
                 'password' => Hash::make($password)
             ]);
         }
@@ -67,6 +74,7 @@ class UserController extends Controller
         $email = $request->email;
         $phone_number = $request->phone_number;
         $address = $request->address;
+        $role_id = $request->user()->role_id == config('constants.roles.admin_role_id') ? $request->role_id : 1;
         $password = $request->password;
         try{
             $user->update([
@@ -75,6 +83,7 @@ class UserController extends Controller
                 'email' => $email,
                 'phone_number' => $phone_number,
                 'address' => $address,
+                'role_id' => $role_id * 1,
                 'password' => $password == '' ? $user->password : Hash::make($password)
             ]);
         }

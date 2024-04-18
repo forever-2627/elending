@@ -31,6 +31,21 @@
                                     <label for="address" class="form-label">Address   </label>
                                     <input id="address" type="text" name="address" class="form-control" >
                                 </div>
+                                @if(\Illuminate\Support\Facades\Auth::user()->role_id == config('constants.roles.admin_role_id'))
+                                    <div class="col-sm-12">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label" for="role_id">Role</label>
+                                            <select id="role_id" name="role_id" class="form-control">
+                                                @php
+                                                    $roles = \App\Models\Role::all();
+                                                @endphp
+                                                @foreach($roles as $role)
+                                                    <option value="{{$role->id}}">{{ucfirst($role->name)}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input id="password" type="text" name="password" class="form-control" >
