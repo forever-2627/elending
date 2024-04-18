@@ -33,20 +33,20 @@
                         <input type="number" id="processing_fee" name="processing_fee" class="form-control calc-input" value="3">
                     </div>
                 </div>
-                {{--<div class="col-sm-12">--}}
-                    {{--<div class="form-group mb-3">--}}
-                        {{--<label for="payment_frequency" class="form-label">Payment Frequency</label>--}}
-                        {{--<select name="payment_frequency" class="form-control calc-input" id="payment_frequency">--}}
-                            {{--<option selected value="1">Every Week</option>--}}
-                            {{--<option value="2">Every Two Weeks</option>--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="col-sm-12">
+                    <div class="form-group mb-3">
+                        <label for="payment_frequency" class="form-label">Payment Frequency</label>
+                        <select name="payment_frequency" class="form-control calc-input" id="payment_frequency">
+                            <option selected value="1">Every Week</option>
+                            <option value="2">Every Two Weeks</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="col-sm-12">
                     <div class="form-group mb-3">
                         <label class="form-label" for="result">Result</label>
-                        <input type="number" id="result" name="result" disabled class="form-control" value="">
+                        <input type="text" id="result" name="result" disabled class="form-control" value="">
                     </div>
                 </div>
             </div>

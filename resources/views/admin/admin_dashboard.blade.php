@@ -191,16 +191,17 @@
         }
     });
 
-    $('.calc-input').on('change', (e) => {
+    $('.calc-input').on('change', () => {
         let loan_amount = parseFloat($('#loan_amount').val());
         let loan_period = parseFloat($('#loan_period').val());
         let interest_rate = parseFloat($('#interest_rate').val());
         let processing_fee_percent = parseFloat($('#processing_fee').val());
-        // let payment_frequency = parseFloat($('#payment_frequency').val());
+        let payment_frequency = parseFloat($('#payment_frequency').val());
         const interests = interest_rate * 0.01 * loan_amount * loan_period;
         const processing_fee = processing_fee_percent * 0.01 * loan_amount;
-        const result = loan_amount + interests + processing_fee;
-        $('#result').val(result);
+        const total_amount = loan_amount + interests + processing_fee;
+        const repayment_amount = total_amount / ( loan_period * 4 / payment_frequency);
+        $('#result').val(`Total: ${total_amount}PHP, One Time: ${repayment_amount}PHP `);
     });
 </script>
 </body>
