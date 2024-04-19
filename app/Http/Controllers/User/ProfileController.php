@@ -49,7 +49,9 @@ class ProfileController extends Controller
         if(Hash::check($old_password, $saved_password)){
             $user = $request->user();
             $user->password = Hash::make($new_password);
+            $user->password_changed = 1;
             $user->update();
+
             $notification = [
                 'message' => 'Password successfully changed!',
                 'alert-type' => 'success'

@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -46,9 +47,9 @@ class AuthenticatedSessionController extends Controller
             if($request->user()->password_changed == 0) {
                 $notification = array(
                     'message' => 'Please change your password on your security page',
-                    'alert-type' => 'info'
+                    'alert-type' => 'warning'
                 );
-                return redirect(route('user.dashboard'))->with($notification);
+                return redirect(route('user.loans'))->with($notification);
             }
             return redirect(route('user.dashboard'));
         }
