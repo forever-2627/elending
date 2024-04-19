@@ -45,6 +45,7 @@
                                         <td>
                                             <a href="{{route('staff.notifications.view', $notification->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.notifications.check', $notification->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
+                                            <a href="{{route('staff.notifications.delete', $notification->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
                                         </td>
                                     </tr>
                                 @endforeach

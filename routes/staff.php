@@ -36,11 +36,13 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/notifications/view/{id}', [NotificationController::class, 'view'])->name('staff.notifications.view');
     Route::get('staff/notifications/confirm/{id}', [NotificationController::class, 'approve_update_profile'])->name('staff.notifications.approve.update.profile');
     Route::get('staff/notifications/check/{id}', [NotificationController::class, 'check'])->name('staff.notifications.check');
+    Route::get('staff/notifications/delete/{id}', [NotificationController::class, 'delete'])->name('staff.notifications.delete');
 
     //Messages
     Route::get('staff/messages', [StaffMessageController::class, 'index'])->name('staff.messages');
     Route::get('staff/messages/view/{id}', [StaffMessageController::class, 'view'])->name('staff.messages.view');
     Route::get('staff/messages/check/{id}', [StaffMessageController::class, 'check'])->name('staff.messages.check');
+    Route::get('staff/messages/delete/{id}', [StaffMessageController::class, 'delete'])->name('staff.messages.delete');
 
     //Others
     Route::get('staff/calculator', function (){ return view('admin.calculator');})->name('staff.calculator');

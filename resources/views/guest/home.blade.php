@@ -74,17 +74,27 @@
 <section id="contact" class="contact py-6 position-relative">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6 d-none d-md-block">
-                <div class="mt-6">
+            <div class="col-lg-6 col-sm-12 d-md-block">
+                <div class="mt-md-6 mt-sm-1">
                     <h1 class="xl-text text-primary">
                         About us
                     </h1>
                     <p class="lead mb-4">
-                        QuickFunds- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
+                        ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
                     </p>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12 px-lg-6 px-sm-2">
+            <div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">
+                <div class="card-header border-0">
+                    <h1 class="xl-text text-primary">
+                        Contact us
+                    </h1>
+                    <p class="lead mb-4">
+                        To enquire About a loan, please send us your contact information below with a short message
+                    </p>
+                    <h6 class="text-muted"></h6>
+                </div>
+
                 <div class="card shadow-md py-5 px-3 border-5">
                     <div class="card-body">
                         <form action="{{route('guest.message.store')}}" method="post">
@@ -147,7 +157,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 my-3">
-                <span class="logo-quick">Quick<span class="logo-funds">Funds</span></span>
+                <span class="logo-quick">ISMB<span class="logo-funds">Loans</span></span>
                 <p class="mt-3 text-white footer-desc">
                     Our mission is to empower individuals and businesses by <br>providing them with the financial resources they need to achieve their goals.
                 </p>

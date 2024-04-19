@@ -39,6 +39,7 @@
                                         <td>
                                             <a href="{{route('staff.messages.view', $message->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.messages.check', $message->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
+                                            <a href="{{route('staff.messages.delete', $message->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
                                         </td>
                                     </tr>
                                 @endforeach

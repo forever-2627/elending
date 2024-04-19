@@ -77,21 +77,10 @@
 
     <!-- partial:partials/_sidebar.html -->
 @include('admin.body.sidebar')
-
-<!-- partial -->
-
     <div class="page-wrapper">
-
-        <!-- partial:partials/_navbar.html -->
-    @include('admin.body.header')
-    <!-- partial -->
-
-    @yield('admin')
-
-    <!-- partial:partials/_footer.html -->
-    @include('admin.body.footer')
-    <!-- partial -->
-
+        @include('admin.body.header')
+        @yield('admin')
+        @include('admin.body.footer')
     </div>
 </div>
 
@@ -166,8 +155,6 @@
 <!-- tinymce -->
 <script src="{{ asset('backend/assets/vendors/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/tinymce.js') }}"></script>
-<!-- tinymce -->
-
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 @stack('script')

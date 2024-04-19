@@ -5,17 +5,17 @@
             <div class="animation-preloader">
                 <div class="spinner"></div>
                 <div class="txt-loading">
-                    <span data-text-preloader="B" class="letters-loading">
-                        B
-                    </span>
-                    <span data-text-preloader="E" class="letters-loading">
-                        E
+                    <span data-text-preloader="I" class="letters-loading">
+                        I
                     </span>
                     <span data-text-preloader="S" class="letters-loading">
                         S
                     </span>
-                    <span data-text-preloader="T" class="letters-loading">
-                        T
+                    <span data-text-preloader="M" class="letters-loading">
+                        M
+                    </span>
+                    <span data-text-preloader="B" class="letters-loading">
+                        B
                     </span>
                     <span data-text-preloader="L" class="letters-loading">
                         L
@@ -28,6 +28,9 @@
                     </span>
                     <span data-text-preloader="N" class="letters-loading">
                         N
+                    </span>
+                    <span data-text-preloader="S" class="letters-loading">
+                        S
                     </span>
                 </div>
             </div>

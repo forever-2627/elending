@@ -37,6 +37,7 @@
             <div class="row clearfix mt-5">
                 <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 big-column">
                     <div class="inner-box mt-5">
+                        <img src="{{asset('upload/logo.png')}}" style="width: 30%;"/>
                         <h4 class="text-white">Sign In</h4>
                         <form action="{{ route('login.post') }}" method="post" class="default-form">
                             @csrf

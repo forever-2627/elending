@@ -43,9 +43,16 @@ class AuthenticatedSessionController extends Controller
             return redirect(route('staff.loans'));
         }
         else if($request->user()->role_id == config('constants.roles.user_role_id')){
+            if($request->user()->password_changed == 0) {
+                $notification = array(
+                    'message' => 'Please change your password on your security page',
+                    'alert-type' => 'info'
+                );
+                return redirect(route('user.dashboard'))->with($notification);
+            }
             return redirect(route('user.dashboard'));
         }
-//        else return redirect()->intended(route('dashboard', absolute:false));
+        else return redirect(route('login.get'));
     }
 
     /**

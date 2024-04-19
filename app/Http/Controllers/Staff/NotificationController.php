@@ -55,4 +55,23 @@ class NotificationController extends Controller
         ];
         return redirect()->back()->with($notification);
     }
+
+    public function delete($id){
+        $notification_instance = Notification::find($id);
+        try{
+            $notification_instance->delete();
+        }
+        catch (\Exception $e){
+            $notification = [
+                'message' => $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect(route('staff.messages'))->with($notification);
+        }
+        $notification = [
+            'message' => 'Message Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect(route('staff.messages'))->with($notification);
+    }
 }
