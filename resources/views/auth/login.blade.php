@@ -27,6 +27,13 @@
                 background: #3f62cb!important;
                 border: 0!important;
             }
+
+            .auth-logo{
+                width: 30%;
+                background: white;
+                padding: 1rem;
+                border-radius: 1rem;
+            }
         </style>
     @endpush
 
@@ -37,7 +44,7 @@
             <div class="row clearfix mt-5">
                 <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 big-column">
                     <div class="inner-box mt-5">
-                        <img src="{{asset('upload/logo.png')}}" style="width: 30%;"/>
+                        <img src="{{asset('upload/logo.png')}}" class="auth-logo"/>
                         <h4 class="text-white">Sign In</h4>
                         <form action="{{ route('login.post') }}" method="post" class="default-form">
                             @csrf
