@@ -18,7 +18,7 @@ class MessageController extends Controller
                     'remoteip' => \request()->ip()
                 ]);
                 if(!$g_response->json('success')){
-                    $fail("The {$attribute} is invalid.")
+                    $fail("The {$attribute} is invalid.");
                 }
             }]
         ]);
