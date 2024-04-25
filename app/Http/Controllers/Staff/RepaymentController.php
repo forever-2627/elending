@@ -48,6 +48,7 @@ class RepaymentController extends Controller
 
     public function edit($id){
         $repayment = Repayment::find($id);
+
         return view('backend.repayments.edit_repayment', ['repayment' => $repayment]);
     }
 
@@ -59,6 +60,7 @@ class RepaymentController extends Controller
         $repayment->repaid_amount = $request->repaid_amount;
         try{
             $repayment->update();
+            RepaymentUpdated::dispatch($repayment->loan_id);
         }
         catch (\Exception $e){
             $notification = [
@@ -76,8 +78,10 @@ class RepaymentController extends Controller
 
     public function delete($repayment_id){
         $repayment = Repayment::find($repayment_id);
+        $loan_id = $repayment->loan_id;
         try{
             $repayment->delete();
+            RepaymentUpdated::dispatch($loan_id);
         }
         catch (\Exception $e){
             $notification = [

@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Events\RepaymentUpdated;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\RepaymentUpdated;
+use App\Listeners\UpdateLoanAmount;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Event::listen(
-            RepaymentUpdated::class
+            RepaymentUpdated::class,
+            UpdateLoanAmount::class,
     );
     }
 }
