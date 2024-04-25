@@ -32,6 +32,7 @@ class UpdateLoanAmount
         }
         $loan = Loan::find($this->loan_id);
         $loan->amount_repaid_to_date = $total_repaid;
+        $loan->outstanding_balance = $loan->total_to_be_repaid - $loan->amount_repaid_to_date;
         $loan->update();
     }
 }
