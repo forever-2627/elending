@@ -21,18 +21,24 @@
 			 </li>
 		 @endif
 			 <li class="nav-item nav-category">Main</li>
-			 <li class="nav-item">
-				 <a href="{{route('staff.loans')}}" class="nav-link">
-					 <i class="link-icon" data-feather="dollar-sign"></i>
-					 <span class="link-title">Loan Management</span>
-				 </a>
-			 </li>
              <li class="nav-item">
                  <a href="{{route('staff.users')}}" class="nav-link">
                      <i class="link-icon" data-feather="users"></i>
                      <span class="link-title">User Management</span>
                  </a>
              </li>
+			 <li class="nav-item">
+				 <a href="{{route('staff.loans')}}" class="nav-link">
+					 <i class="link-icon" data-feather="dollar-sign"></i>
+					 <span class="link-title">Loan Management</span>
+				 </a>
+			 </li>
+			 <li class="nav-item">
+				 <a href="{{route('staff.repayments')}}" class="nav-link">
+					 <i class="link-icon" data-feather="credit-card"></i>
+					 <span class="link-title">Repayments</span>
+				 </a>
+			 </li>
              <li class="nav-item">
                  <a href="{{route('staff.messages')}}" class="nav-link">
                      <i class="link-icon" data-feather="message-circle"></i>

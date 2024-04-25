@@ -51,11 +51,27 @@ class User extends Authenticatable
         ];
     }
 
-    public function get_list(){
+//    public function get_list(){
 //        $table_roles = (new Role())->getTable();
 //        $table_users = (new User())->getTable();
 //        $users = User::query()
 //            ->with();
 //        return $users;
+//    }
+
+    public static function boot(){
+        parent::boot();
+
+        static::deleting(function($user){
+            $user->loans()->delete();
+        });
+    }
+
+    public function loans(){
+        return $this->hasMany(Loan::class);
+    }
+
+    public function repayments(){
+        return $this->hasManyThrough(Loan::class, Repayment::class);
     }
 }

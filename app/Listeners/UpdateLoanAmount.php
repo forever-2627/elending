@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Models\Loan;
+use App\Models\Repayment;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class UpdateLoanAmount
+{
+    public $loan_id;
+    /**
+     * Create the event listener.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     * @param $event
+     */
+    public function handle($event): void
+    {
+        $this->loan_id = $event->loan_id;
+        $repayments = Repayment::where(['loan_id' => $this->loan_id])->get();
+        $total_repaid = 0;
+        foreach ($repayments as $repayment){
+            $total_repaid += $repayment->repaid_amount * 1;
+        }
+        $loan = Loan::find($this->loan_id);
+        $loan->amount_repaid_to_date = $total_repaid;
+        $loan->update();
+    }
+}

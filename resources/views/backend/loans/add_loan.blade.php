@@ -85,7 +85,7 @@
                                             <input type="number" id="outstanding_balance" name="outstanding_balance" class="form-control" value="{{ old('outstanding_balance') }}">
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary float-end"><i class="feather icon-save me-2"></i> Save</button>
                             </form>
                         </div>
@@ -97,7 +97,7 @@
     @push('script')
         <script>
             $(document).ready(() => {
-                $('#user').select2();
+                $('#user_id').select2();
                 $('#payment_start_date').datepicker();
             });
         </script>

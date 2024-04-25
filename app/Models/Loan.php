@@ -22,6 +22,27 @@ class Loan extends Model
         'outstanding_balance'
     ];
 
+    protected $visible = [
+        'user_id',
+        'loan_amount',
+    ];
+
+    public static function boot(){
+        parent::boot();
+
+        static::deleting(function($loan){
+            $loan->repayments()->delete();
+        });
+    }
+
+    public function repayments(){
+        return $this->hasMany(Repayment::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function get_total_loaned(){
 
         return Loan::sum('total_to_be_repaid');

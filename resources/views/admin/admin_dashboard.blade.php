@@ -68,6 +68,10 @@
             top: 40vh;
             z-index: 3;
         }
+
+        .select2-container .select2-selection--single, .select2-container .select2-selection--multiple {
+            min-height: 36px!important;
+        }
     </style>
     @stack('styles')
 
