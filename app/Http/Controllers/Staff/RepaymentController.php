@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class RepaymentController extends Controller
 {
     public function index(Request $request){
-        $repayments = Repayment::all();
+        $repayments = Repayment::orderBy('created_at', 'desc')->get();
         return view('backend.repayments.all_repayment', ['repayments' => $repayments]);
     }
 
