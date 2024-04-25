@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
     <link rel="icon" href="{{asset('upload/favicon.png')}}">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Best Loan</title>
 </head>
 <body>
@@ -97,7 +98,7 @@
 
                 <div class="card shadow-md py-5 px-3 border-5">
                     <div class="card-body">
-                        <form action="{{route('guest.message.store')}}" method="post">
+                        <form id="contact_form" action="{{route('guest.message.store')}}" method="post">
                             @csrf
                             <div class="mb-4">
                                 <input
@@ -143,7 +144,10 @@
                             <div class="d-flex justify-content-center">
                                 <button
                                         type="submit"
-                                        class="btn btn-secondary btn-block text-white signin-button"
+                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
+                                        data-sitekey="{{config('services.recaptcha.site_key')}}"
+                                        data-callback='onSubmit'
+                                        data-action='submit'
                                 >Send</button>
                             </div>
                         </form>
@@ -226,6 +230,12 @@
             break;
     }
     @endif
+</script>
+
+<script>
+    function onSubmit(token) {
+        document.getElementById("contact_form").submit();
+    }
 </script>
 </body>
 </html>

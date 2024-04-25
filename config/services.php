@@ -24,6 +24,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'recaptcha' => [
+        'site_key' => env('RECAPTCHA_SITE_KEY', '6LfdU8cpAAAAACIQgtEnXvWGz4pGd6pmzoiXkcRQ'),
+        'secret_key' => env('RECAPTCHA_SECRETE_KEY', '6LfdU8cpAAAAADg6jafaWpKF9nsDjYmgj25THqrm')
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
