@@ -28,7 +28,7 @@
                                                 $loans = \App\Models\Loan::where(['fully_repaid' => 0])->get();
                                             @endphp
                                             @foreach($loans as $loan)
-                                                <option value="{{$loan->id}}">{{ sprintf('%06d', $loan->id) . ' (' . $loan->user->given_name . ' ' . $loan->user->surname . ' )' }}</option>
+                                                <option value="{{$loan->id}}" @if($loan->id == $repayment->loan_id) selected @endif>{{ sprintf('%06d', $loan->id) . ' (' . $loan->user->given_name . ' ' . $loan->user->surname . ' )' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
