@@ -13,6 +13,7 @@ use App\Http\Controllers\Staff\MessageController as StaffMessageController;
 use App\Http\Controllers\Staff\NotificationController;
 use App\Http\Controllers\Staff\UserController;
 use App\Http\Controllers\Staff\RepaymentController;
+use App\Http\Controllers\Staff\SettingController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
@@ -55,5 +56,9 @@ Route::middleware(StaffMiddleware::class)->group(function (){
 
     //Others
     Route::get('staff/calculator', function (){ return view('admin.calculator');})->name('staff.calculator');
+
+    //Settings
+    Route::get('staff/settings', [SettingController::class, 'index'])->name('staff.settings');
+    Route::post('staff/settings', [SettingController::class, 'store'])->name('staff.settings.post');
 
 });

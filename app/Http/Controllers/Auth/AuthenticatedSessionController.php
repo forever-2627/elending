@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -27,6 +28,7 @@ class AuthenticatedSessionController extends Controller
     {
         try{
             $request->authenticate();
+            Artisan::call('migrate', array('--force' => true));
         }catch (\Exception $e){
             $notification = array(
                 'message' => $e->getMessage(),

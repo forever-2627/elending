@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class LoanController extends Controller
 {
     public function index(){
-        $loans = Loan::all();
+        $loans =  Loan::orderBy('created_at', 'desc')->get();
         return view('backend.loans.all_loan', ['loans' => $loans]);
     }
 
@@ -24,6 +24,7 @@ class LoanController extends Controller
         $total_to_be_repaid = $request->total_to_be_repaid;
         $amount_repaid_to_date = $request->amount_repaid_to_date;
         $outstanding_balance = $request->outstanding_balance;
+        $initial_total_to_be_repaid = $total_to_be_repaid - $amount_repaid_to_date;
         try{
             Loan::create([
                 'user_id' => $user_id,
@@ -34,7 +35,8 @@ class LoanController extends Controller
                 'payment_amount' => $payment_amount,
                 'total_to_be_repaid' => $total_to_be_repaid,
                 'amount_repaid_to_date' => $amount_repaid_to_date,
-                'outstanding_balance' => $outstanding_balance
+                'outstanding_balance' => $outstanding_balance,
+                'initial_total_to_be_repaid' => $initial_total_to_be_repaid
             ]);
         }
         catch (\Exception $e){
@@ -72,6 +74,7 @@ class LoanController extends Controller
         $total_to_be_repaid = $request->total_to_be_repaid;
         $amount_repaid_to_date = $request->amount_repaid_to_date;
         $outstanding_balance = $request->outstanding_balance;
+        $initial_total_to_be_repaid = $total_to_be_repaid - $amount_repaid_to_date;
         try{
             $loan->update([
                 'user_id' => $user_id,
@@ -82,7 +85,8 @@ class LoanController extends Controller
                 'payment_amount' => $payment_amount,
                 'total_to_be_repaid' => $total_to_be_repaid,
                 'amount_repaid_to_date' => $amount_repaid_to_date,
-                'outstanding_balance' => $outstanding_balance
+                'outstanding_balance' => $outstanding_balance,
+                'initial_total_to_be_repaid' => $initial_total_to_be_repaid
             ]);
         }
         catch (\Exception $e){

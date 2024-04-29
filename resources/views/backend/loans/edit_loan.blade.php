@@ -19,6 +19,8 @@
                             <form method="post" action="{{route('staff.loans.update')}}" id="myForm"
                                   enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" id="interest_rate" value="{{setting()->interest_rate}}"/>
+                                <input type="hidden" id="processing_fee" value="{{setting()->processing_fee}}"/>
                                 <div class="row">
                                     <input type="hidden" name="loan_id" value="{{$loan->id}}">
                                     <div class="col-sm-12">
@@ -43,13 +45,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="loan_amount">Loan Amount</label>
-                                            <input type="text" id="loan_amount" name="loan_amount" class="form-control" value="{{ $loan->loan_amount }}">
+                                            <input type="text" id="loan_amount" name="loan_amount" class="form-control loan-input" value="{{ $loan->loan_amount }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label for="payment_frequency" class="form-label">Payment Frequency</label>
-                                            <select name="payment_frequency" class="form-control" id="payment_frequency">
+                                            <select name="payment_frequency" class="form-control loan-input" id="payment_frequency">
                                                 <option selected="" disabled="">Select Payment Frequency</option>
                                                 <option value="weekly" @if($loan->payment_frequency == "weekly") selected @endif>Weekly</option>
                                                 <option value="fortnightly" @if($loan->payment_frequency == "fortnightly") selected @endif>For Nightly</option>
@@ -60,7 +62,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="nof_payments">Number of Payments</label>
-                                            <input type="text" id="nof_payments" name="nof_payments" class="form-control" value="{{ $loan->nof_payments }}">
+                                            <input type="text" id="nof_payments" name="nof_payments" class="form-control loan-input" value="{{ $loan->nof_payments }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -103,6 +105,120 @@
         </div>
     </div>
     @push('script')
+        <script>
+            $(document).ready(() => {
+                $('#user_id').select2();
+                $('#payment_start_date').datepicker();
+            });
+        </script>
 
+        Validation
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('#myForm').validate({
+                    rules: {
+                        loan_amount: {
+                            required : true,
+                        },
+                        loan_issued: {
+                            required : true,
+                        },
+                        payment_frequency: {
+                            required : true,
+                        },
+                        nof_payments: {
+                            required : true,
+                        },
+                        payment_start_date:{
+                            required: true,
+                            date: true
+                        },
+                        payment_amount: {
+                            required : true,
+                        },
+                        total_to_be_repaid:{
+                            required: true,
+                        },
+                        amount_repaid_to_date: {
+                            required : true,
+                        },
+                        outstanding_balance: {
+                            required : true,
+                        }
+                    },
+                    messages :{
+                        loan_amount: {
+                            required : 'This field is required!',
+                        },
+                        payment_frequency: {
+                            required : 'This field is required!',
+                        },
+                        nof_payments: {
+                            required : 'This field is required!',
+                        },
+                        payment_start_date:{
+                            required: 'This field is required!',
+                            date: 'Please input date type only'
+                        },
+                        payment_amount:{
+                            required: 'This field is required!',
+                        },
+                        total_to_be_repaid:{
+                            required: 'This field is required!',
+                        },
+                        amount_repaid_to_date:{
+                            required: 'This field is required!',
+                        },
+                        outstanding_balance:{
+                            required: 'This field is required!',
+                        },
+                    },
+                    errorElement : 'span',
+                    errorPlacement: function (error,element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight : function(element, errorClass, validClass){
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight : function(element, errorClass, validClass){
+                        $(element).removeClass('is-invalid');
+                    },
+                });
+            });
+        </script>
+        <script>
+            $('.loan-input').on('change', () => {
+                let loan_amount = parseFloat($('#loan_amount').val());
+                let interest_rate = parseFloat($('#interest_rate').val());
+                let processing_fee_percent = parseFloat($('#processing_fee').val());
+                let payment_frequency = $('#payment_frequency').val();
+                let nof_payments = parseInt($('#nof_payments').val());
+                let loan_period = 1;
+                switch (payment_frequency) {
+                    case 'weekly':
+                        loan_period = nof_payments / 4;
+                        break;
+                    case 'fortnightly':
+                        loan_period = nof_payments / 2;
+                        break;
+                    case 'monthly':
+                        loan_period = nof_payments;
+                        break;
+                    default:
+                        loan_period = nof_payments / 4;
+                        break;
+                }
+                const interests = interest_rate * 0.01 * loan_amount * loan_period;
+                const processing_fee = processing_fee_percent * 0.01 * loan_amount;
+                const total_amount = loan_amount + interests + processing_fee;
+                const repayment_amount = total_amount / nof_payments;
+                $('#total_to_be_repaid').val(total_amount);
+                $('#payment_amount').val(repayment_amount);
+                let repaid_amount =  parseFloat($('#amount_repaid_to_date').val());
+                if(repaid_amount) $('#outstanding_balance').val(total_amount - repaid_amount);
+                else $('#outstanding_balance').val(total_amount);
+            });
+        </script>
     @endpush
 @endsection

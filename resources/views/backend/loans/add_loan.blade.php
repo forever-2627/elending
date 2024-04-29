@@ -18,6 +18,8 @@
 
                             <form method="post" action="{{route('staff.loans.store')}}" id="myForm" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" id="interest_rate" value="{{setting()->interest_rate}}"/>
+                                <input type="hidden" id="processing_fee" value="{{setting()->processing_fee}}"/>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group mb-3">
@@ -52,7 +54,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="nof_payments">Number of Payments</label>
-                                            <input type="number" id="nof_payments" name="nof_payments" class="form-control" value="{{ old('nof_payments') }}">
+                                            <input type="number" id="nof_payments" name="nof_payments" class="form-control loan-input" value="{{ old('nof_payments') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -64,25 +66,25 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="payment_amount">Payment Amount</label>
-                                            <input type="number" id="payment_amount" name="payment_amount" class="form-control" value="{{ old('payment_amount') }}">
+                                            <input type="number" id="payment_amount" name="payment_amount" class="form-control loan-input value="{{ old('payment_amount') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="total_to_be_repaid">Total to be Repaid</label>
-                                            <input type="number" id="total_to_be_repaid" name="total_to_be_repaid" class="form-control" value="{{ old('total_to_be_repaid') }}">
+                                            <input type="number" id="total_to_be_repaid" name="total_to_be_repaid" class="form-control loan-input" value="{{ old('total_to_be_repaid') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="amount_repaid_to_date">Amount Repaid to Date</label>
-                                            <input type="number" id="amount_repaid_to_date" name="amount_repaid_to_date" class="form-control" value="{{ old('amount_repaid_to_date') }}">
+                                            <input type="number" id="amount_repaid_to_date" name="amount_repaid_to_date" class="form-control loan-input" value="{{ old('amount_repaid_to_date') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="outstanding_balance">Outstanding Balance</label>
-                                            <input type="number" id="outstanding_balance" name="outstanding_balance" class="form-control" value="{{ old('outstanding_balance') }}">
+                                            <input type="number" id="outstanding_balance" name="outstanding_balance" class="form-control loan-input" value="{{ old('outstanding_balance') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -179,17 +181,36 @@
         </script>
 
         <script>
-            $('.calc-input').on('change', () => {
+            $('.loan-input').on('change', () => {
                 let loan_amount = parseFloat($('#loan_amount').val());
-                let loan_period = parseFloat($('#loan_period').val());
                 let interest_rate = parseFloat($('#interest_rate').val());
                 let processing_fee_percent = parseFloat($('#processing_fee').val());
-                let payment_frequency = parseFloat($('#payment_frequency').val());
+                let payment_frequency = $('#payment_frequency').val();
+                let nof_payments = parseInt($('#nof_payments').val());
+                let loan_period = 1;
+                switch (payment_frequency) {
+                    case 'weekly':
+                        loan_period = nof_payments / 4;
+                        break;
+                    case 'fortnightly':
+                        loan_period = nof_payments / 2;
+                        break;
+                    case 'monthly':
+                        loan_period = nof_payments;
+                        break;
+                    default:
+                        loan_period = nof_payments / 4;
+                        break;
+                }
                 const interests = interest_rate * 0.01 * loan_amount * loan_period;
                 const processing_fee = processing_fee_percent * 0.01 * loan_amount;
                 const total_amount = loan_amount + interests + processing_fee;
-                const repayment_amount = total_amount / ( loan_period * 4 / payment_frequency);
-                $('#result').val(`Total: ${total_amount}PHP, One Time: ${repayment_amount}PHP `);
+                const repayment_amount = total_amount / nof_payments;
+                $('#total_to_be_repaid').val(total_amount);
+                $('#payment_amount').val(repayment_amount);
+                let repaid_amount =  parseFloat($('#amount_repaid_to_date').val());
+                if(repaid_amount) $('#outstanding_balance').val(total_amount - repaid_amount);
+                else $('#outstanding_balance').val(total_amount);
             });
         </script>
     @endpush
