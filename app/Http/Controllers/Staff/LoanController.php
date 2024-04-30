@@ -53,7 +53,8 @@ class LoanController extends Controller
                 'total_to_be_repaid' => $total_to_be_repaid,
                 'amount_repaid_to_date' => $amount_repaid_to_date,
                 'outstanding_balance' => $outstanding_balance,
-                'initial_total_to_be_repaid' => $initial_total_to_be_repaid
+                'initial_total_to_be_repaid' => $initial_total_to_be_repaid,
+                'state' => 1
             ]);
         }
         catch (\Exception $e){
@@ -117,7 +118,7 @@ class LoanController extends Controller
             'message' => 'Loan Added Successfully',
             'alert-type' => 'success'
         ];
-        return redirect(route('staff.loans'))->with($notification);
+        return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
     }
 
     public function view($id){
@@ -136,13 +137,13 @@ class LoanController extends Controller
                 'message' => $e->getMessage(),
                 'alert-type' => 'error'
             ];
-            return redirect(route('staff.loans'))->with($notification);
+            return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
         }
         $notification = [
             'message' => 'Loan Deleted Successfully',
             'alert-type' => 'success'
         ];
-        return redirect(route('staff.loans'))->with($notification);
+        return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
     }
 
     public function change_state($loan_id, $state){

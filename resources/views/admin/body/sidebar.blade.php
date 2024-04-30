@@ -51,12 +51,6 @@
                     </ul>
                 </div>
             </li>
-			{{--<li class="nav-item">--}}
-				{{--<a href="{{route('staff.loans')}}" class="nav-link">--}}
-					{{--<i class="link-icon" data-feather="dollar-sign"></i>--}}
-					{{--<span class="link-title">Loan Management</span>--}}
-				{{--</a>--}}
-			{{--</li>--}}
 			<li class="nav-item">
 				<a href="{{route('staff.repayments')}}" class="nav-link">
 					<i class="link-icon" data-feather="credit-card"></i>
