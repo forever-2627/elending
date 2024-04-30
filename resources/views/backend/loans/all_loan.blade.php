@@ -90,9 +90,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Loans Summary</h5>
-                            <h6 class="text-success mb-2">Total To be Repaid: {{number_format(get_loan_amount($state)->total_to_be_repaid)}} PHP</h6>
-                            <h6 class="text-success mb-2">Total Amount Repaid To Date: {{number_format(get_loan_amount($state)->amount_repaid_to_date)}} PHP</h6>
-                            <h6 class="text-success mb-2">Total Outstanding Balance: {{number_format(get_loan_amount($state)->outstanding_balance)}} PHP</h6>
+                            <h6 class="text-success mb-2">Total To be Repaid: {{number_format(get_loan_amount($state)->total_to_be_repaid),2, '.', ','}} PHP</h6>
+                            <h6 class="text-success mb-2">Total Amount Repaid To Date: {{number_format(get_loan_amount($state)->amount_repaid_to_date,2, '.', ',')}} PHP</h6>
+                            <h6 class="text-success mb-2">Total Outstanding Balance: {{number_format(get_loan_amount($state)->outstanding_balance,2, '.', ',')}} PHP</h6>
                         </div>
                     </div>
                 </div>
