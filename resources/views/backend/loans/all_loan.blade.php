@@ -58,10 +58,10 @@
                                         <td>{{ ucfirst($item->payment_frequency) }}</td>
                                         <td>{{ $item->nof_payments }}</td>
                                         <td>{{ $item->payment_start_date }}</td>
-                                        <td>{{ $item->payment_amount }}</td>
-                                        <td>{{ $item->total_to_be_repaid }}</td>
-                                        <td>{{ $item->amount_repaid_to_date }}</td>
-                                        <td>{{ $item->outstanding_balance }}</td>
+                                        <td>{{ number_format($item->payment_amount, 2, '.', ',') }}</td>
+                                        <td>{{ number_format($item->total_to_be_repaid, 2, '.', ',') }}</td>
+                                        <td>{{ number_format($item->amount_repaid_to_date, 2, '.', ',') }}</td>
+                                        <td>{{ number_format($item->outstanding_balance, 2, '.', ',') }}</td>
                                         <td>
                                             <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>

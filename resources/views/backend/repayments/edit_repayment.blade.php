@@ -25,7 +25,7 @@
                                         <label class="form-label" for="loan_id">Loans</label>
                                         <select id="loan_id" name="loan_id" class="form-control">
                                             @php
-                                                $loans = \App\Models\Loan::where(['fully_repaid' => 0])->get();
+                                                $loans = \App\Models\Loan::where(['state' => 1])->get();
                                             @endphp
                                             @foreach($loans as $loan)
                                                 <option value="{{$loan->id}}" @if($loan->id == $repayment->loan_id) selected @endif>{{ sprintf('%06d', $loan->id) . ' (' . $loan->user->given_name . ' ' . $loan->user->surname . ' )' }}</option>

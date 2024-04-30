@@ -40,7 +40,7 @@
                                         <td>{{ $repayment->user()->first()->surname }}</td>
                                         <td>{{ $repayment->user()->first()->email }}</td>
                                         <td>{{ sprintf('%06d', $repayment->loan_id) }}</td>
-                                        <td>{{ $repayment->repaid_amount }}</td>
+                                        <td>{{ number_format($repayment->repaid_amount, 2, '.', ',') }}</td>
                                         <td>{{ $repayment->repaid_date }}</td>
                                         <td>
                                             <a href="{{route('staff.repayments.edit', $repayment->id)}}" class="btn btn-inverse-warning me-2" title="Edit"> <i data-feather="edit"></i> </a>
