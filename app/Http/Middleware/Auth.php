@@ -22,7 +22,7 @@ class Auth
             return redirect(route('admin.dashboard'));
         }
         else if($request->user()->role_id == config('constants.roles.staff_role_id')){
-            return redirect(route('staff.loans'));
+            return redirect(route('staff.loans', ['state' => 'all']));
         }
         else if($request->user()->role_id == config('constants.roles.user_role_id')){
             return redirect(route('user.dashboard'));

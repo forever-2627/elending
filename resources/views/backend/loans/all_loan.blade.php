@@ -83,16 +83,27 @@
             </div>
         </div>
 
+
+        @if(auth()->user()->role_id == config('constants.roles.admin_role_id'))
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Loans Summary</h5>
+                            <h6 class="text-success mb-2">Total To be Repaid: {{get_loan_amount($state)->total_to_be_repaid}}</h6>
+                            <h6 class="text-success mb-2">Total Amount Repaid To Date: {{get_loan_amount($state)->amount_repaid_to_date}}</h6>
+                            <h6 class="text-success mb-2">Total Outstanding Balance: {{get_loan_amount($state)->outstanding_balance}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
+
 
 
     @push('script')
 
     @endpush
-
-
-
-
-
 
 @endsection

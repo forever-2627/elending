@@ -7,6 +7,7 @@
  */
 
 use App\Models\Setting;
+use App\Models\Loan;
 
 if (!function_exists('setting')) {
 
@@ -20,5 +21,41 @@ if (!function_exists('setting')) {
             ];
         }
         return $setting;
+    }
+}
+
+if (!function_exists('get_loan_amount')) {
+
+    function get_loan_amount($type)
+    {
+        $loan_amount = (object)[
+          'total_to_be_repaid' => 0,
+          'amount_repaid_to_date' => 0,
+          'outstanding_balance' => 0
+        ];
+        switch ($type){
+            case 'all':
+                $loans =  Loan::orderBy('created_at', 'desc')->get();
+                break;
+            case 'active':
+                $loans =  Loan::where(['state' => 1])->orderBy('created_at', 'desc')->get();
+                break;
+            case 'repaid':
+                $loans =  Loan::where(['state' => 2])->orderBy('created_at', 'desc')->get();
+                break;
+            case 'bad':
+                $loans =  Loan::where(['state' => 3])->orderBy('created_at', 'desc')->get();
+                break;
+            default:
+                $loans =  Loan::orderBy('created_at', 'desc')->get();
+                break;
+        }
+
+        foreach ($loans as $loan){
+            $loan_amount->total_to_be_repaid += $loan->total_to_be_repaid;
+            $loan_amount->amount_repaid_to_date += $loan->amount_repaid_to_date;
+            $loan_amount->outstanding_balance += $loan->outstanding_balance;
+        }
+        return $loan_amount;
     }
 }
