@@ -9,9 +9,26 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    public function index(){
-        $loans =  Loan::orderBy('created_at', 'desc')->get();
-        return view('backend.loans.all_loan', ['loans' => $loans]);
+    public function index($state){
+        switch ($state){
+            case 'all':
+                $loans =  Loan::orderBy('created_at', 'desc')->get();
+                break;
+            case 'active':
+                $loans =  Loan::where(['state' => 1])->orderBy('created_at', 'desc')->get();
+                break;
+            case 'repaid':
+                $loans =  Loan::where(['state' => 2])->orderBy('created_at', 'desc')->get();
+                break;
+            case 'bad':
+                $loans =  Loan::where(['state' => 3])->orderBy('created_at', 'desc')->get();
+                break;
+            default:
+                $loans =  Loan::orderBy('created_at', 'desc')->get();
+                break;
+        }
+
+        return view('backend.loans.all_loan', ['loans' => $loans, 'state' => $state]);
     }
 
     public function store(Request $request){
@@ -126,5 +143,25 @@ class LoanController extends Controller
             'alert-type' => 'success'
         ];
         return redirect(route('staff.loans'))->with($notification);
+    }
+
+    public function change_state($loan_id, $state){
+        $loan = Loan::find($loan_id);
+        $loan->state = $state;
+        try{
+            $loan->update();
+        }
+        catch (\Exception $e){
+            $notification = [
+                'message' => $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        $notification = [
+            'message' => 'Loan Status Changed Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
     }
 }

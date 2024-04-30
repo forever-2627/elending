@@ -27,12 +27,36 @@
 					<span class="link-title">User Management</span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="{{route('staff.loans')}}" class="nav-link">
-					<i class="link-icon" data-feather="dollar-sign"></i>
-					<span class="link-title">Loan Management</span>
-				</a>
-			</li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#loans" role="button" aria-expanded="false"
+                   aria-controls="emails">
+                    <i class="link-icon" data-feather="dollar-sign"></i>
+                    <span class="link-title">Loan Management</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="loans">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{route('staff.loans', ['state' => 'all'])}}" class="nav-link">All Loans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('staff.loans', ['state' => 'active'])}}" class="nav-link">Active Loans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('staff.loans', ['state' => 'repaid'])}}" class="nav-link">Repaid Loans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('staff.loans', ['state' => 'bad'])}}" class="nav-link">Bad Loans</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+			{{--<li class="nav-item">--}}
+				{{--<a href="{{route('staff.loans')}}" class="nav-link">--}}
+					{{--<i class="link-icon" data-feather="dollar-sign"></i>--}}
+					{{--<span class="link-title">Loan Management</span>--}}
+				{{--</a>--}}
+			{{--</li>--}}
 			<li class="nav-item">
 				<a href="{{route('staff.repayments')}}" class="nav-link">
 					<i class="link-icon" data-feather="credit-card"></i>

@@ -17,13 +17,14 @@ use App\Http\Controllers\Staff\SettingController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
-    Route::get('staff/loans', [StaffLoanController::class, 'index'])->name('staff.loans');
+    Route::get('staff/loans/{state}', [StaffLoanController::class, 'index'])->name('staff.loans');
     Route::get('staff/loans/create', [StaffLoanController::class, 'create'])->name('staff.loans.create');
     Route::post('staff/loans/store', [StaffLoanController::class, 'store'])->name('staff.loans.store');
     Route::get('staff/loans/view/{id}', [StaffLoanController::class, 'view'])->name('staff.loans.view');
     Route::get('staff/loans/edit/{id}', [StaffLoanController::class, 'edit'])->name('staff.loans.edit');
     Route::post('staff/loans/edit', [StaffLoanController::class, 'update'])->name('staff.loans.update');
     Route::get('staff/loans/delete/{id}', [StaffLoanController::class, 'delete'])->name('staff.loans.delete');
+    Route::get('staff/loans/state-change/{id}/{state}', [StaffLoanController::class, 'change_state'])->name('staff.loans.state.change');
 
     //Users Route
     Route::get('staff/users', [UserController::class, 'index'])->name('staff.users');

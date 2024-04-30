@@ -44,8 +44,11 @@ class Loan extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function get_total_loaned(){
+    public function loan_state(){
+        return $this->belongsTo(LoanState::class);
+    }
 
+    public function get_total_loaned(){
         return Loan::sum('total_to_be_repaid');
     }
 

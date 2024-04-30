@@ -5,12 +5,13 @@
     @endpush
 
     <div class="page-content">
-
-        <nav class="page-breadcrumb">
-            <ol class="breadcrumb justify-content-end">
-                <a href="{{route('staff.loans.create')}}" class="btn btn-inverse-info"> <i class="feather icon-plus"></i> Add Loan </a>
-            </ol>
-        </nav>
+        @if($state == 'all')
+            <nav class="page-breadcrumb">
+                <ol class="breadcrumb justify-content-end">
+                    <a href="{{route('staff.loans.create')}}" class="btn btn-inverse-info"> <i class="feather icon-plus"></i> Add Loan </a>
+                </ol>
+            </nav>
+        @endif
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -47,7 +48,7 @@
                                     @endphp
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ sprintf('%06d', $item->id)  }}</td>
+                                        <td>{{ sprintf('%06d', $item->id) }}</td>
                                         <td>{{ $user->surname }}</td>
                                         <td>{{ $user->given_name }}</td>
                                         <td>{{ $user->email }}</td>
@@ -64,7 +65,13 @@
                                         <td>
                                             <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
-                                            <a href="{{route('staff.loans.delete', $item->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                                            <a href="{{route('staff.loans.delete', $item->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i></a>
+                                            <a href="#" class="btn dropdown-toggle btn-inverse-success"  type="button" data-bs-toggle="dropdown" aria-expanded="false"> <i data-feather="tag"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 1 ])}}">Make Active</a></li>
+                                                <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 2 ])}}">Make Repaid</a></li>
+                                                <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 3 ])}}">Make Bad</a></li>
+                                            </ul>
                                         </td>
                                     </tr>
                                 @endforeach
