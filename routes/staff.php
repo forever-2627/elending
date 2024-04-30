@@ -17,7 +17,7 @@ use App\Http\Controllers\Staff\SettingController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
-    Route::get('staff/loans/{state}', [StaffLoanController::class, 'index'])->name('staff.loans');
+    Route::get('staff/loans/list/{state}', [StaffLoanController::class, 'index'])->name('staff.loans');
     Route::get('staff/loans/create', [StaffLoanController::class, 'create'])->name('staff.loans.create');
     Route::post('staff/loans/store', [StaffLoanController::class, 'store'])->name('staff.loans.store');
     Route::get('staff/loans/view/{id}', [StaffLoanController::class, 'view'])->name('staff.loans.view');

@@ -67,7 +67,7 @@ class LoanController extends Controller
             'message' => 'Loan Added Successfully',
             'alert-type' => 'success'
         ];
-        return redirect(route('staff.loans'))->with($notification);
+        return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
     }
 
     public function create(){
