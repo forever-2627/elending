@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($active_loan_amount)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($active_loan_amount ,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($current_month_new_loans)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($current_month_new_loans,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($current_month_repayments)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($current_month_repayments,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($all_outstanding_loans)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($all_outstanding_loans,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($issued_loan_amount)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($issued_loan_amount,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{round($repaid_loans)}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($repaid_loans,2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
