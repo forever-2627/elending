@@ -102,8 +102,6 @@
 <script src="{{ asset('backend/assets/js/template.js') }}"></script>
 <!-- endinject -->
 
-<!-- Custom js for this page -->
-<script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
 <!-- End custom js for this page -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
