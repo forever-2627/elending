@@ -17,11 +17,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Total Loaned</h6>
+                                    <h6 class="card-title mb-0">Active Loans Amount</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{$total_loaned}} PHP</h3>
+                                        <h3 class="mb-2">{{$active_loan_amount}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -33,11 +33,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Delinquent Loans</h6>
+                                    <h6 class="card-title mb-0">Current Month New Loans</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{$delinquent_loans}}</h3>
+                                        <h3 class="mb-2">{{$current_month_new_loans}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -49,11 +49,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Total Outstanding Loans</h6>
+                                    <h6 class="card-title mb-0">Current Month Repayments</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{$total_outstanding_loans}} PHP</h3>
+                                        <h3 class="mb-2">{{$current_month_repayments}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -65,11 +65,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Current Month Payment</h6>
+                                    <h6 class="card-title mb-0">All Outstanding Loans</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{$current_month_payment}} PHP</h3>
+                                        <h3 class="mb-2">{{$all_outstanding_loans}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -81,11 +81,27 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Current Month Loaned</h6>
+                                    <h6 class="card-title mb-0">Issued Loans</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{$current_month_loans}} PHP</h3>
+                                        <h3 class="mb-2">{{$issued_loan_amount}} PHP</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{--Repaid Loans--}}
+                    <div class="col-md-2 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-baseline">
+                                    <h6 class="card-title mb-0">Repaid Loans Amount</h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex">
+                                        <h3 class="mb-2">{{$repaid_loans}} PHP</h3>
                                     </div>
                                 </div>
                             </div>

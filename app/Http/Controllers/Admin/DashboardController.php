@@ -17,11 +17,12 @@ class DashboardController extends Controller
 
     public function index(){
         $data = [
-            'total_loaned' => $this->loan->get_total_loaned(),
-            'delinquent_loans' => $this->loan->get_delinquent_loans(),
-            'total_outstanding_loans' => $this->loan->get_total_outstanding_loans(),
-            'current_month_payment' => $this->loan->get_current_month_payment(),
-            'current_month_loans' => $this->loan->get_total_outstanding_loans()
+            'active_loan_amount' => $this->loan->active_loan_amount(),
+            'current_month_new_loans' => $this->loan->current_month_new_loans(),
+            'current_month_repayments' => $this->loan->current_month_repayments(),
+            'all_outstanding_loans' => $this->loan->all_outstanding_loans(),
+            'issued_loan_amount' => $this->loan->get_issued_loan_amount(),
+            'repaid_loans' => $this->loan->repaid_loans()
         ];
         return view('admin.index', $data);
     }
