@@ -61,7 +61,8 @@ class Loan extends Model
         $current_year = now()->year;
         $current_month = now()->month;
         $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_month])->
-            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
+            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
+            ->where(['state' => 1])->get();
         foreach ($loans as $loan){
             $amount += $loan->loan_amount;
         }
@@ -129,16 +130,68 @@ class Loan extends Model
         $loan_amount_graph = array();
         $current_year = now()->year;
         $current_month = now()->month;
-        for ($i = 0; $i < $current_month; $i++){
-            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i])->
-            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
+        for ($i = 0; $i < 12; $i++){
+            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) <= ?', [$i + 1])->
+            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
+            ->where(['state' => 1])->get();
             $loan_amount_graph['labels'][] = $this->months[$i];
             $loan_amount_graph['values'][] = 0;
+            if($current_month <= $i ) continue;
             foreach ($loans as $loan){
                 $loan_amount_graph['values'][$i] += $loan->loan_amount;
-
             }
         }
         return $loan_amount_graph;
+    }
+
+    public function new_loans_graph(){
+        $new_loans_graph = array();
+        $current_year = now()->year;
+        $current_month = now()->month;
+        for ($i = 0; $i < 12; $i++){
+            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
+            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
+            $new_loans_graph['labels'][] = $this->months[$i];
+            $new_loans_graph['values'][] = 0;
+            if($current_month <= $i ) continue;
+            foreach ($loans as $loan){
+                $new_loans_graph['values'][$i] += $loan->loan_amount;
+            }
+        }
+        return $new_loans_graph;
+    }
+
+    public function repayments_graph(){
+        $repayments_graph = array();
+        $current_year = now()->year;
+        $current_month = now()->month;
+        for ($i = 0; $i < 12; $i++){
+            $repayments = Repayment::whereRaw('MONTH(str_to_date(repaid_date, "%m/%d/%Y")) = ?', [$i + 1])->
+            whereRaw('YEAR(str_to_date(repaid_date, "%m/%d/%Y")) = ?', [$current_year])->get();
+            $repayments_graph['labels'][] = $this->months[$i];
+            $repayments_graph['values'][] = 0;
+            if($current_month <= $i ) continue;
+            foreach ($repayments as $repayment){
+                $repayments_graph['values'][$i] += $repayment->repaid_amount;
+            }
+        }
+        return $repayments_graph;
+    }
+
+    public function outstanding_balance_graph(){
+        $outstanding_balance_graph = array();
+        $current_year = now()->year;
+        $current_month = now()->month;
+        for ($i = 0; $i < 12; $i++){
+            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
+            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
+            $outstanding_balance_graph['labels'][] = $this->months[$i];
+            $outstanding_balance_graph['values'][] = 0;
+            if($current_month <= $i ) continue;
+            foreach ($loans as $loan){
+                $outstanding_balance_graph['values'][$i] += $loan->outstanding_balance;
+            }
+        }
+        return $outstanding_balance_graph;
     }
 }

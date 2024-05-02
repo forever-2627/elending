@@ -1,5 +1,18 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+    @push('styles')
+        <style>
+            .dash-card{
+                box-shadow: 2px 2px 10px 2px #1f2639!important;
+                cursor: pointer;
+            }
+
+            .dash-card:hover{
+                box-shadow: 4px 4px 10px 4px #1f2639!important;
+                cursor: pointer;
+            }
+        </style>
+    @endpush
 
     <div class="page-content">
 
@@ -14,7 +27,7 @@
                 <div class="row flex-grow-1">
                     {{-- Active Loans Amount --}}
                     <div class="col-md-2 grid-margin stretch-card">
-                        <div class="card">
+                        <div class="card dash-card">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Active Loans Amount</h6>
@@ -31,7 +44,7 @@
                     {{-- Current Month New Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body dash-card">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Current Month New Loans</h6>
                                 </div>
@@ -47,7 +60,7 @@
                     {{-- Current Month Repayments --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body dash-card">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Current Month Repayments</h6>
                                 </div>
@@ -63,7 +76,7 @@
                     {{-- All Outstanding Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body dash-card">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">All Outstanding Loans</h6>
                                 </div>
@@ -79,7 +92,7 @@
                     {{-- Issued Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body dash-card">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Issued Loans</h6>
                                 </div>
@@ -95,7 +108,7 @@
                     {{-- Repaid Loans Amount--}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body dash-card">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Repaid Loans Amount</h6>
                                 </div>
@@ -110,8 +123,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
+        {{--Active Loans Graph--}}
+        <div class="row graph">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -119,7 +132,52 @@
                             <h6 class="card-title mb-0">Active Loans</h6>
                         </div>
                         <p class="text-muted">This graph shows activated loans according to month.</p>
-                        <div id="active_loans"></div>
+                        <div id="active_loans_graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--New Loans Graph--}}
+        <div class="row graph">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">New Loans</h6>
+                        </div>
+                        <p class="text-muted">This graph shows new loans according to month.</p>
+                        <div id="new_loans_graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--Repayments Graph--}}
+        <div class="row graph">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Repayments</h6>
+                        </div>
+                        <p class="text-muted">This graph shows repayments according to month.</p>
+                        <div id="repayments_graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--Outstanding Balance Graph--}}
+        <div class="row graph">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Outstanding Balance</h6>
+                        </div>
+                        <p class="text-muted">This graph shows outstanding balance according to month.</p>
+                        <div id="outstanding_balance_graph"></div>
                     </div>
                 </div>
             </div>
@@ -149,7 +207,7 @@
                 const fontFamily = "'Roboto', Helvetica, sans-serif"
 
                 // Active Loan Amount - START
-                if($('#active_loans').length) {
+                if($('#active_loans_graph').length) {
                     const options = {
                         chart: {
                             type: 'bar',
@@ -238,10 +296,295 @@
                         },
                     };
 
-                    const apexBarChart = new ApexCharts(document.querySelector("#active_loans"), options);
+                    const apexBarChart = new ApexCharts(document.querySelector("#active_loans_graph"), options);
                     apexBarChart.render();
                 }
                 // Active Loan Amount - END
+
+                // New Loan Amount - START
+                if($('#new_loans_graph').length) {
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: '560',
+                            parentHeightOffset: 0,
+                            foreColor: colors.bodyColor,
+                            background: colors.cardBg,
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        theme: {
+                            mode: 'light'
+                        },
+                        tooltip: {
+                            theme: 'light'
+                        },
+                        colors: [colors.primary],
+                        fill: {
+                            opacity: .9
+                        } ,
+                        grid: {
+                            padding: {
+                                bottom: -4
+                            },
+                            borderColor: colors.gridBorder,
+                            xaxis: {
+                                lines: {
+                                    show: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Sales',
+                            data: {!! json_encode($new_loans_graph['values']) !!}
+                        }],
+                        xaxis: {
+                            // type: 'datetime',
+                            categories: {!! json_encode($new_loans_graph['labels']) !!},
+                            axisBorder: {
+                                color: colors.gridBorder,
+                            },
+                            axisTicks: {
+                                color: colors.gridBorder,
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Monthly New Loans',
+                                style:{
+                                    size: 9,
+                                    color: colors.muted
+                                }
+                            },
+                        },
+                        legend: {
+                            show: true,
+                            position: "top",
+                            horizontalAlign: 'center',
+                            fontFamily: fontFamily,
+                            itemMargin: {
+                                horizontal: 8,
+                                vertical: 0
+                            },
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: fontFamily,
+                            },
+                            offsetY: -27
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: "50%",
+                                borderRadius: 4,
+                                dataLabels: {
+                                    position: 'top',
+                                    orientation: 'vertical',
+                                }
+                            },
+                        },
+                    };
+
+                    const apexBarChart = new ApexCharts(document.querySelector("#new_loans_graph"), options);
+                    apexBarChart.render();
+                }
+                // New Loan Amount - END
+
+                // Repayment Amount - START
+                if($('#repayments_graph').length) {
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: '560',
+                            parentHeightOffset: 0,
+                            foreColor: colors.bodyColor,
+                            background: colors.cardBg,
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        theme: {
+                            mode: 'light'
+                        },
+                        tooltip: {
+                            theme: 'light'
+                        },
+                        colors: [colors.primary],
+                        fill: {
+                            opacity: .9
+                        } ,
+                        grid: {
+                            padding: {
+                                bottom: -4
+                            },
+                            borderColor: colors.gridBorder,
+                            xaxis: {
+                                lines: {
+                                    show: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Sales',
+                            data: {!! json_encode($repayments_graph['values']) !!}
+                        }],
+                        xaxis: {
+                            // type: 'datetime',
+                            categories: {!! json_encode($repayments_graph['labels']) !!},
+                            axisBorder: {
+                                color: colors.gridBorder,
+                            },
+                            axisTicks: {
+                                color: colors.gridBorder,
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Monthly New Loans',
+                                style:{
+                                    size: 9,
+                                    color: colors.muted
+                                }
+                            },
+                        },
+                        legend: {
+                            show: true,
+                            position: "top",
+                            horizontalAlign: 'center',
+                            fontFamily: fontFamily,
+                            itemMargin: {
+                                horizontal: 8,
+                                vertical: 0
+                            },
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: fontFamily,
+                            },
+                            offsetY: -27
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: "50%",
+                                borderRadius: 4,
+                                dataLabels: {
+                                    position: 'top',
+                                    orientation: 'vertical',
+                                }
+                            },
+                        },
+                    };
+
+                    const apexBarChart = new ApexCharts(document.querySelector("#repayments_graph"), options);
+                    apexBarChart.render();
+                }
+                // Repayment Amount - END
+
+                // Outstanding Balance - START
+                if($('#outstanding_balance_graph').length) {
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: '560',
+                            parentHeightOffset: 0,
+                            foreColor: colors.bodyColor,
+                            background: colors.cardBg,
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        theme: {
+                            mode: 'light'
+                        },
+                        tooltip: {
+                            theme: 'light'
+                        },
+                        colors: [colors.primary],
+                        fill: {
+                            opacity: .9
+                        } ,
+                        grid: {
+                            padding: {
+                                bottom: -4
+                            },
+                            borderColor: colors.gridBorder,
+                            xaxis: {
+                                lines: {
+                                    show: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Sales',
+                            data: {!! json_encode($outstanding_balance_graph['values']) !!}
+                        }],
+                        xaxis: {
+                            // type: 'datetime',
+                            categories: {!! json_encode($outstanding_balance_graph['labels']) !!},
+                            axisBorder: {
+                                color: colors.gridBorder,
+                            },
+                            axisTicks: {
+                                color: colors.gridBorder,
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Monthly New Loans',
+                                style:{
+                                    size: 9,
+                                    color: colors.muted
+                                }
+                            },
+                        },
+                        legend: {
+                            show: true,
+                            position: "top",
+                            horizontalAlign: 'center',
+                            fontFamily: fontFamily,
+                            itemMargin: {
+                                horizontal: 8,
+                                vertical: 0
+                            },
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: fontFamily,
+                            },
+                            offsetY: -27
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: "50%",
+                                borderRadius: 4,
+                                dataLabels: {
+                                    position: 'top',
+                                    orientation: 'vertical',
+                                }
+                            },
+                        },
+                    };
+
+                    const apexBarChart = new ApexCharts(document.querySelector("#outstanding_balance_graph"), options);
+                    apexBarChart.render();
+                }
+                // Outstanding Balance - END
             });
         </script>
     @endpush
