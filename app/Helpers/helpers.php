@@ -59,3 +59,12 @@ if (!function_exists('get_loan_amount')) {
         return $loan_amount;
     }
 }
+
+if (!function_exists('money_formatting')) {
+
+    function money_formatting($number)
+    {
+        $formatted_number = number_format($number,2, '.', ' ');
+        return $formatted_number;
+    }
+}

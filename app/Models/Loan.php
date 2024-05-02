@@ -138,7 +138,7 @@ class Loan extends Model
             $loan_amount_graph['values'][] = 0;
             if($current_month <= $i ) continue;
             foreach ($loans as $loan){
-                $loan_amount_graph['values'][$i] += round($loan->loan_amount, 2);
+                $loan_amount_graph['values'][$i] += $loan->loan_amount;
             }
         }
         return $loan_amount_graph;
@@ -155,7 +155,7 @@ class Loan extends Model
             $new_loans_graph['values'][] = 0;
             if($current_month <= $i ) continue;
             foreach ($loans as $loan){
-                $new_loans_graph['values'][$i] += round($loan->loan_amount, 2);
+                $new_loans_graph['values'][$i] += $loan->loan_amount;
             }
         }
         return $new_loans_graph;
@@ -172,7 +172,7 @@ class Loan extends Model
             $repayments_graph['values'][] = 0;
             if($current_month <= $i ) continue;
             foreach ($repayments as $repayment){
-                $repayments_graph['values'][$i] += round($repayment->repaid_amount, 2);
+                $repayments_graph['values'][$i] += $repayment->repaid_amount;
             }
         }
         return $repayments_graph;
@@ -189,7 +189,7 @@ class Loan extends Model
             $outstanding_balance_graph['values'][] = 0;
             if($current_month <= $i ) continue;
             foreach ($loans as $loan){
-                $outstanding_balance_graph['values'][$i] += round($loan->outstanding_balance, 2);
+                $outstanding_balance_graph['values'][$i] += $loan->outstanding_balance;
             }
         }
         return $outstanding_balance_graph;

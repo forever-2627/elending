@@ -282,7 +282,13 @@
                                 fontSize: '10px',
                                 fontFamily: fontFamily,
                             },
-                            offsetY: -27
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);
+                            }
                         },
                         plotOptions: {
                             bar: {
@@ -291,6 +297,12 @@
                                 dataLabels: {
                                     position: 'top',
                                     orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
                                 }
                             },
                         },
@@ -377,7 +389,13 @@
                                 fontSize: '10px',
                                 fontFamily: fontFamily,
                             },
-                            offsetY: -27
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);
+                            }
                         },
                         plotOptions: {
                             bar: {
@@ -386,6 +404,12 @@
                                 dataLabels: {
                                     position: 'top',
                                     orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
                                 }
                             },
                         },
@@ -472,7 +496,13 @@
                                 fontSize: '10px',
                                 fontFamily: fontFamily,
                             },
-                            offsetY: -27
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);
+                            }
                         },
                         plotOptions: {
                             bar: {
@@ -481,6 +511,12 @@
                                 dataLabels: {
                                     position: 'top',
                                     orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
                                 }
                             },
                         },
@@ -567,7 +603,13 @@
                                 fontSize: '10px',
                                 fontFamily: fontFamily,
                             },
-                            offsetY: -27
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);;
+                            }
                         },
                         plotOptions: {
                             bar: {
@@ -576,6 +618,12 @@
                                 dataLabels: {
                                     position: 'top',
                                     orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
                                 }
                             },
                         },
