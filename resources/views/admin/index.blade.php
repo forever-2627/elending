@@ -27,7 +27,7 @@
                 <div class="row flex-grow-1">
                     {{-- Active Loans Amount --}}
                     <div class="col-md-2 grid-margin stretch-card">
-                        <div class="card dash-card">
+                        <div class="card dash-card" data-name="active_loans_graph">
                             <div class="card-body">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Active Loans Amount</h6>
@@ -44,7 +44,7 @@
                     {{-- Current Month New Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body dash-card">
+                            <div class="card-body dash-card" data-name="new_loans_graph">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Current Month New Loans</h6>
                                 </div>
@@ -60,7 +60,7 @@
                     {{-- Current Month Repayments --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body dash-card">
+                            <div class="card-body dash-card" data-name="repayments_graph">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Current Month Repayments</h6>
                                 </div>
@@ -76,7 +76,7 @@
                     {{-- All Outstanding Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body dash-card">
+                            <div class="card-body dash-card" data-name="outstanding_balance_graph">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">All Outstanding Loans</h6>
                                 </div>
@@ -92,7 +92,7 @@
                     {{-- Issued Loans --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body dash-card">
+                            <div class="card-body dash-card" data-name="issued_loans_graph">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Issued Loans</h6>
                                 </div>
@@ -108,7 +108,7 @@
                     {{-- Repaid Loans Amount--}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body dash-card">
+                            <div class="card-body dash-card" data-name="repaid_loans_graph">
                                 <div class="d-flex align-items-baseline">
                                     <h6 class="card-title mb-0">Repaid Loans Amount</h6>
                                 </div>
@@ -124,7 +124,7 @@
             </div>
         </div>
         {{--Active Loans Graph--}}
-        <div class="row graph">
+        <div class="row graph" data-name="active_loans_graph" id="default_graph">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -139,7 +139,7 @@
         </div>
 
         {{--New Loans Graph--}}
-        <div class="row graph">
+        <div class="row graph" data-name="new_loans_graph" style="display: none;">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -154,7 +154,7 @@
         </div>
 
         {{--Repayments Graph--}}
-        <div class="row graph">
+        <div class="row graph" data-name="repayments_graph" style="display: none;">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -169,7 +169,7 @@
         </div>
 
         {{--Outstanding Balance Graph--}}
-        <div class="row graph">
+        <div class="row graph" data-name="outstanding_balance_graph" style="display: none;">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -185,6 +185,16 @@
     </div>
 
     @push('script')
+
+        <script>
+            $('.dash-card').on('click', function () {
+                const graphName = $(this).data('name');
+                $('.graph').map(function (key, element) {
+                    if($(element).data('name') === graphName) $(element).show(300);
+                    else $(element).hide();
+                });
+            });
+        </script>
         <script>
             $(function() {
                 'use strict';
