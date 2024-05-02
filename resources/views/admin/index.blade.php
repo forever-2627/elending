@@ -182,6 +182,36 @@
                 </div>
             </div>
         </div>
+
+        {{--Issued Loans Graph--}}
+        <div class="row graph" data-name="issued_loans_graph" style="display: none;">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Issued Loans</h6>
+                        </div>
+                        <p class="text-muted">This graph shows issued loans according to month.</p>
+                        <div id="issued_loans_graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--Repaid Loans Graph--}}
+        <div class="row graph" data-name="repaid_loans_graph" style="display: none;">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Repaid Loans</h6>
+                        </div>
+                        <p class="text-muted">This graph shows repaid loans according to month.</p>
+                        <div id="repaid_loans_graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     @push('script')
@@ -679,6 +709,122 @@
                     apexBarChart.render();
                 }
                 // Outstanding Balance - END
+
+                // Repaid Loans - START
+                if($('#repaid_loans_graph').length) {
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: '560',
+                            parentHeightOffset: 0,
+                            foreColor: colors.bodyColor,
+                            background: colors.cardBg,
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        theme: {
+                            mode: 'light'
+                        },
+                        tooltip: {
+                            theme: 'light'
+                        },
+                        colors: [colors.primary],
+                        fill: {
+                            opacity: .9
+                        } ,
+                        grid: {
+                            padding: {
+                                bottom: -4
+                            },
+                            borderColor: colors.gridBorder,
+                            xaxis: {
+                                lines: {
+                                    show: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Sales',
+                            data: {!! json_encode($repaid_loans_graph['values']) !!}
+                        }],
+                        xaxis: {
+                            // type: 'datetime',
+                            categories: {!! json_encode($repaid_loans_graph['labels']) !!},
+                            axisBorder: {
+                                color: colors.gridBorder,
+                            },
+                            axisTicks: {
+                                color: colors.gridBorder,
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Monthly Loans',
+                                style:{
+                                    size: 9,
+                                    color: colors.muted
+                                }
+                            },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
+                        },
+                        legend: {
+                            show: true,
+                            position: "top",
+                            horizontalAlign: 'center',
+                            fontFamily: fontFamily,
+                            itemMargin: {
+                                horizontal: 8,
+                                vertical: 0
+                            },
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: fontFamily,
+                            },
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);;
+                            }
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: "50%",
+                                borderRadius: 4,
+                                dataLabels: {
+                                    position: 'top',
+                                    orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
+                                }
+                            },
+                        },
+                    };
+
+                    const apexBarChart = new ApexCharts(document.querySelector("#repaid_loans_graph"), options);
+                    apexBarChart.render();
+                }
+                // Repaid Loans - END
             });
         </script>
     @endpush

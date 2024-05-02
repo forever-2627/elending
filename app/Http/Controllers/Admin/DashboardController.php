@@ -26,7 +26,8 @@ class DashboardController extends Controller
             'loan_amount_graph' => $this->loan->loan_amount_graph(),
             'new_loans_graph' => $this->loan->new_loans_graph(),
             'repayments_graph' => $this->loan->repayments_graph(),
-            'outstanding_balance_graph' => $this->loan->outstanding_balance_graph()
+            'outstanding_balance_graph' => $this->loan->outstanding_balance_graph(),
+            'repaid_loans_graph' => $this->loan->repaid_loans_graph()
         ];
         return view('admin.index', $data);
     }
