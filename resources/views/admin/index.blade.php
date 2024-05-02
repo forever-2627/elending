@@ -262,6 +262,15 @@
                                     color: colors.muted
                                 }
                             },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
                         },
                         legend: {
                             show: true,
@@ -363,12 +372,21 @@
                         },
                         yaxis: {
                             title: {
-                                text: 'Monthly New Loans',
+                                text: 'Monthly Loans',
                                 style:{
                                     size: 9,
                                     color: colors.muted
                                 }
                             },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
                         },
                         legend: {
                             show: true,
@@ -470,12 +488,21 @@
                         },
                         yaxis: {
                             title: {
-                                text: 'Monthly New Loans',
+                                text: 'Monthly Loans',
                                 style:{
                                     size: 9,
                                     color: colors.muted
                                 }
                             },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
                         },
                         legend: {
                             show: true,
@@ -577,12 +604,21 @@
                         },
                         yaxis: {
                             title: {
-                                text: 'Monthly New Loans',
+                                text: 'Monthly Loans',
                                 style:{
                                     size: 9,
                                     color: colors.muted
                                 }
                             },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
                         },
                         legend: {
                             show: true,
