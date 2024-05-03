@@ -137,6 +137,7 @@ class Loan extends Model
                     $due_date = $payment_start_date->modify('+'. $interval_weeks .' days');
                     break;
             }
+            if($due_date >= $current_date) continue;
             if($amount_repaid_to_date < $have_to_pay_amount){
                 $issued_loans['loan_id'][] = $loan->id;
                 $issued_loans['amount'][] = $amount_repaid_to_date;
