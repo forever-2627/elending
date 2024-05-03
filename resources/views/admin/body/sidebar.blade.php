@@ -60,7 +60,7 @@
 			<li class="nav-item">
 				<a href="{{route('staff.calendar')}}" class="nav-link">
 					<span class="fal fa-calendar"></span>
-					<span class="link-title ms-3">Calendar</span>
+					<span class="link-title ms-3">Repayments Due</span>
 				</a>
 			</li>
 			<li class="nav-item">
