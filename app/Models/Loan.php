@@ -96,9 +96,11 @@ class Loan extends Model
 
     public function get_issued_loan_amount(){
         $amount = 0;
-        $issued_loan_amounts = $this->get_issued_loans()['amount'];
-        foreach ($issued_loan_amounts as $issued_loan_amount){
-            $amount += $issued_loan_amount;
+        if(count($this->get_issued_loans()) > 0) {
+            $issued_loan_amounts = $this->get_issued_loans()['amount'];
+            foreach ($issued_loan_amounts as $issued_loan_amount) {
+                $amount += $issued_loan_amount;
+            }
         }
         return $amount;
     }
