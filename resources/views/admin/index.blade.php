@@ -192,7 +192,7 @@
                             <h6 class="card-title mb-0">Issued Loans</h6>
                         </div>
                         <p class="text-muted">This graph shows issued loans according to month.</p>
-                        <div id="issued_loans_graph"></div>
+                        <div id="issued_loan_graph"></div>
                     </div>
                 </div>
             </div>
@@ -709,6 +709,122 @@
                     apexBarChart.render();
                 }
                 // Outstanding Balance - END
+
+                // Issued Loan - START
+                if($('#issued_loan_graph').length) {
+                    const options = {
+                        chart: {
+                            type: 'bar',
+                            height: '560',
+                            parentHeightOffset: 0,
+                            foreColor: colors.bodyColor,
+                            background: colors.cardBg,
+                            toolbar: {
+                                show: false
+                            },
+                        },
+                        theme: {
+                            mode: 'light'
+                        },
+                        tooltip: {
+                            theme: 'light'
+                        },
+                        colors: [colors.primary],
+                        fill: {
+                            opacity: .9
+                        } ,
+                        grid: {
+                            padding: {
+                                bottom: -4
+                            },
+                            borderColor: colors.gridBorder,
+                            xaxis: {
+                                lines: {
+                                    show: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Sales',
+                            data: {!! json_encode($issued_loan_graph['values']) !!}
+                        }],
+                        xaxis: {
+                            // type: 'datetime',
+                            categories: {!! json_encode($issued_loan_graph['labels']) !!},
+                            axisBorder: {
+                                color: colors.gridBorder,
+                            },
+                            axisTicks: {
+                                color: colors.gridBorder,
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Monthly Loans',
+                                style:{
+                                    size: 9,
+                                    color: colors.muted
+                                }
+                            },
+                            labels: {
+                                formatter: function (value) {
+                                    // Round value to two decimal places and format
+                                    return new Intl.NumberFormat('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    }).format(value);
+                                }
+                            }
+                        },
+                        legend: {
+                            show: true,
+                            position: "top",
+                            horizontalAlign: 'center',
+                            fontFamily: fontFamily,
+                            itemMargin: {
+                                horizontal: 8,
+                                vertical: 0
+                            },
+                        },
+                        stroke: {
+                            width: 0
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: fontFamily,
+                            },
+                            offsetY: -27,
+                            formatter: function (val) {
+                                return new Intl.NumberFormat('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(val);;
+                            }
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: "50%",
+                                borderRadius: 4,
+                                dataLabels: {
+                                    position: 'top',
+                                    orientation: 'vertical',
+                                    formatter: function (val) {
+                                        return new Intl.NumberFormat('en-US', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }).format(val);
+                                    }
+                                }
+                            },
+                        },
+                    };
+
+                    const apexBarChart = new ApexCharts(document.querySelector("#issued_loan_graph"), options);
+                    apexBarChart.render();
+                }
+                // Issued Loan - END
 
                 // Repaid Loans - START
                 if($('#repaid_loans_graph').length) {

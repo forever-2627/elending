@@ -70,7 +70,7 @@ class Loan extends Model
         $current_year = now()->year;
         $current_month = now()->month;
         $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_month])->
-            whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
+        whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
             ->where(['state' => 1])->get();
         foreach ($loans as $loan){
             $amount += $loan->loan_amount;
@@ -91,7 +91,7 @@ class Loan extends Model
     }
 
     public function all_outstanding_loans(){
-        return Loan::sum('outstanding_balance');;
+        return Loan::sum('outstanding_balance');
     }
 
     public function get_issued_loan_amount(){
@@ -164,7 +164,7 @@ class Loan extends Model
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
-            ->where(['state' => 1])->get();
+                ->where(['state' => 1])->get();
             $loan_amount_graph['labels'][] = $this->months[$i];
             $loan_amount_graph['values'][] = 0;
             foreach ($loans as $loan){
@@ -220,6 +220,28 @@ class Loan extends Model
     }
 
     //Issued Loans Graph
+    public function issued_loan_graph(){
+        $issued_loan_graph = array();
+        $current_year = now()->year;
+        for ($i = 0; $i < 12; $i++){
+            $issued_loan_graph['labels'][] = $this->months[$i];
+            $issued_loan_graph['values'][] = 0;
+        }
+        if(count($this->get_issued_loans()) > 0) {
+            $issued_loan_ids = $this->get_issued_loans()['loan_id'];
+            $issued_loan_amounts = $this->get_issued_loans()['amount'];
+            foreach ($issued_loan_ids as $key => $issued_loan_id){
+                $loan = Loan::find($issued_loan_id);
+                $payment_start_year = explode('/', $loan->payment_start_date)[2];
+                $payment_start_month = explode('/', $loan->payment_start_date)[0];
+                if($current_year == $payment_start_year){
+                    $issued_loan_graph['values'][$payment_start_month * 1 - 1] += $issued_loan_amounts[$key];
+                }
+            }
+        }
+
+        return $issued_loan_graph;
+    }
 
     //Repaid Loans Amount
     public function repaid_loans_graph(){
@@ -228,7 +250,7 @@ class Loan extends Model
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
-            ->where(['state' => 2])->get();
+                ->where(['state' => 2])->get();
             $repaid_loans_graph['labels'][] = $this->months[$i];
             $repaid_loans_graph['values'][] = 0;
             foreach ($loans as $loan){
