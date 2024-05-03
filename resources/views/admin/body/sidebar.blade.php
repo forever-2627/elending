@@ -1,7 +1,7 @@
 <nav class="sidebar">
 	<div class="sidebar-header">
 		<a href="#" class="sidebar-brand">
-			ISBM<span>Admin</span>
+			ISMB<span class="fw-bold">ADMIN</span>
 		</a>
 		<div class="sidebar-toggler not-active">
 			<span></span>
@@ -55,6 +55,12 @@
 				<a href="{{route('staff.repayments')}}" class="nav-link">
 					<i class="link-icon" data-feather="credit-card"></i>
 					<span class="link-title">Repayments</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="{{route('staff.calendar')}}" class="nav-link">
+					<span class="fal fa-calendar"></span>
+					<span class="link-title ms-3">Calendar</span>
 				</a>
 			</li>
 			<li class="nav-item">

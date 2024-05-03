@@ -52,6 +52,10 @@ class Loan extends Model
         return $this->belongsTo(LoanState::class);
     }
 
+    public function due_loans(){
+        return $this->hasMany(DueLoan::class);
+    }
+
     public function active_loan_amount(){
         return Loan::where(['state' => 1])->sum('loan_amount');
     }
@@ -87,6 +91,15 @@ class Loan extends Model
 
     public function get_issued_loan_amount(){
         $amount = 0;
+        $issued_loan_amounts = $this->get_issued_loans()['amount'];
+        foreach ($issued_loan_amounts as $issued_loan_amount){
+            $amount += $issued_loan_amount;
+        }
+        return $amount;
+    }
+
+    public function get_issued_loans(){
+        $issued_loans = array();
         $loans = Loan::where(['state' => 1])->orWhere(['state' => 3])->get();//get loans active or bad
         foreach ($loans as $loan){
             //Date Type is mm/dd/yyyy
@@ -98,23 +111,33 @@ class Loan extends Model
             $payment_amount = $loan->payment_amount;
             switch ($payment_frequency){
                 case 'weekly':
-                    $have_to_pay_amount = $payment_amount * round( $interval_days / 7 );
+                    $interval_weeks =  round( $interval_days / 7 );
+                    $have_to_pay_amount = $payment_amount * $interval_weeks;
+                    $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
                     break;
                 case 'fortnightly':
-                    $have_to_pay_amount = $payment_amount * round( $interval_days / 14 );
+                    $interval_weeks =  round( $interval_days / 14 );
+                    $have_to_pay_amount = $payment_amount * $interval_weeks;
+                    $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
                     break;
                 case 'monthly':
-                    $have_to_pay_amount = $payment_amount * round( $interval_days / 30 );
+                    $interval_month = round( $interval_days / 30 );
+                    $have_to_pay_amount = $payment_amount * $interval_month;
+                    $due_date = $payment_start_date->modify('+'. $interval_month .' month');
                     break;
                 default:
-                    $have_to_pay_amount = $payment_amount * round( $interval_days / 7 );
+                    $interval_weeks =  round( $interval_days / 7 );
+                    $have_to_pay_amount = $payment_amount * $interval_weeks;
+                    $due_date = $payment_start_date->modify('+'. $interval_weeks .' days');
                     break;
             }
             if($amount_repaid_to_date < $have_to_pay_amount){
-                $amount += $have_to_pay_amount - $amount_repaid_to_date;
+                $issued_loans['loan_id'][] = $loan->id;
+                $issued_loans['amount'][] = $amount_repaid_to_date;
+                $issued_loans['due_date'][] = $due_date->format('m/d/Y');;
             }
         }
-        return $amount;
+        return $issued_loans;
     }
 
     public function repaid_loans(){
@@ -131,7 +154,7 @@ class Loan extends Model
         $current_year = now()->year;
         $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
-            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) <= ?', [$i + 1])->
+            $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
             ->where(['state' => 1])->get();
             $loan_amount_graph['labels'][] = $this->months[$i];

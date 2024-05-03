@@ -14,6 +14,7 @@ use App\Http\Controllers\Staff\NotificationController;
 use App\Http\Controllers\Staff\UserController;
 use App\Http\Controllers\Staff\RepaymentController;
 use App\Http\Controllers\Staff\SettingController;
+use App\Http\Controllers\Staff\CalendarController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
     //Loans Route
@@ -54,6 +55,10 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/repayments/edit/{id}', [RepaymentController::class, 'edit'])->name('staff.repayments.edit');
     Route::post('staff/repayments/edit', [RepaymentController::class, 'update'])->name('staff.repayments.update');
     Route::get('staff/repayments/delete/{id}', [RepaymentController::class, 'delete'])->name('staff.repayments.delete');
+
+    //Calendar
+    Route::get('staff/calendar', [CalendarController::class, 'index'])->name('staff.calendar');
+    Route::get('staff/calendar/mark/{id}', [CalendarController::class, 'mark'])->name('staff.calendar.mark');
 
     //Others
     Route::get('staff/calculator', function (){ return view('admin.calculator');})->name('staff.calculator');

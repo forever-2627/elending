@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('loans', function (Blueprint $table) {
             // To rename the column:
-            $table->renameColumn('fully_repaid', 'state');
+//            $table->renameColumn('fully_repaid', 'state');
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('loans', function (Blueprint $table) {
             // To rename the column:
-            $table->renameColumn('state', 'fully_repaid');
+//            $table->renameColumn('state', 'fully_repaid');
         });
     }
 };

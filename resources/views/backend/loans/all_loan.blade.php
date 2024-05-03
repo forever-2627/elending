@@ -17,7 +17,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">All Loans</h6>
+                        <h6 class="card-title">{{ucfirst($state)}} Loans</h6>
 
                         <div class="table-responsive" style="overflow: hidden;">
                             <table id="dataTableExample" class="table">
