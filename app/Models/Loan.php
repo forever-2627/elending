@@ -157,14 +157,12 @@ class Loan extends Model
     public function loan_amount_graph(){
         $loan_amount_graph = array();
         $current_year = now()->year;
-        $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
             ->where(['state' => 1])->get();
             $loan_amount_graph['labels'][] = $this->months[$i];
             $loan_amount_graph['values'][] = 0;
-            if($current_month <= $i ) continue;
             foreach ($loans as $loan){
                 $loan_amount_graph['values'][$i] += $loan->loan_amount;
             }
