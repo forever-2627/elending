@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
     {
         try{
             $request->authenticate();
-            Artisan::call('migrate', array('--force' => true));
+//            Artisan::call('migrate', array('--force' => true));
         }catch (\Exception $e){
             $notification = array(
                 'message' => $e->getMessage(),
