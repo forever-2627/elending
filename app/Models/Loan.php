@@ -58,7 +58,7 @@ class Loan extends Model
 
     public function active_loan_amount(){
         $amount = 0;
-        $loans = Loan::where(['state' => 1])->all();
+        $loans = Loan::where(['state' => 1])->get();
         foreach ($loans as $loan){
             $amount += $loan->loan_amount;
         }
