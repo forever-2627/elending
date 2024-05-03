@@ -110,6 +110,7 @@ class Loan extends Model
             //Date Type is mm/dd/yyyy
             $payment_start_date = new DateTime($loan->payment_start_date);
             $current_date = new DateTime(now());
+            if($payment_start_date >= $current_date) continue;
             $interval_days = $current_date->diff($payment_start_date)->days;
             $payment_frequency = $loan->payment_frequency;
             $amount_repaid_to_date = $loan->amount_repaid_to_date;
