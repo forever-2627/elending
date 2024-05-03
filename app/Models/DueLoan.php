@@ -32,16 +32,18 @@ class DueLoan extends Model
         $existing_due_loan = DueLoan::where(['current_date' => $current_date])->first();
         if(!$existing_due_loan){
             DueLoan::truncate();
-            $issued_loan_ids = $this->loan->get_issued_loans()['loan_id'];
-            $issued_loan_amounts = $this->loan->get_issued_loans()['amount'];
-            $issued_loan_due_date = $this->loan->get_issued_loans()['due_date'];
-            foreach ($issued_loan_ids as $key => $issued_loan_id){
-                DueLoan::create([
-                   'current_date' => $issued_loan_due_date[$key],
-                   'due_amount' => $issued_loan_amounts[$key],
-                   'loan_id' => $issued_loan_id,
-                   'is_paid' => 0
-                ]);
+            if(count($this->loan->get_issued_loans()) > 0){
+                $issued_loan_ids = $this->loan->get_issued_loans()['loan_id'];
+                $issued_loan_amounts = $this->loan->get_issued_loans()['amount'];
+                $issued_loan_due_date = $this->loan->get_issued_loans()['due_date'];
+                foreach ($issued_loan_ids as $key => $issued_loan_id){
+                    DueLoan::create([
+                        'current_date' => $issued_loan_due_date[$key],
+                        'due_amount' => $issued_loan_amounts[$key],
+                        'loan_id' => $issued_loan_id,
+                        'is_paid' => 0
+                    ]);
+                }
             }
         }
     }
