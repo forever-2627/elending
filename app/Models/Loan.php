@@ -173,13 +173,11 @@ class Loan extends Model
     public function new_loans_graph(){
         $new_loans_graph = array();
         $current_year = now()->year;
-        $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
             $new_loans_graph['labels'][] = $this->months[$i];
             $new_loans_graph['values'][] = 0;
-            if($current_month <= $i ) continue;
             foreach ($loans as $loan){
                 $new_loans_graph['values'][$i] += $loan->loan_amount;
             }
@@ -190,13 +188,11 @@ class Loan extends Model
     public function repayments_graph(){
         $repayments_graph = array();
         $current_year = now()->year;
-        $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
             $repayments = Repayment::whereRaw('MONTH(str_to_date(repaid_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(repaid_date, "%m/%d/%Y")) = ?', [$current_year])->get();
             $repayments_graph['labels'][] = $this->months[$i];
             $repayments_graph['values'][] = 0;
-            if($current_month <= $i ) continue;
             foreach ($repayments as $repayment){
                 $repayments_graph['values'][$i] += $repayment->repaid_amount;
             }
@@ -207,13 +203,11 @@ class Loan extends Model
     public function outstanding_balance_graph(){
         $outstanding_balance_graph = array();
         $current_year = now()->year;
-        $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])->get();
             $outstanding_balance_graph['labels'][] = $this->months[$i];
             $outstanding_balance_graph['values'][] = 0;
-            if($current_month <= $i ) continue;
             foreach ($loans as $loan){
                 $outstanding_balance_graph['values'][$i] += $loan->outstanding_balance;
             }
@@ -227,14 +221,12 @@ class Loan extends Model
     public function repaid_loans_graph(){
         $repaid_loans_graph = array();
         $current_year = now()->year;
-        $current_month = now()->month;
         for ($i = 0; $i < 12; $i++){
             $loans = Loan::whereRaw('MONTH(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$i + 1])->
             whereRaw('YEAR(str_to_date(payment_start_date, "%m/%d/%Y")) = ?', [$current_year])
             ->where(['state' => 2])->get();
             $repaid_loans_graph['labels'][] = $this->months[$i];
             $repaid_loans_graph['values'][] = 0;
-            if($current_month <= $i ) continue;
             foreach ($loans as $loan){
                 $repaid_loans_graph['values'][$i] += $loan->amount_repaid_to_date;
             }
