@@ -942,6 +942,11 @@
                 }
                 // Repaid Loans - END
             });
+
+
+        </script>
+        <script>
+            {!! json_encode($payable_graph) !!}
         </script>
     @endpush
 @endsection

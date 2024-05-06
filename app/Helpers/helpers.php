@@ -29,9 +29,10 @@ if (!function_exists('get_loan_amount')) {
     function get_loan_amount($type)
     {
         $loan_amount = (object)[
-          'loan_amount' => 0,
-          'amount_repaid_to_date' => 0,
-          'outstanding_balance' => 0
+            'loan_amount' => 0,
+            'total_to_be_repaid' => 0,
+            'amount_repaid_to_date' => 0,
+            'outstanding_balance' => 0
         ];
         switch ($type){
             case 'all':
@@ -55,6 +56,7 @@ if (!function_exists('get_loan_amount')) {
             $loan_amount->loan_amount += $loan->loan_amount;
             $loan_amount->amount_repaid_to_date += $loan->amount_repaid_to_date;
             $loan_amount->outstanding_balance += $loan->outstanding_balance;
+            $loan_amount->total_to_be_repaid += $loan->total_to_be_repaid;
         }
         return $loan_amount;
     }

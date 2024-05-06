@@ -239,7 +239,6 @@ class Loan extends Model
                 }
             }
         }
-
         return $issued_loan_graph;
     }
 
@@ -258,5 +257,20 @@ class Loan extends Model
             }
         }
         return $repaid_loans_graph;
+    }
+
+    //Get Payable Amount
+    public function payable_graph(){
+        $payable_amounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $active_loans = Loan::where(['state' => 1])->get();
+        foreach ($active_loans as $active_loan){
+            $payment_frequency = $active_loan->payment_frequency;
+            $payment_amount = $active_loan->payment_amount;
+            $payment_start_date = DateTime::createFromFormat('m/d/Y', $active_loan->payment_start_date);
+            $nof_payments = $active_loan->nof_payments;
+            for($i = 0; $i < $nof_payments * 1; $i++){
+                $payment_date = $payment_start_date->modify('+'. 7 * $i .' days');
+            }
+        }
     }
 }
