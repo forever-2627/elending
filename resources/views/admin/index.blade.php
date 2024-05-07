@@ -89,16 +89,20 @@
                         </div>
                     </div>
 
-                    {{-- Issued Loans --}}
+                    @php
+                        $now = new DateTime();
+                        $current_month = $now->format('m');
+                    @endphp
+                    {{-- Current Month Payable Amount --}}
                     <div class="col-md-2 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body dash-card" data-name="issued_loans_graph">
                                 <div class="d-flex align-items-baseline">
-                                    <h6 class="card-title mb-0">Issued Loans</h6>
+                                    <h6 class="card-title mb-0">Current Month Payable Amount</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{number_format($issued_loan_amount,2, '.', ',')}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($payable_graph['values'][$current_month * 1 - 1],2, '.', ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
@@ -189,9 +193,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-                            <h6 class="card-title mb-0">Issued Loans</h6>
+                            <h6 class="card-title mb-0">Monthly Payable Amount</h6>
                         </div>
-                        <p class="text-muted">This graph shows issued loans according to month.</p>
+                        <p class="text-muted">This graph shows current month's loans according to month.</p>
                         <div id="issued_loan_graph"></div>
                     </div>
                 </div>
@@ -710,7 +714,7 @@
                 }
                 // Outstanding Balance - END
 
-                // Issued Loan - START
+                // Payable Loan - START
                 if($('#issued_loan_graph').length) {
                     const options = {
                         chart: {
@@ -746,11 +750,11 @@
                         },
                         series: [{
                             name: 'Sales',
-                            data: {!! json_encode($issued_loan_graph['values']) !!}
+                            data: {!! json_encode($payable_graph['values']) !!}
                         }],
                         xaxis: {
                             // type: 'datetime',
-                            categories: {!! json_encode($issued_loan_graph['labels']) !!},
+                            categories: {!! json_encode($payable_graph['labels']) !!},
                             axisBorder: {
                                 color: colors.gridBorder,
                             },

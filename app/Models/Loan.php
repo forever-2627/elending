@@ -261,16 +261,40 @@ class Loan extends Model
 
     //Get Payable Amount
     public function payable_graph(){
-        $payable_amounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $payable_amounts = array();
+        $payable_amounts['values'] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $payable_amounts['labels'] = $this->months;
         $active_loans = Loan::where(['state' => 1])->get();
+        $now = new DateTime();
+        $current_month = $now->format('m');
         foreach ($active_loans as $active_loan){
             $payment_frequency = $active_loan->payment_frequency;
             $payment_amount = $active_loan->payment_amount;
             $payment_start_date = DateTime::createFromFormat('m/d/Y', $active_loan->payment_start_date);
+            $payment_start_date = DateTime::createFromFormat('Y-m-d', $payment_start_date->format('Y-m-d'));
             $nof_payments = $active_loan->nof_payments;
             for($i = 0; $i < $nof_payments * 1; $i++){
-                $payment_date = $payment_start_date->modify('+'. 7 * $i .' days');
+                $new_date = clone $payment_start_date;
+                switch ($payment_frequency){
+                    case 'weekly':
+                        $payment_date = $new_date->modify('+'. 7 * $i .' days');
+                        break;
+                    case 'fortnightly':
+                        $payment_date = $payment_start_date->modify('+'. 14 * $i .' days');
+                        break;
+                    case 'monthly':
+                        $payment_date = $payment_start_date->modify('+'. 1 * $i .' month');
+                        break;
+                    default:
+                        $payment_date = $payment_start_date->modify('+'. 7 * $i .' days');
+                        break;
+                }
+                $payment_month = $payment_date->format('m') * 1;
+                if($payment_month >= $current_month * 1){
+                    $payable_amounts['values'][$payment_month - 1] += $payment_amount;
+                }
             }
         }
+        return $payable_amounts;
     }
 }
