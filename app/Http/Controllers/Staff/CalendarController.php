@@ -17,7 +17,8 @@ class CalendarController extends Controller
 
     public function index(){
         $this->due_loan->update_table();
-        $due_loans = DueLoan::orderBy('is_paid', 'asc')->get();
+        $current_date = date('m/d/Y');
+        $due_loans = DueLoan::where(['current_date' => $current_date])->orderBy('is_paid', 'asc')->get();
         return view('admin.calendar', ['due_loans' => $due_loans]);
     }
 

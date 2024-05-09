@@ -31,7 +31,6 @@ class DueLoan extends Model
         $current_date = date('m/d/Y');
         $existing_due_loan = DueLoan::where(['current_date' => $current_date])->first();
         if(!$existing_due_loan){
-            DueLoan::truncate();
             if(count($this->loan->get_issued_loans()) > 0){
                 $issued_loan_ids = $this->loan->get_issued_loans()['loan_id'];
                 $issued_loan_amounts = $this->loan->get_issued_loans()['amount'];

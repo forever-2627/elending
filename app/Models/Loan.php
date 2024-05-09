@@ -289,6 +289,7 @@ class Loan extends Model
                         $payment_date = $payment_start_date->modify('+'. 7 * $i .' days');
                         break;
                 }
+                if($now->getTimestamp() < $payment_date->getTimestamp()) continue;
                 $payment_month = $payment_date->format('m') * 1;
                 if($payment_month >= $current_month * 1){
                     $payable_amounts['values'][$payment_month - 1] += $payment_amount;

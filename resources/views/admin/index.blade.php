@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex">
-                                        <h3 class="mb-2">{{number_format($payable_graph['values'][$current_month * 1 - 1],2, '.', ',')}} PHP</h3>
+                                        <h3 class="mb-2">{{number_format($payable_graph['values'][$current_month * 1 - 1], 2,  '.',  ',')}} PHP</h3>
                                     </div>
                                 </div>
                             </div>
