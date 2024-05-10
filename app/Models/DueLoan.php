@@ -20,7 +20,8 @@ class DueLoan extends Model
         'current_date',
         'due_amount',
         'loan_id',
-        'is_paid'
+        'is_paid',
+        'due_date'
     ];
 
     public function loan(){

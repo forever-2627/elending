@@ -17,10 +17,10 @@ class UserController extends Controller
 
     public function index(Request $request){
         if($request->user()->role_id == config('constants.roles.admin_role_id')){
-            $users = User::all();
+            $users = User::orderBy('created_at', 'desc')->get();
         }
         else{
-            $users = User::where(['role_id' => config('constants.roles.user_role_id')] )->get();
+            $users = User::where(['role_id' => config('constants.roles.user_role_id')] )->orderBy('created_at', 'desc')->get();
         }
         return view('backend.users.all_user', ['users' => $users]);
     }

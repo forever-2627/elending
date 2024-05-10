@@ -35,7 +35,7 @@
                                             <td>{{ sprintf('%06d', $item->loan_id) }}</td>
                                             <td>{{ $user->given_name }}</td>
                                             <td>{{ $user->surname }}</td>
-                                            <td>{{ $item->current_date }}</td>
+                                            <td>{{ $item->due_date }}</td>
                                             <td>{{ number_format($item->due_amount, 2, '.', ',') }}</td>
                                             <td>{{ number_format($loan->outstanding_balance, 2, '.', ',') }}</td>
                                            <td>
