@@ -78,7 +78,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label" for="amount_repaid_to_date">Amount Repaid to Date</label>
-                                            <input type="number" id="amount_repaid_to_date" name="amount_repaid_to_date" class="form-control loan-input" value="{{ old('amount_repaid_to_date') }}">
+                                            <input type="number" id="amount_repaid_to_date" name="amount_repaid_to_date" class="form-control loan-input" value="0">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
