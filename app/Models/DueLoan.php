@@ -37,8 +37,9 @@ class DueLoan extends Model
                 $issued_loan_due_date = $this->loan->get_issued_loans()['due_date'];
                 foreach ($issued_loan_ids as $key => $issued_loan_id){
                     DueLoan::create([
-                        'current_date' => $issued_loan_due_date[$key],
+                        'current_date' => $current_date,
                         'due_amount' => $issued_loan_amounts[$key],
+                        'due_date' => $issued_loan_due_date[$key],
                         'loan_id' => $issued_loan_id,
                         'is_paid' => 0
                     ]);
