@@ -119,22 +119,22 @@ class Loan extends Model
             $payment_amount = $loan->payment_amount;
             switch ($payment_frequency){
                 case 'weekly':
-                    $interval_weeks =  round( $interval_days / 7 );
+                    $interval_weeks =  floor( $interval_days / 7 );
                     $have_to_pay_amount = $payment_amount * $interval_weeks;
                     $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
                     break;
                 case 'fortnightly':
-                    $interval_weeks =  round( $interval_days / 14 );
+                    $interval_weeks =  floor( $interval_days / 14 );
                     $have_to_pay_amount = $payment_amount * $interval_weeks;
                     $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
                     break;
                 case 'monthly':
-                    $interval_month = round( $interval_days / 30 );
+                    $interval_month = floor( $interval_days / 30 );
                     $have_to_pay_amount = $payment_amount * $interval_month;
                     $due_date = $payment_start_date->modify('+'. $interval_month .' month');
                     break;
                 default:
-                    $interval_weeks =  round( $interval_days / 7 );
+                    $interval_weeks =  floor( $interval_days / 7 );
                     $have_to_pay_amount = $payment_amount * $interval_weeks;
                     $due_date = $payment_start_date->modify('+'. $interval_weeks .' days');
                     break;

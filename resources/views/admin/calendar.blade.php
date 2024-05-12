@@ -26,22 +26,24 @@
                                 </thead>
                                 <tbody>
                                     @foreach($due_loans as $key => $item)
-                                        @php
-                                            $loan = \App\Models\Loan::find($item->loan_id);
-                                            $user = \App\Models\User::find($loan->user_id);
-                                        @endphp
-                                        <tr class="@if($item->is_paid == 0) text-danger @endif">
-                                            <td>{{ $key+1 }}</td>
-                                            <td>{{ sprintf('%06d', $item->loan_id) }}</td>
-                                            <td>{{ $user->given_name }}</td>
-                                            <td>{{ $user->surname }}</td>
-                                            <td>{{ $item->due_date }}</td>
-                                            <td>{{ number_format($item->due_amount, 2, '.', ',') }}</td>
-                                            <td>{{ number_format($loan->outstanding_balance, 2, '.', ',') }}</td>
-                                           <td>
-                                                <a href="{{route('staff.calendar.mark', $item->id)}}" class="btn btn-inverse-success fw-bold @if($item->is_paid == 1) disabled @endif" title="Details"> <i class="fal fa-check me-2"></i> Mark Paid </a>
-                                            </td>
-                                        </tr>
+                                        @if($item->is_paid == 0)
+                                            @php
+                                                $loan = \App\Models\Loan::find($item->loan_id);
+                                                $user = \App\Models\User::find($loan->user_id);
+                                            @endphp
+                                            <tr class="@if($item->due_date != $item->current_date) text-danger @endif">
+                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ sprintf('%06d', $item->loan_id) }}</td>
+                                                <td>{{ $user->given_name }}</td>
+                                                <td>{{ $user->surname }}</td>
+                                                <td>{{ $item->due_date }}</td>
+                                                <td>{{ number_format($item->due_amount, 2, '.', ',') }}</td>
+                                                <td>{{ number_format($loan->outstanding_balance, 2, '.', ',') }}</td>
+                                               <td>
+                                                    <a href="{{route('staff.calendar.mark', $item->id)}}" class="btn btn-inverse-success fw-bold @if($item->is_paid == 1) disabled @endif" title="Details"> <i class="fal fa-check me-2"></i> Mark Paid </a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
