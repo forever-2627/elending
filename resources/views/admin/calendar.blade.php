@@ -39,8 +39,8 @@
                                                 <td>{{ $item->due_date }}</td>
                                                 <td>{{ number_format($item->due_amount, 2, '.', ',') }}</td>
                                                 <td>{{ number_format($loan->outstanding_balance, 2, '.', ',') }}</td>
-                                               <td>
-                                                    <a href="{{route('staff.calendar.mark', $item->id)}}" class="btn btn-inverse-success fw-bold @if($item->is_paid == 1) disabled @endif" title="Details"> <i class="fal fa-check me-2"></i> Mark Paid </a>
+                                                <td>
+                                                    <a href="{{route('staff.calendar.mark', $item->id)}}" class="btn btn-inverse-success fw-bold @if($item->is_paid == 1) disabled @endif" title="Mark Paid"> <i class="fal fa-check me-2"></i> Mark Paid </a>
                                                 </td>
                                             </tr>
                                         @endif
