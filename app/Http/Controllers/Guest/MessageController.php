@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -23,13 +24,12 @@ class MessageController extends Controller
             }]
         ]);
 
-        $title = $this->do_validation($request->title, 'Title');
-        $username = $this->do_validation($request->name, 'Username');
-        $email = $this->do_validation($request->email, 'Email');
-        $phone_number = $this->do_validation($request->phone_number, 'Phone Number');
-        $message = $this->do_validation($request->message, 'Message');
-
         try{
+            $title = $this->do_validation($request->title, 'Title');
+            $username = $this->do_validation($request->name, 'Username');
+            $email = $this->do_validation($request->email, 'Email');
+            $phone_number = $this->do_validation($request->phone_number, 'Phone Number');
+            $message = $this->do_validation($request->message, 'Message');
             Message::create([
                 'title' => $title,
                 'username' => $username,
@@ -57,11 +57,7 @@ class MessageController extends Controller
 
     private function do_validation($data, $label){
         if($data == null){
-            $notification = [
-                'message' => $label . ' is required',
-                'alert-type' => 'error'
-            ];
-            return redirect()->back()->with($notification);
+            throw new Exception( $label . ' is required');
         }
         else return $data;
     }

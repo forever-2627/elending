@@ -419,17 +419,8 @@
                     required: true,
                     date: true
                 },
-                loan_email: {
-                    required : true,
-                },
-                loan_amount:{
-                    required: true,
-                },
             },
             messages :{
-                loan_amount: {
-                    required : 'This field is required!',
-                },
                 title: {
                     required : 'This field is required!',
                 },
@@ -444,9 +435,6 @@
                 },
                 message:{
                     required: 'This field is required!',
-                },
-                loan_email: {
-                    required : 'This field is required!',
                 },
             },
             errorElement : 'span',
