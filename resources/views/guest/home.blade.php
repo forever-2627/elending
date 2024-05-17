@@ -161,6 +161,7 @@
                             @csrf
                             <div class="my-4">
                                 <input
+                                        id="loan_email"
                                         name="email"
                                         type="email"
                                         class="form-control"
@@ -169,6 +170,7 @@
                             </div>
                             <div class="mb-4" id="custom_loan_amount" style="display: none;">
                                 <input
+                                        id="loan_amount"
                                         name="amount"
                                         type="text"
                                         class="form-control"
@@ -232,6 +234,7 @@
                             @csrf
                             <div class="mb-4">
                                 <input
+                                        id="title"
                                         name="title"
                                         type="text"
                                         class="form-control"
@@ -240,6 +243,7 @@
                             </div>
                             <div class="mb-4">
                                 <input
+                                        id="name"
                                         name="name"
                                         type="text"
                                         class="form-control"
@@ -248,6 +252,7 @@
                             </div>
                             <div class="mb-4">
                                 <input
+                                        id="phone_number"
                                         type="text"
                                         name="phone_number"
                                         class="form-control"
@@ -256,6 +261,7 @@
                             </div>
                             <div class="mb-4">
                                 <input
+                                        id="email"
                                         type="email"
                                         name="email"
                                         class="form-control"
@@ -264,6 +270,7 @@
                             </div>
                             <div class="mb-4">
                           <textarea
+                                  id="message"
                                   class="form-control"
                                   name="message"
                                   placeholder="Enter message"
@@ -339,6 +346,7 @@
 <script src="{{asset('guest/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('guest/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('guest/js/toastr.min.js')}}"></script>
+<script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 <script>
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -384,6 +392,72 @@
         if(agreed) window.location.href = '{!! url('guest.privacy') !!}';
         else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
     };
+</script>
+
+{{--Validation--}}
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                title: {
+                    required : true,
+                },
+                name: {
+                    required : true,
+                },
+                phone_number: {
+                    required : true,
+                },
+                email: {
+                    required : true,
+                },
+                message:{
+                    required: true,
+                    date: true
+                },
+                loan_email: {
+                    required : true,
+                },
+                loan_amount:{
+                    required: true,
+                },
+            },
+            messages :{
+                loan_amount: {
+                    required : 'This field is required!',
+                },
+                title: {
+                    required : 'This field is required!',
+                },
+                name: {
+                    required : 'This field is required!',
+                },
+                phone_number: {
+                    required : 'This field is required!',
+                },
+                email: {
+                    required : 'This field is required!',
+                },
+                message:{
+                    required: 'This field is required!',
+                },
+                loan_email: {
+                    required : 'This field is required!',
+                },
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
 </script>
 </body>
 </html>
