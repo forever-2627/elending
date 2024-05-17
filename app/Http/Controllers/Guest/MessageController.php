@@ -22,7 +22,6 @@ class MessageController extends Controller
                 }
             }]
         ]);
-        dd($request->title);
 
         $title = $this->do_validation($request->title, 'Title');
         $username = $this->do_validation($request->name, 'Username');
