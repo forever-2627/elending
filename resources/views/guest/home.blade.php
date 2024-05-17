@@ -376,7 +376,7 @@
     }
 
     function onSubmitLoanAmountForm() {
-        document.getElementById("loan_amount_form").submit();
+        // document.getElementById("loan_amount_form").submit();
     }
 </script>
 
