@@ -157,7 +157,7 @@
                         <input type="range" min="1000" max="25000" step="100" id="money_range" value="1000" class="mt-2">
                     </div>
                     <div class="card-body mt-2 px-5 pb-5">
-                        <form id="contact_form" action="{{route('guest.message.store')}}" method="post">
+                        <form id="loan_amount_form" action="" method="post">
                             @csrf
                             <div class="my-4">
                                 <input
@@ -200,7 +200,7 @@
                                         type="submit"
                                         class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
                                         data-sitekey="{{config('services.recaptcha.site_key')}}"
-                                        data-callback='onSubmit'
+                                        data-callback='onSubmitLoanAmountForm'
                                         data-action='submit'
                                 >Send</button>
                             </div>
@@ -374,6 +374,10 @@
     function onSubmit(token) {
         document.getElementById("contact_form").submit();
     }
+
+    function onSubmitLoanAmountForm() {
+        document.getElementById("loan_amount_form").submit();
+    }
 </script>
 
 <script>
@@ -387,7 +391,7 @@
     });
 
     const showPrivacy = () => {
-        const agreed = $('#terms').attr('checked');
+        const agreed = $('#terms').is(':checked');
         console.log(agreed);
         if(agreed) window.location.href = '{!! url('guest.privacy') !!}';
         else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
@@ -397,7 +401,7 @@
 {{--Validation--}}
 <script type="text/javascript">
     $(document).ready(function (){
-        $('#myForm').validate({
+        $('#contact_form').validate({
             rules: {
                 title: {
                     required : true,
@@ -457,7 +461,38 @@
                 $(element).removeClass('is-invalid');
             },
         });
+
+        $('#loan_amount_form').validate({
+            rules: {
+                loan_email: {
+                    required : true,
+                },
+                loan_amount:{
+                    required: true,
+                },
+            },
+            messages :{
+                loan_email: {
+                    required : 'This field is required!',
+                },
+                loan_amount: {
+                    required : 'This field is required!',
+                },
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
     });
+
 </script>
 </body>
 </html>
