@@ -22,11 +22,19 @@ class MessageController extends Controller
                 }
             }]
         ]);
-        $title = $request->title;
-        $username = $request->name;
-        $email = $request->email;
-        $phone_number = $request->phone_number;
-        $message = $request->message;
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'username' => 'required|email',
+            'email' => 'required|email',
+            'phone_number' => 'required|min:6',
+            'message' => 'required|min:6',
+        ]);
+        $title = $this->do_validation($request->title, 'Title');
+        $username = $this->do_validation($request->name, 'Username');
+        $email = $this->do_validation($request->email, 'Email');
+        $phone_number = $this->do_validation($request->phone_number, 'Phone Number');
+        $message = $this->do_validation($request->message, 'Message');
         try{
             Message::create([
                 'title' => $title,
@@ -51,5 +59,16 @@ class MessageController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
+    }
+
+    private function do_validation($data, $label){
+        if($data == null){
+            $notification = [
+                'message' => $label . ' is required',
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        else return $data;
     }
 }
