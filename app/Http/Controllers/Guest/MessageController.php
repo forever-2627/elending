@@ -22,19 +22,14 @@ class MessageController extends Controller
                 }
             }]
         ]);
+        dd($request->title);
 
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'username' => 'required|email',
-            'email' => 'required|email',
-            'phone_number' => 'required|min:6',
-            'message' => 'required|min:6',
-        ]);
         $title = $this->do_validation($request->title, 'Title');
         $username = $this->do_validation($request->name, 'Username');
         $email = $this->do_validation($request->email, 'Email');
         $phone_number = $this->do_validation($request->phone_number, 'Phone Number');
         $message = $this->do_validation($request->message, 'Message');
+
         try{
             Message::create([
                 'title' => $title,
