@@ -1,55 +1,127 @@
 body{
-  font-size: 14px!important;
+    font-size: 14px!important;
 }
 
 /* Header */
 
 nav{
-  background: #FFF8ED;
+    background: #FFF8ED;
 }
 
 header{
-  background: #FFF8ED;
+    background: #FFF8ED;
 }
 
 a, p{
-  color: #3C2695!important;
+    color: #3C2695!important;
+}
+
+.header-text{
+    font-family: sans-serif;
+    color: #F65038!important;
+}
+
+.text-color{
+    color: #3C2695!important;
 }
 
 .logo-quick{
-  font-size: 30px;
-  color: #F65038;
+    font-size: 30px;
+    color: #F65038;
 }
 
 .logo-funds{
-  font-size: 30px;
-  color: #9F98D7;
+    font-size: 30px;
+    color: #9F98D7;
 }
 
 .header-title{
-  color: #F65038;
-  font-size: 3rem;
+    color: #F65038;
+    font-size: 3rem;
 }
 
 .signin-button{
-  color: white!important;
-  border-radius: 2rem;
+    color: white!important;
+    border-radius: 2rem;
 }
 
 #contact{
-  background: url('../images/gradient.png');
-  background-size: cover;
+    background: url('../images/gradient.png');
+    background-size: cover;
 }
 
 .text-primary{
-  color: #F65038!important;
+    color: #F65038!important;
 }
 
 footer{
-  background: url('../images/footer.png');
-  background-size: cover;
+    background: url('../images/footer.png');
+    background-size: cover;
 }
 
 .footer-desc{
-  font-size: 1.2rem;
+    font-size: 1.2rem;
+}
+
+
+
+/*Input Range Slider CSS*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="range"] {
+    appearance: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    position: relative;
+    height: 10px;
+    /*background-color: #F65038;*/
+    background-color: #3C2695;
+    border-radius: 18px;
+}
+
+input[type="range"]::-moz-range-track {
+    position: relative;
+    height: 10px;
+    /*background-color: #3C2695;*/
+    background-color: #F65038;
+    border-radius: 18px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    box-sizing: border-box;
+    appearance: none;
+    position: relative;
+    /*background-color: #3C2695;*/
+    background-color: #F65038;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+    box-sizing: border-box;
+    appearance: none;
+    position: relative;
+    /*background-color: #3C2695;*/
+    background-color: #F65038;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+input[type="range"]::-moz-range-progress {
+    height: 18px;
+    background-color: orangered;
+    border-radius: 18px;
 }

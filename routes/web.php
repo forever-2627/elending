@@ -9,6 +9,10 @@ Route::middleware(AuthMiddleware::class)->get('/', function () {
     return view('guest.home');
 })->name('home');
 
+Route::middleware(AuthMiddleware::class)->get('/privacy', function () {
+    return view('guest.privacy');
+})->name('privacy');
+
 Route::get('/dashboard', function () {
     return redirect(\route('user.dashboard'));
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -12,6 +12,42 @@
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
     <link rel="icon" href="{{asset('upload/favicon.png')}}">
+    <style>
+        #about{
+            min-height: 842px;
+        }
+
+        .about-back{
+            background: url('guest/images/about.jpg');
+            background-size: cover;
+        }
+
+        #money_range_label{
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        #feature{
+            background: linear-gradient(180deg, #e8e8e8, #ccc7f3);
+            background-size: cover;
+            border-top: 4px solid #e8e8e8;
+            border-bottom: 4px solid #cbc6f1
+
+            /*background: linear-gradient(180deg, #e8e8e8, #ffffff);*/
+            /*background-size: cover;*/
+            /*border-top: 4px solid #fbf3e5;*/
+            /*border-bottom: 4px solid #f7f7f7;*/
+        }
+
+        .feature-img{
+            width: 64px;
+            height: 64px;
+        }
+
+        .feature-text{
+            font-family: sans-serif;
+        }
+    </style>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Best Loan</title>
 </head>
@@ -53,7 +89,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-lg-6 mt-sm-2">
-                    <h1 class="xl-text header-title">
+                    <h1 class="xl-text header-title header-text">
                         Quick and Easy Loans for Your Financial Needs.
                     </h1>
                     <p class="lead mb-4">
@@ -72,12 +108,37 @@
         </div>
     </div>
 </header>
-<section id="contact" class="contact py-6 position-relative">
+{{--  Features  --}}
+<section id="feature" class="py-4" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center mb-sm-3">
+                <h3 class="m-0 font-sans fw-bolder header-text">
+                    Who is eligible to apply?
+                </h3>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/people.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">21-70 Years Old</span>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/location.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">Philippine Resident</span>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/staff.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">Employed Individuals & Selected Professionals</span>
+            </div>
+        </div>
+    </div>
+</section>
+{{--  About US  --}}
+<section id="about" class="contact py-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6 col-sm-12 d-md-block">
-                <div class="mt-md-6 mt-sm-1">
-                    <h1 class="xl-text text-primary">
+            <div class="col-lg-7 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+                <div>
+                    <h1 class="xl-text text-primary header-text">
                         About us
                     </h1>
                     <p class="lead mb-4">
@@ -85,9 +146,77 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">
-                <div class="card-header border-0">
-                    <h1 class="xl-text text-primary">
+            <div class="col-lg-5 col-sm-12 px-lg-4 px-sm-2">
+
+                <div class="card shadow-md border-0 shadow-lg">
+                    <div class="card-header border-0 px-5 pt-5 pb-4">
+                        <h4 class="mt-2 text-center">How much money do you need?</h4>
+                        <div class="w-100 d-flex justify-content-center">
+                            <label id="money_range_label" for="money_range" class="form-label mt-2">₱ 1000</label>
+                        </div>
+                        <input type="range" min="1000" max="25000" step="100" id="money_range" value="1000" class="mt-2">
+                    </div>
+                    <div class="card-body mt-2 px-5 pb-5">
+                        <form id="contact_form" action="{{route('guest.message.store')}}" method="post">
+                            @csrf
+                            <div class="my-4">
+                                <input
+                                        name="email"
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="Email"
+                                        required>
+                            </div>
+                            <div class="mb-4" id="custom_loan_amount" style="display: none;">
+                                <input
+                                        name="amount"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Loan Amount"
+                                        required>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-start">
+                                    <!-- Checkbox -->
+                                    <div class="form-check ms-1">
+                                        <input class="form-check-input" type="checkbox" value="" id="higher_amount" />
+                                        <label class="form-check-label" for="higher_amount">I need higher amount of loan.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col d-flex justify-content-start">
+                                    <!-- Checkbox -->
+                                    <div class="form-check ms-1">
+                                        <input class="form-check-input" type="checkbox" value="" id="terms" />
+                                        <label class="form-check-label" for="terms">I have read and agreed with the <a href="#" onclick="showPrivacy()"> Privacy policy, Terms & Conditions</a> </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button
+                                        type="submit"
+                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
+                                        data-sitekey="{{config('services.recaptcha.site_key')}}"
+                                        data-callback='onSubmit'
+                                        data-action='submit'
+                                >Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{--  Contact US  --}}
+<section id="contact" class="contact py-6 position-relative" style="margin-top: -1px;">
+    <div class="container position-relative z-3">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 d-md-block">
+                <div class="mt-md-6 mt-sm-1">
+                    <h1 class="xl-text text-primary header-text">
                         Contact us
                     </h1>
                     <p class="lead mb-4">
@@ -95,7 +224,8 @@
                     </p>
                     <h6 class="text-muted"></h6>
                 </div>
-
+            </div>
+            <div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">
                 <div class="card shadow-md py-5 px-3 border-5">
                     <div class="card-body">
                         <form id="contact_form" action="{{route('guest.message.store')}}" method="post">
@@ -166,7 +296,7 @@
                     Our mission is to empower individuals and businesses by <br>providing them with the financial resources they need to achieve their goals.
                 </p>
                 <div class="social-container">
-                    <a href="#" class="me-4">
+                    <a href="https://www.facebook.com/profile.php?id=100054819007078" class="me-4">
                         <img src="{{asset('guest/images/facebook.svg')}}" alt="facebook">
                     </a>
 
@@ -188,12 +318,12 @@
                 <div class="d-flex flex-column gap-3">
                     <div class="d-flex gap-2">
                         <img src="{{asset('guest/images/phone.svg')}}" alt="phone number">
-                        <span class="text-white fw-bold">+91 99999 99999</span>
+                        <span class="text-white fw-bold">+09633967802 </span>
                     </div>
 
                     <div class="d-flex gap-2">
                         <img src="{{asset('guest/images/mail.svg')}}" alt="email address">
-                        <span class="text-white fw-bold">xyzfh5@gmail.com</span>
+                        <span class="text-white fw-bold">info@ismblending.com</span>
                     </div>
 
                     <div class="d-flex gap-2">
@@ -236,6 +366,24 @@
     function onSubmit(token) {
         document.getElementById("contact_form").submit();
     }
+</script>
+
+<script>
+    $('#money_range').on('change', function (e) {
+        const amount = e.target.value;
+        $('#money_range_label').html(`₱ ${amount}`);
+    });
+    
+    $('#higher_amount').on('change', function (e) {
+
+    });
+
+    const showPrivacy = () => {
+        const agreed = $('#terms').attr('checked');
+        console.log(agreed);
+        if(agreed) window.location.href = '{!! url('guest.privacy') !!}';
+        else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
+    };
 </script>
 </body>
 </html>
