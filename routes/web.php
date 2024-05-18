@@ -25,6 +25,10 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/message', [GuestMessageController::class, 'store'])->name('guest.message.store');
 
+Route::get('/test', function () {
+    \App\Models\DueLoan::truncate();
+})->name('test');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/staff.php';

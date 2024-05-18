@@ -142,7 +142,7 @@ class Loan extends Model
             if($due_date >= $current_date) continue;
             if($amount_repaid_to_date < $have_to_pay_amount){
                 $issued_loans['loan_id'][] = $loan->id;
-                $issued_loans['amount'][] = $amount_repaid_to_date;
+                $issued_loans['amount'][] = $have_to_pay_amount - $amount_repaid_to_date;
                 $issued_loans['due_date'][] = $due_date->format('m/d/Y');;
             }
         }
