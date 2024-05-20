@@ -74,7 +74,10 @@
                     <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">About Us</a>
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button" href="{{route('login.get')}}">Sign In</a>
@@ -133,7 +136,7 @@
     </div>
 </section>
 {{--  About US  --}}
-<section id="about" class="contact py-6 position-relative about-back" style="">
+<section id="about" class="contact py-md-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
         <div class="row">
             <div class="col-lg-7 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
