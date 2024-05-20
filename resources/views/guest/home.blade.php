@@ -133,84 +133,85 @@
     </div>
 </section>
 {{--  About US  --}}
-{{--<section id="about" class="contact py-6 position-relative about-back" style="">--}}
-    {{--<div class="container position-relative z-3">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-lg-7 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">--}}
-                {{--<div>--}}
-                    {{--<h1 class="xl-text text-primary header-text">--}}
-                        {{--About us--}}
-                    {{--</h1>--}}
-                    {{--<p class="lead mb-4">--}}
-                        {{--ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-lg-5 col-sm-12 px-lg-4 px-sm-2">--}}
+<section id="about" class="contact py-6 position-relative about-back" style="">
+    <div class="container position-relative z-3">
+        <div class="row">
+            <div class="col-lg-7 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+                <div>
+                    <h1 class="xl-text text-primary header-text">
+                        About us
+                    </h1>
+                    <p class="lead mb-4">
+                        ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-sm-12 px-lg-4 px-sm-2">
 
-                {{--<div class="card shadow-md border-0 shadow-lg">--}}
-                    {{--<div class="card-header border-0 px-5 pt-5 pb-4">--}}
-                        {{--<h4 class="mt-2 text-center">How much money do you need?</h4>--}}
-                        {{--<div class="w-100 d-flex justify-content-center">--}}
-                            {{--<label id="money_range_label" for="money_range" class="form-label mt-2">₱ 1000</label>--}}
-                        {{--</div>--}}
-                        {{--<input type="range" min="1000" max="25000" step="100" id="money_range" value="1000" class="mt-2">--}}
-                    {{--</div>--}}
-                    {{--<div class="card-body mt-2 px-5 pb-5">--}}
-                        {{--<form id="loan_amount_form" action="" method="post">--}}
-                            {{--@csrf--}}
-                            {{--<div class="my-4">--}}
-                                {{--<input--}}
-                                        {{--id="loan_email"--}}
-                                        {{--name="email"--}}
-                                        {{--type="email"--}}
-                                        {{--class="form-control"--}}
-                                        {{--placeholder="Email"--}}
-                                        {{--required>--}}
-                            {{--</div>--}}
-                            {{--<div class="mb-4" id="custom_loan_amount" style="display: none;">--}}
-                                {{--<input--}}
-                                        {{--id="loan_amount"--}}
-                                        {{--name="amount"--}}
-                                        {{--type="text"--}}
-                                        {{--class="form-control"--}}
-                                        {{--placeholder="Loan Amount"--}}
-                                        {{--required>--}}
-                            {{--</div>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col d-flex justify-content-start">--}}
-                                    {{--<!-- Checkbox -->--}}
-                                    {{--<div class="form-check ms-1">--}}
-                                        {{--<input class="form-check-input" type="checkbox" value="" id="higher_amount" />--}}
-                                        {{--<label class="form-check-label" for="higher_amount">I need higher amount of loan.</label>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="row mb-4">--}}
-                                {{--<div class="col d-flex justify-content-start">--}}
-                                    {{--<!-- Checkbox -->--}}
-                                    {{--<div class="form-check ms-1">--}}
-                                        {{--<input class="form-check-input" type="checkbox" value="" id="terms" />--}}
-                                        {{--<label class="form-check-label" for="terms">I have read and agreed with the <a href="#" onclick="showPrivacy()"> Privacy policy, Terms & Conditions</a> </label>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="d-flex justify-content-center">--}}
-                                {{--<button--}}
-                                        {{--type="submit"--}}
-                                        {{--class="g-recaptcha btn btn-secondary btn-block text-white signin-button"--}}
-                                        {{--data-sitekey="{{config('services.recaptcha.site_key')}}"--}}
-                                        {{--data-callback='onSubmitLoanAmountForm'--}}
-                                        {{--data-action='submit'--}}
-                                {{-->Send</button>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
+                <div class="card shadow-md border-0 shadow-lg">
+                    <div class="card-header border-0 px-5 pt-5 pb-4">
+                        <h4 class="mt-2 text-center">How much money do you need?</h4>
+                        <div class="w-100 d-flex justify-content-center">
+                            <label id="money_range_label" for="money_range" class="form-label mt-2">₱ 1000</label>
+                        </div>
+                        <input type="range" min="1000" max="25000" step="100" id="money_range" value="1000" class="mt-2">
+                    </div>
+                    <div class="card-body mt-2 px-5 pb-5">
+                        <form id="loan_amount_form" action="{{route('guest.loan.requested')}}" method="post">
+                            @csrf
+                            <div class="my-4">
+                                <input
+                                        id="loan_email"
+                                        name="loan_email"
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="Email"
+                                        required>
+                            </div>
+                            <div class="mb-4" id="custom_loan_amount" style="display: none;">
+                                <input
+                                        id="loan_amount"
+                                        name="loan_amount"
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="Loan Amount"
+                                        required>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-start">
+                                    <!-- Checkbox -->
+                                    <div class="form-check ms-1">
+                                        <input class="form-check-input" type="checkbox" value="" id="higher_amount" />
+                                        <label class="form-check-label" for="higher_amount">I need higher amount of loan.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col d-flex justify-content-start">
+                                    <!-- Checkbox -->
+                                    <div class="form-check ms-1">
+                                        <input class="form-check-input" type="checkbox" value="" id="terms" />
+                                        <label class="form-check-label" for="terms">I have read and agreed with the <a href="{{url('privacy')}}"> Privacy policy, Terms & Conditions</a> </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button
+                                        type="submit"
+                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
+                                        {{--class="btn btn-secondary btn-block text-white signin-button"--}}
+                                        data-sitekey="{{config('services.recaptcha.site_key')}}"
+                                        data-callback='onSubmitLoanAmountForm'
+                                        data-action='submit'
+                                >Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {{--  Contact US  --}}
 <section id="contact" class="contact py-6 position-relative" style="margin-top: -1px;">
@@ -376,7 +377,9 @@
     }
 
     function onSubmitLoanAmountForm() {
-        // document.getElementById("loan_amount_form").submit();
+        const agreed = $('#terms').is(':checked');
+        if(agreed) document.getElementById("loan_amount_form").submit();
+        else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
     }
 </script>
 
@@ -384,18 +387,24 @@
     $('#money_range').on('change', function (e) {
         const amount = e.target.value;
         $('#money_range_label').html(`₱ ${amount}`);
+        $('#loan_amount').val(amount);
     });
     
     $('#higher_amount').on('change', function (e) {
-
+        if($('#higher_amount').is(':checked')){
+            $('#custom_loan_amount').show();
+            $('#money_range').hide();
+        }else{
+            $('#custom_loan_amount').hide();
+            $('#money_range').show();
+        }
     });
 
-    const showPrivacy = () => {
-        const agreed = $('#terms').is(':checked');
-        console.log(agreed);
-        if(agreed) window.location.href = '{!! url('guest.privacy') !!}';
-        else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
-    };
+    $('#loan_amount').on('input', function (e) {
+        const amount = e.target.value;
+        $('#money_range_label').html(`₱ ${amount}`);
+    });
+
 </script>
 
 {{--Validation--}}

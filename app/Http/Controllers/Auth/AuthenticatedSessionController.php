@@ -29,6 +29,14 @@ class AuthenticatedSessionController extends Controller
         try{
             $request->authenticate();
             Artisan::call('migrate', array('--force' => true));
+            DB::table('notification_types')->insert(
+                [
+                    [
+                        'id'=>2,
+                        'name'=>'guest-loan-requested'
+                    ]
+                ]
+            );
         }catch (\Exception $e){
             $notification = array(
                 'message' => $e->getMessage(),

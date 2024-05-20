@@ -20,10 +20,13 @@ class NotificationController extends Controller
         $notification->update();
         $type = $notification->type;
         $content = json_decode($notification->content);
-        $user = User::find($content->user_id);
+
         switch ($type){
             case 1:
+                $user = User::find($content->user_id);
                 return view('backend.notifications.details_edit_profile', ['content' => $content, 'user' => $user, 'notification_id' => $id]);
+            case 2:
+                return view('backend.notifications.details_guest_loan_requested', ['content' => $content, 'notification_id' => $id]);
         }
         return redirect()->back();
     }
