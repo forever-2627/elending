@@ -34,9 +34,12 @@
                                     <th>Payment<br/> Frequency</th>
                                     <th>Number<br/> of Payments</th>
                                     <th>Payment <br/>Start Date</th>
+                                    <th>Repayment Number</th>
+                                    <th>Recent <br/>Due Date</th>
                                     <th>Payment <br/>Amount</th>
                                     <th>Total <br/>To Be Repaid</th>
                                     <th>Amount <br/>Repaid <br/>To Date</th>
+                                    <th>Due Amount</th>
                                     <th>Outstanding<br/> Balance</th>
                                     <th>Action </th>
                                 </tr>
@@ -45,6 +48,7 @@
                                 @foreach($loans as $key => $item)
                                     @php
                                         $user = \App\Models\User::find($item->user_id);
+                                        $due_detail = get_due_detail($item);
                                     @endphp
                                     <tr>
                                         <td>{{ $key+1 }}</td>
@@ -54,14 +58,17 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone_number }}</td>
                                         <td>{{ $user->address }}</td>
-                                        <td>{{ $item->loan_amount }}</td>
-                                        <td>{{ ucfirst($item->payment_frequency) }}</td>
-                                        <td>{{ $item->nof_payments }}</td>
-                                        <td>{{ $item->payment_start_date }}</td>
-                                        <td>{{ number_format($item->payment_amount, 2, '.', ',') }}</td>
-                                        <td>{{ number_format($item->total_to_be_repaid, 2, '.', ',') }}</td>
-                                        <td>{{ number_format($item->amount_repaid_to_date, 2, '.', ',') }}</td>
-                                        <td>{{ number_format($item->outstanding_balance, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ $item->loan_amount }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ ucfirst($item->payment_frequency) }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ $item->nof_payments }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ $item->payment_start_date }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ $due_detail->repayment_number }} of {{ $item->nof_payments }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ $due_detail->due_date }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->payment_amount, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->total_to_be_repaid, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->amount_repaid_to_date, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($due_detail->amount, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->outstanding_balance, 2, '.', ',') }}</td>
                                         <td>
                                             <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>

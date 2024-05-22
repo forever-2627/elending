@@ -70,3 +70,44 @@ if (!function_exists('money_formatting')) {
         return $formatted_number;
     }
 }
+
+if (!function_exists('get_due_detail')) {
+
+    function get_due_detail($loan)
+    {
+        $due_detail = [];
+        $payment_start_date = new DateTime($loan->payment_start_date);
+        $current_date = new DateTime(now());
+        $interval_days = $current_date->diff($payment_start_date)->days;
+        $payment_frequency = $loan->payment_frequency;
+        $amount_repaid_to_date = $loan->amount_repaid_to_date;
+        $payment_amount = $loan->payment_amount;
+        switch ($payment_frequency){
+            case 'weekly':
+                $repayment_number =  floor( $interval_days / 7 );
+                $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
+                $due_date = $payment_start_date->modify('+'. 7 * $repayment_number .' days');
+                break;
+            case 'fortnightly':
+                $repayment_number =  floor( $interval_days / 14 );
+                $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
+                $due_date = $payment_start_date->modify('+'. 7 * $repayment_number .' days');
+                break;
+            case 'monthly':
+                $repayment_number = floor( $interval_days / 30 );
+                $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
+                $due_date = $payment_start_date->modify('+'. $repayment_number .' month');
+                break;
+            default:
+                $repayment_number =  floor( $interval_days / 7 );
+                $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
+                $due_date = $payment_start_date->modify('+'. $repayment_number .' days');
+                break;
+        }
+        $due_amount = $have_to_pay_amount - $amount_repaid_to_date;
+        $due_detail['repayment_number'] = $repayment_number + 1;
+        $due_detail['amount'] = $due_amount < 0 ? 0 : $due_amount;
+        $due_detail['due_date'] = $due_date->format('m/d/Y');
+        return (object)$due_detail;
+    }
+}
