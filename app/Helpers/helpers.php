@@ -84,22 +84,22 @@ if (!function_exists('get_due_detail')) {
         $payment_amount = $loan->payment_amount;
         switch ($payment_frequency){
             case 'weekly':
-                $repayment_number = ($payment_start_date > $current_date) ? 0 : floor( $interval_days / 7 );
+                $repayment_number = ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 7 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
                 $due_date = $payment_start_date->modify('+'. 7 * $repayment_number .' days');
                 break;
             case 'fortnightly':
-                $repayment_number =  ($payment_start_date > $current_date) ? 0 : floor( $interval_days / 14 );
+                $repayment_number =  ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 14 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
                 $due_date = $payment_start_date->modify('+'. 7 * $repayment_number .' days');
                 break;
             case 'monthly':
-                $repayment_number = ($payment_start_date > $current_date) ? 0 : floor( $interval_days / 30 );
+                $repayment_number = ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 30 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
                 $due_date = $payment_start_date->modify('+'. $repayment_number .' month');
                 break;
             default:
-                $repayment_number =  ($payment_start_date > $current_date) ? 0 : floor( $interval_days / 7 );
+                $repayment_number =  ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 7 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
                 $due_date = $payment_start_date->modify('+'. $repayment_number .' days');
                 break;
