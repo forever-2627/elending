@@ -90,7 +90,7 @@
 <header class="header position-relative py-md-6 overflow-hidden">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="mt-lg-6 mt-sm-2">
                     <h1 class="xl-text header-title header-text">
                         Quick and Easy Loans for Your Financial Needs.
@@ -103,54 +103,11 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center">
-                <div class="image-container">
-                    <img src="{{asset('guest/images/header.png')}}" alt="" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-{{--  Features  --}}
-<section id="feature" class="py-4" style="">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center mb-sm-3">
-                <h3 class="m-0 font-sans fw-bolder header-text">
-                    Who is eligible to apply?
-                </h3>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
-                <img class="feature-img" src="{{url('guest/images/people.png')}}" />
-                <span class="text-color fw-bolder fs-6 feature-text">21-70 Years Old</span>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
-                <img class="feature-img" src="{{url('guest/images/location.png')}}" />
-                <span class="text-color fw-bolder fs-6 feature-text">Philippine Resident</span>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
-                <img class="feature-img" src="{{url('guest/images/staff.png')}}" />
-                <span class="text-color fw-bolder fs-6 feature-text">Employed Individuals & Selected Professionals</span>
-            </div>
-        </div>
-    </div>
-</section>
-{{--  About US  --}}
-<section id="about" class="contact py-md-6 position-relative about-back" style="">
-    <div class="container position-relative z-3">
-        <div class="row">
-            <div class="col-lg-7 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
-                <div>
-                    <h1 class="xl-text text-primary header-text">
-                        About us
-                    </h1>
-                    <p class="lead mb-4">
-                        ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-5 col-sm-12 px-lg-4 px-sm-2">
-
+            <div class="col-lg-5 d-flex align-items-center">
+                {{--style="background: url('{{asset('guest/images/header.png')}}'); background-size: cover;"--}}
+                {{--<div class="image-container">--}}
+                    {{--<img src="" alt="" class="img-fluid">--}}
+                {{--</div>--}}
                 <div class="card shadow-md border-0 shadow-lg">
                     <div class="card-header border-0 px-5 pt-5 pb-4">
                         <h4 class="mt-2 text-center">How much money do you need?</h4>
@@ -214,14 +171,48 @@
             </div>
         </div>
     </div>
+</header>
+{{--  Features  --}}
+<section id="feature" class="py-4" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center mb-sm-3">
+                <h3 class="m-0 font-sans fw-bolder header-text">
+                    Who is eligible to apply?
+                </h3>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/people.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">21-70 Years Old</span>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/location.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">Philippine Resident</span>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+                <img class="feature-img" src="{{url('guest/images/staff.png')}}" />
+                <span class="text-color fw-bolder fs-6 feature-text">Employed Individuals & Selected Professionals</span>
+            </div>
+        </div>
+    </div>
 </section>
-
-{{--  Contact US  --}}
-<section id="contact" class="contact py-6 position-relative" style="margin-top: -1px;">
+{{--  About US  --}}
+<section id="about" class="contact pb-md-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6 col-sm-12 d-md-block">
-                <div class="mt-md-6 mt-sm-1">
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+                <div class="mt-6">
+                    <h1 class="xl-text text-primary header-text">
+                        About us
+                    </h1>
+                    <p class="lead mb-4">
+                        ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+                <div>
                     <h1 class="xl-text text-primary header-text">
                         Contact us
                     </h1>
@@ -230,8 +221,7 @@
                     </p>
                     <h6 class="text-muted"></h6>
                 </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">
+
                 <div class="card shadow-md py-5 px-3 border-5">
                     <div class="card-body">
                         <form id="contact_form" action="{{route('guest.message.store')}}" method="post">
@@ -298,6 +288,19 @@
         </div>
     </div>
 </section>
+
+{{--  Contact US  --}}
+{{--<section id="contact" class="contact py-6 position-relative" style="margin-top: -1px;">--}}
+    {{--<div class="container position-relative z-3">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-lg-6 col-sm-12 d-md-block">--}}
+
+            {{--</div>--}}
+            {{--<div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</section>--}}
 <footer class="footer bg-light py-lg-6 py-sm-2 px-sm-2">
     <div class="container">
         <div class="row">
