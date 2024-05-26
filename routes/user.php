@@ -16,7 +16,7 @@ use App\Http\Controllers\User\MessageController as UserMessageController;
 
 
 Route::middleware(UserMiddleware::class)->group(function (){
-    Route::get('/user', [ UserDashboardController::class, 'index' ])->name('user.dashboard');
+    Route::get('/user/dashboard', [ UserDashboardController::class, 'index' ])->name('user.dashboard');
     Route::get('/user/loans', [ UserLoanController::class, 'index' ])->name('user.loans');
 
     Route::get('/user/edit_profile', [ UserProfileController::class, 'edit_profile' ])->name('user.profile.edit');

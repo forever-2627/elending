@@ -60,25 +60,29 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
+                                    <h5 class="fw-bold mb-3">Due Loans</h5>
                                     <table class="table table-striped">
                                         <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Loan Start Date</th>
-                                            <th scope="col">Payment Frequency</th>
-                                            <th scope="col">Loan Amount</th>
-                                            <th scope="col">Repayment Amount</th>
+                                            <th scope="col">Due Date</th>
+                                            <th scope="col">Repayment Number</th>
+                                            <th scope="col">Due Amount</th>
                                             <th scope="col">Outstanding Balance</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($loans as $key => $loan)
+                                                @php
+                                                    $due_detail = get_due_detail($loan);
+                                                @endphp
                                                 <tr>
                                                     <th scope="row">{{$key + 1}}</th>
                                                     <td>{{$loan->payment_start_date}}</td>
-                                                    <td>{{ucfirst($loan->payment_frequency)}}</td>
-                                                    <td>{{number_format($loan->loan_amount, 2, '.', ',')}}</td>
-                                                    <td>{{number_format($loan->payment_amount, 2, '.', ',')}}</td>
+                                                    <td>{{$due_detail->due_date}}</td>
+                                                    <td>{{$due_detail->repayment_number }} of {{ $loan->nof_payments }}</td>
+                                                    <td>{{number_format($due_detail->amount, 2, '.', ',')}}</td>
                                                     <td>{{number_format($loan->outstanding_balance, 2, '.', ',')}}</td>
                                                 </tr>
                                             @endforeach

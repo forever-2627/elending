@@ -19,6 +19,7 @@
 
 <div class="widget-content">
     <ul class="category-list ">
+        <li><a href="{{route('user.dashboard')}}"><i class="fa fa-laptop" aria-hidden="true"></i> Dashboard </a></li>
         <li><a href="{{route('user.loans')}}"><i class="fa fa-indent" aria-hidden="true"></i> Loans </a></li>
         <li class="current"><a href="{{route('user.profile.edit')}}"><i class="fab fa fa-user "></i> Edit Profile</a></li>
         <li><a href="{{route('user.password.change')}}"><i class="fa fa-key" aria-hidden="true"></i> Security </a></li>
