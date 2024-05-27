@@ -150,8 +150,8 @@
                                 <div class="col d-flex justify-content-start">
                                     <!-- Checkbox -->
                                     <div class="form-check ms-1">
-                                        <input class="form-check-input" type="checkbox" value="" id="terms" />
-                                        <label class="form-check-label" for="terms">I have read and agreed with the <a href="{{url('privacy')}}"> Privacy policy, Terms & Conditions</a> </label>
+                                        <input class="form-check-input" type="checkbox" value="" id="privacy" />
+                                        <label class="form-check-label" for="privacy">I have read and agreed with the <a href="{{url('privacy')}}"> Privacy policy,</a><a href="{{url('terms')}}"> Terms & Conditions</a> </label>
                                     </div>
                                 </div>
                             </div>
@@ -383,7 +383,7 @@
     }
 
     function onSubmitLoanAmountForm() {
-        const agreed = $('#terms').is(':checked');
+        const agreed = $('#privacy').is(':checked');
         if(agreed) document.getElementById("loan_amount_form").submit();
         else toastr.warning('You have to agree terms and conditions first!', 'Input Error');
     }

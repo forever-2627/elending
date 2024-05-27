@@ -13,6 +13,11 @@ Route::middleware(AuthMiddleware::class)->get('/privacy', function () {
     return view('guest.privacy');
 })->name('privacy');
 
+Route::middleware(AuthMiddleware::class)->get('/terms', function () {
+    return view('guest.terms');
+})->name('terms');
+
+
 Route::middleware(AuthMiddleware::class)->post('/loan-request', [GuestMessageController::class, 'loan_requested'])->name('guest.loan.requested');
 
 Route::get('/dashboard', function () {
