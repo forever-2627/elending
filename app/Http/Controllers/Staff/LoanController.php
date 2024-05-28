@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -54,7 +55,8 @@ class LoanController extends Controller
                 'amount_repaid_to_date' => $amount_repaid_to_date,
                 'outstanding_balance' => $outstanding_balance,
                 'initial_total_to_be_repaid' => $initial_total_to_be_repaid,
-                'state' => 1
+                'state' => 1,
+                'by_who' => Auth::user()->id
             ]);
         }
         catch (\Exception $e){
@@ -104,7 +106,8 @@ class LoanController extends Controller
                 'total_to_be_repaid' => $total_to_be_repaid,
                 'amount_repaid_to_date' => $amount_repaid_to_date,
                 'outstanding_balance' => $outstanding_balance,
-                'initial_total_to_be_repaid' => $initial_total_to_be_repaid
+                'initial_total_to_be_repaid' => $initial_total_to_be_repaid,
+                'by_who' => Auth::user()->id
             ]);
         }
         catch (\Exception $e){

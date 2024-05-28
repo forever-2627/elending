@@ -22,7 +22,8 @@ class Loan extends Model
         'amount_repaid_to_date',
         'outstanding_balance',
         'initial_total_to_be_repaid',
-        'state'
+        'state',
+        'by_who'
     ];
 
     protected $visible = [

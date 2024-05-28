@@ -8,6 +8,7 @@
 
 use App\Models\Setting;
 use App\Models\Loan;
+use App\Models\User;
 
 if (!function_exists('setting')) {
 
@@ -109,5 +110,15 @@ if (!function_exists('get_due_detail')) {
         $due_detail['amount'] = $due_amount < 0 ? 0 : $due_amount;
         $due_detail['due_date'] = $due_date->format('m/d/Y');
         return (object)$due_detail;
+    }
+}
+
+if (!function_exists('get_username')) {
+
+    function get_username($id)
+    {
+        $user = User::find($id);
+        $username = $user->given_name . ' ' . $user->surname;
+        return $username;
     }
 }

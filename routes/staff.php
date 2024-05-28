@@ -63,8 +63,6 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     //Others
     Route::get('staff/calculator', function (){ return view('admin.calculator');})->name('staff.calculator');
 
-    //Settings
-    Route::get('staff/settings', [SettingController::class, 'index'])->name('staff.settings');
-    Route::post('staff/settings', [SettingController::class, 'store'])->name('staff.settings.post');
+
 
 });

@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <h6 class="card-title">Payment Setting </h6>
                         <i class="fa fa-remove"></i>
-                        <form method="post" action="{{route('staff.settings.post')}}" id="myForm" enctype="multipart/form-data">
+                        <form method="post" action="{{route('admin.settings.post')}}" id="myForm" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-6">

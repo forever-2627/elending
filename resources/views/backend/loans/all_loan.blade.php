@@ -41,6 +41,7 @@
                                     <th>Amount <br/>Repaid <br/>To Date</th>
                                     <th>Due Amount</th>
                                     <th>Outstanding<br/> Balance</th>
+                                    <th>Added By</th>
                                     <th>Action </th>
                                 </tr>
                                 </thead>
@@ -69,6 +70,7 @@
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->amount_repaid_to_date, 2, '.', ',') }}</td>
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($due_detail->amount, 2, '.', ',') }}</td>
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->outstanding_balance, 2, '.', ',') }}</td>
+                                        <td title="{{ $user->given_name }} {{ $user->surname }}">{{ get_username($item->by_who) }}</td>
                                         <td>
                                             <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             <a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>

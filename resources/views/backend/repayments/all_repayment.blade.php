@@ -29,6 +29,7 @@
                                     <th>Loan Number </th>
                                     <th>Repaid Amount </th>
                                     <th>Repaid Date </th>
+                                    <th>Added By</th>
                                     <th>Action </th>
                                 </tr>
                                 </thead>
@@ -42,6 +43,7 @@
                                         <td>{{ sprintf('%06d', $repayment->loan_id) }}</td>
                                         <td>{{ number_format($repayment->repaid_amount, 2, '.', ',') }}</td>
                                         <td>{{ $repayment->repaid_date }}</td>
+                                        <td>{{ get_username($repayment->by_who) }}</td>
                                         <td>
                                             <a href="{{route('staff.repayments.edit', $repayment->id)}}" class="btn btn-inverse-warning me-2" title="Edit"> <i data-feather="edit"></i> </a>
                                             <a href="{{route('staff.repayments.delete', $repayment->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>

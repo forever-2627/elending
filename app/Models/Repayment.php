@@ -12,7 +12,8 @@ class Repayment extends Model
     protected $fillable = [
         'loan_id',
         'repaid_date',
-        'repaid_amount'
+        'repaid_amount',
+        'by_who'
     ];
 
     public function loan(){

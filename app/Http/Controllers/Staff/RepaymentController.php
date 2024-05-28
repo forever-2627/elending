@@ -6,6 +6,7 @@ use App\Events\RepaymentUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\Repayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RepaymentController extends Controller
 {
@@ -28,6 +29,7 @@ class RepaymentController extends Controller
                 'loan_id' => $loan_id,
                 'repaid_date'=>$repaid_date,
                 'repaid_amount' => $repaid_amount,
+                'by_who' => Auth::user()->id
             ]);
         }
         catch (\Exception $e){
@@ -58,6 +60,7 @@ class RepaymentController extends Controller
         $repayment->loan_id = $request->loan_id;
         $repayment->repaid_date = $request->repaid_date;
         $repayment->repaid_amount = $request->repaid_amount;
+        $repayment->by_who = Auth::user()->id;
         try{
             $repayment->update();
             RepaymentUpdated::dispatch($repayment->loan_id);
