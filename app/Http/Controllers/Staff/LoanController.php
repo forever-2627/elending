@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\MockObject\object;
 
 class LoanController extends Controller
 {
@@ -27,6 +29,10 @@ class LoanController extends Controller
             default:
                 $loans =  Loan::orderBy('created_at', 'desc')->get();
                 break;
+        }
+
+        if(auth()->user()->role_id != config('constants.roles.admin_role_id')){
+            $loans = filter_by_date($loans);
         }
 
         return view('backend.loans.all_loan', ['loans' => $loans, 'state' => $state]);

@@ -13,7 +13,8 @@ class SettingController extends Controller
         if(!isset($setting)){
             $setting = [
                 'interest_rate' => 5,
-                'processing_fee' => 3
+                'processing_fee' => 3,
+                'staff_viewable_days' => 3
             ];
         }
         return view('admin.settings', ['setting' => (object) $setting]);
@@ -22,11 +23,13 @@ class SettingController extends Controller
     public function store(Request $request){
         $interest_rate = $request->interest_rate;
         $processing_fee = $request->processing_fee;
+        $staff_viewable_days = $request->staff_viewable_days;
         $setting = Setting::where(['id' => 1])->first();
         try{
             if($setting){
                 $setting->interest_rate = $interest_rate;
                 $setting->processing_fee = $processing_fee;
+                $setting->staff_viewable_days = $staff_viewable_days;
                 $setting->update();
                 $notification = array(
                     'message' => 'Setting Updated Successfully!',
@@ -37,7 +40,8 @@ class SettingController extends Controller
                 Setting::updateOrCreate([
                     'id' => 1,
                     'interest_rate' => $interest_rate,
-                    'processing_fee' => $processing_fee
+                    'processing_fee' => $processing_fee,
+                    'staff_viewable_days' => $staff_viewable_days
                 ]);
                 $notification = array(
                     'message' => 'Setting Saved Successfully!',

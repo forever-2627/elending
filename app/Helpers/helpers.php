@@ -18,7 +18,8 @@ if (!function_exists('setting')) {
         if(!isset($setting)){
             $setting = [
                 'interest_rate' => 5,
-                'processing_fee' => 3
+                'processing_fee' => 3,
+                'staff_viewable_days' => 3
             ];
         }
         return $setting;
@@ -120,5 +121,22 @@ if (!function_exists('get_username')) {
         $user = User::find($id);
         $username = $user->given_name . ' ' . $user->surname;
         return $username;
+    }
+}
+
+if (!function_exists('filter_by_date')) {
+
+    function filter_by_date($items)
+    {
+        $filtered_items = [];
+        $current_date = new DateTime(now());
+        foreach ($items as $item){
+            $updated_datetime = $item->updated_at;
+            $interval_days = $current_date->diff($updated_datetime)->days;
+            if( $interval_days < \setting()->staff_viewable_days ){
+                $filtered_items[] = $item;
+            }
+        }
+        return (object) $filtered_items;
     }
 }

@@ -31,6 +31,12 @@
                                         <input type="number" id="processing_fee" name="processing_fee" class="form-control calc-input" value="{{$setting->processing_fee}}">
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label" for="processing_fee">Staff Viewable Days</label>
+                                        <input type="number" id="staff_viewable_days" name="staff_viewable_days" class="form-control calc-input" value="{{$setting->staff_viewable_days}}">
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary float-end"><i class="feather icon-save me-2"></i> Save</button>
                         </form>
