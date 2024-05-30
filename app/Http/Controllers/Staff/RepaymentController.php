@@ -13,10 +13,16 @@ class RepaymentController extends Controller
     public function index(Request $request){
         $repayments = Repayment::orderBy('created_at', 'desc')->get();
 
-        if(auth()->user()->role_id != config('constants.roles.admin_role_id')){
-            $repayments = filter_by_date($repayments);
+        $user_id = $request->user_id;
+        if($user_id){
+            $filtered_repayments = filter_by_user($repayments, $user_id, 'repayment');
+            return view('backend.repayments.all_repayment', ['repayments' => $filtered_repayments, 'user_id' => $user_id]);
         }
-        return view('backend.repayments.all_repayment', ['repayments' => $repayments]);
+        else{
+            $filtered_repayments = auth()->user()->role_id != config('constants.roles.admin_role_id') ? filter_by_date($repayments) : $repayments;
+            return view('backend.repayments.all_repayment', ['repayments' => $filtered_repayments, 'user_id' => $user_id]);
+        }
+
     }
 
     public function create(){

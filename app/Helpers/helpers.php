@@ -140,3 +140,19 @@ if (!function_exists('filter_by_date')) {
         return (object) $filtered_items;
     }
 }
+
+if (!function_exists('filter_by_user')) {
+
+    function filter_by_user($items, $user_id, $type)
+    {
+        $filtered_items = [];
+
+        foreach ($items as $item){
+            $item_user_id = $type == 'loan' ? $item->user_id : $item->user()->first()->id;
+            if( $item_user_id == $user_id * 1 ){
+                $filtered_items[] = $item;
+            }
+        }
+        return (object) $filtered_items;
+    }
+}
