@@ -32,7 +32,7 @@
                                         }catch (Exception $e){
                                             $user = null;
                                         }
-                                        if($user == null){
+                                        if($user == null && $notification->type == 1){
                                             $notification->delete();
                                         }
                                     @endphp
