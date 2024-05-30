@@ -27,7 +27,11 @@
                                 @foreach($notifications as $key => $notification)
                                     @php
                                         $content = json_decode($notification->content);
-                                        $user = \App\Models\User::find($content->user_id);
+                                        try{
+                                            $user = \App\Models\User::find($content->user_id);
+                                        }catch (Exception $e){
+                                            $user = null;
+                                        }
                                         if($user == null){
                                             $notification->delete();
                                         }
