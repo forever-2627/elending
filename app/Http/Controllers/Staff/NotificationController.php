@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class NotificationController extends Controller
 {
     public function index(){
-        $notifications = Notification::all();
+        $notifications = Notification::orderBy('id', 'desc')->get();
         return view('backend.notifications.all_notification', ['notifications' => $notifications]);
     }
 
