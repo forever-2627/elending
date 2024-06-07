@@ -27,42 +27,38 @@
                                 @foreach($notifications as $key => $notification)
                                     @php
                                         $content = json_decode($notification->content);
-                                        if($notification->type == 1){
-                                            try{
-                                                $user = \App\Models\User::find($content->user_id);
-                                            }catch (Exception $e){
-                                                $user = null;
-                                            }
-                                            if($user == null && $notification->type == 1){
-                                                $notification->delete();
-                                            }
+                                        try{
+                                            $user = \App\Models\User::find($content->user_id);
+                                        }catch (Exception $e){
+                                            $user = null;
+                                        }
+                                        if($user == null && $notification->type == 1){
+                                            $notification->delete();
                                         }
                                     @endphp
-                                    @if($user != null)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{$notification->title}}</td>
-                                            @php
-                                                $type = \App\Models\NotificationType::find($notification->type)->name;
-                                                $type_name = ucwords(str_replace( '-', ' ', $type));
-                                            @endphp
-                                            <td>
-                                                {{ $type_name }}
-                                            </td>
-                                            @if($notification->read == 0)
-                                                <td><span class="badge bg-danger">Unread</span></td>
-                                            @else
-                                                <td><span class="badge bg-success">Read</span></td>
-                                            @endif
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{$notification->title}}</td>
+                                        @php
+                                            $type = \App\Models\NotificationType::find($notification->type)->name;
+                                            $type_name = ucwords(str_replace( '-', ' ', $type));
+                                        @endphp
+                                        <td>
+                                            {{ $type_name }}
+                                        </td>
+                                        @if($notification->read == 0)
+                                            <td><span class="badge bg-danger">Unread</span></td>
+                                        @else
+                                            <td><span class="badge bg-success">Read</span></td>
+                                        @endif
 
-                                            <td>{{$notification->received_time}}</td>
-                                            <td>
-                                                <a href="{{route('staff.notifications.view', $notification->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
-                                                <a href="{{route('staff.notifications.check', $notification->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
-                                                <a href="{{route('staff.notifications.delete', $notification->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
-                                            </td>
-                                        </tr>
-                                    @endif
+                                        <td>{{$notification->received_time}}</td>
+                                        <td>
+                                            <a href="{{route('staff.notifications.view', $notification->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+                                            <a href="{{route('staff.notifications.check', $notification->id)}}" class="btn btn-inverse-danger" title="Check as Read"> <i data-feather="award"></i>  </a>
+                                            <a href="{{route('staff.notifications.delete', $notification->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
