@@ -29,10 +29,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12 d-flex justify-content-end">
-                <a href="{{route('staff.notifications.approve.update.profile', $notification_id)}}" class="btn btn-primary"> <i class="fab fa fa-check me-2 me-2"></i> Approve</i> </a>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-md-12 d-flex justify-content-end">--}}
+                {{--<a href="{{route('staff.notifications.approve.guest.loan', $notification_id)}}" class="btn btn-primary"> <i class="fab fa fa-check me-2 me-2"></i> Approve</i> </a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 @endsection
