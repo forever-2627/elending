@@ -69,12 +69,12 @@ class NotificationController extends Controller
                 'message' => $e->getMessage(),
                 'alert-type' => 'error'
             ];
-            return redirect(route('staff.messages'))->with($notification);
+            return redirect(route('staff.notifications'))->with($notification);
         }
         $notification = [
             'message' => 'Message Deleted Successfully',
             'alert-type' => 'success'
         ];
-        return redirect(route('staff.messages'))->with($notification);
+        return redirect(route('staff.notifications'))->with($notification);
     }
 }
