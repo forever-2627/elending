@@ -107,7 +107,7 @@ if (!function_exists('get_due_detail')) {
                 break;
         }
         $due_amount = $have_to_pay_amount - $amount_repaid_to_date;
-        $due_detail['repayment_number'] = ($payment_start_date > $current_date) ? 0 : $repayment_number + 2;
+        $due_detail['repayment_number'] = ($payment_start_date > $current_date) ? 1 : $repayment_number + 2;
         $due_detail['amount'] = $due_amount < 0 ? 0 : $due_amount;
         $due_detail['due_date'] = $due_date->format('m/d/Y');
         return (object)$due_detail;
