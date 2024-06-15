@@ -47,6 +47,12 @@
         .feature-text{
             font-family: sans-serif;
         }
+
+        .how-to-image{
+            width: 100%;
+            position: absolute;
+            bottom: -50px;
+        }
     </style>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Best Loan</title>
@@ -151,7 +157,7 @@
                                     <!-- Checkbox -->
                                     <div class="form-check ms-1">
                                         <input class="form-check-input" type="checkbox" value="" id="privacy" />
-                                        <label class="form-check-label" for="privacy">I have read and agreed with the <a href="{{url('privacy')}}"> Privacy policy,</a><a href="{{url('terms')}}"> Terms & Conditions</a> </label>
+                                        <label class="form-check-label" for="privacy">I have read and agreed with the <a href="{{url('privacy')}}" target="_blank"> Privacy policy,</a><a href="{{url('terms')}}" target="_blank"> Terms & Conditions</a> </label>
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +202,66 @@
         </div>
     </div>
 </section>
+{{--  How To Apply  --}}
+<section id="how_to_apply" class="how_to_apply py-6" style="margin-top: -1px;">
+    <div class="container position-relative z-3">
+        <h1 class="xl-text text-primary header-text text-center mb-6">
+            How To Apply To Get Money
+        </h1>
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+                <div class="card p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
+                            <img src="{{url('guest/images/loan-request.png')}}" class="how-to-image">
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
+                            <h3 class="mb-0">1. Request Loan</h3>
+                            <p class="text-dark">Input your email address and needed loan amount and click submit button.<br/>
+                                And then wait response from administrator.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+                <div class="card p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
+                            <img src="{{url('guest/images/loan-request.png')}}" class="how-to-image">
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
+                            <h3 class="mb-0">1. Request Loan</h3>
+                            <p class="text-dark">Input your email address and needed loan amount and click submit button.<br/>
+                                And then wait response from administrator.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+                <div class="card p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
+                            <img src="{{url('guest/images/loan-request.png')}}" class="how-to-image">
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
+                            <h3 class="mb-0">1. Request Loan</h3>
+                            <p class="text-dark">Input your email address and needed loan amount and click submit button.<br/>
+                                And then wait response from administrator.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {{--  About US  --}}
 <section id="about" class="contact pb-md-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
@@ -289,18 +355,6 @@
     </div>
 </section>
 
-{{--  Contact US  --}}
-{{--<section id="contact" class="contact py-6 position-relative" style="margin-top: -1px;">--}}
-    {{--<div class="container position-relative z-3">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-lg-6 col-sm-12 d-md-block">--}}
-
-            {{--</div>--}}
-            {{--<div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
 <footer class="footer bg-light py-lg-6 py-sm-2 px-sm-2">
     <div class="container">
         <div class="row">

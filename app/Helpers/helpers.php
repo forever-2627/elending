@@ -79,6 +79,7 @@ if (!function_exists('get_due_detail')) {
     {
         $due_detail = [];
         $payment_start_date = new DateTime($loan->payment_start_date);
+        $original_payment_start_date = clone $payment_start_date;
         $current_date = new DateTime(now());
         $interval_days = $current_date->diff($payment_start_date)->days;
         $payment_frequency = $loan->payment_frequency;
@@ -106,8 +107,11 @@ if (!function_exists('get_due_detail')) {
                 $due_date = $payment_start_date->modify('+'. ( $repayment_number + 1) .' days');
                 break;
         }
+//        if($loan->id == 6){
+//            dd($original_payment_start_date);
+//        }
         $due_amount = $have_to_pay_amount - $amount_repaid_to_date;
-        $due_detail['repayment_number'] = ($payment_start_date > $current_date) ? 1 : $repayment_number + 2;
+        $due_detail['repayment_number'] = ($original_payment_start_date > $current_date) ? 1 : $repayment_number + 2;
         $due_detail['amount'] = $due_amount < 0 ? 0 : $due_amount;
         $due_detail['due_date'] = $due_date->format('m/d/Y');
         return (object)$due_detail;
