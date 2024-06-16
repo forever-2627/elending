@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" >
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('guest/vendor/aos/aos.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
@@ -53,14 +54,18 @@
             position: absolute;
             bottom: -50px;
         }
+
+        .nav-link{
+            font-size: 1rem;
+        }
     </style>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Best Loan</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light">
-    <div class="container">
-        <a class="navbar-brand p-0" href="#">
+    <div class="container" data-aos="fade-down" data-aos-delay="200">
+        <a class="navbar-brand p-0 fa fa-beat" href="#">
             <img src="{{asset('upload/logo.png')}}" width="96"/>
         </a>
         <button
@@ -77,16 +82,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a class="nav-link" aria-current="page" href="{{route('home')}}"><i class="fa fa-home me-2"></i>    Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About Us</a>
+                    <a class="nav-link" href="#about"><i class="fa fa-user me-2"></i>    About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link" href="#contact"><i class="fa fa-envelope me-2"></i>    Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button" href="{{route('login.get')}}">Sign In</a>
+                    <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button" href="{{route('login.get')}}"><i class="fa fa-sign-in me-2"></i>Sign In</a>
                 </li>
             </ul>
         </div>
@@ -96,7 +101,7 @@
 <header class="header position-relative py-md-6 overflow-hidden">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-7" data-aos="fade-right">
                 <div class="mt-lg-6 mt-sm-2">
                     <h1 class="xl-text header-title header-text">
                         Quick and Easy Loans for Your Financial Needs.
@@ -105,7 +110,7 @@
                         Our loan services offer a hassle-free and streamlined borrowing experience, providing you with the funds you need in a timely manner to meet your financial requirements.
                     </p>
                     <a href="{{route('login.get')}}" class="btn btn-outline-secondary btn-lg m-2">
-                        Sign In
+                        <i class="fa fa-sign-in me-2"></i> Sign In
                     </a>
                 </div>
             </div>
@@ -114,7 +119,7 @@
                 {{--<div class="image-container">--}}
                     {{--<img src="" alt="" class="img-fluid">--}}
                 {{--</div>--}}
-                <div class="card shadow-md border-0 shadow-lg">
+                <div class="card shadow-md border-0 shadow-lg" data-aos="fade-left">
                     <div class="card-header border-0 px-5 pt-5 pb-4">
                         <h4 class="mt-2 text-center">How much money do you need?</h4>
                         <div class="w-100 d-flex justify-content-center">
@@ -164,7 +169,7 @@
                             <div class="d-flex justify-content-center">
                                 <button
                                         type="submit"
-                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
+                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button w-100"
                                         {{--class="btn btn-secondary btn-block text-white signin-button"--}}
                                         data-sitekey="{{config('services.recaptcha.site_key')}}"
                                         data-callback='onSubmitLoanAmountForm'
@@ -182,20 +187,20 @@
 <section id="feature" class="py-4" style="">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center mb-sm-3">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center mb-sm-3" data-aos="zoom-in" data-aos-delay="600">
                 <h3 class="m-0 font-sans fw-bolder header-text">
                     Who is eligible to apply?
                 </h3>
             </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2" data-aos="zoom-in" data-aos-delay="800">
                 <img class="feature-img" src="{{url('guest/images/people.png')}}" />
                 <span class="text-color fw-bolder fs-6 feature-text">21-70 Years Old</span>
             </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2" data-aos="zoom-in" data-aos-delay="1000">
                 <img class="feature-img" src="{{url('guest/images/location.png')}}" />
                 <span class="text-color fw-bolder fs-6 feature-text">Philippine Resident</span>
             </div>
-            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2">
+            <div class="col-md-3 col-sm-6 col-xs-12 d-flex align-items-center justify-content-start gap-3 py-2" data-aos="zoom-in" data-aos-delay="1200">
                 <img class="feature-img" src="{{url('guest/images/staff.png')}}" />
                 <span class="text-color fw-bolder fs-6 feature-text">Employed Individuals & Selected Professionals</span>
             </div>
@@ -205,11 +210,11 @@
 {{--  How To Apply  --}}
 <section id="how_to_apply" class="how_to_apply py-6" style="margin-top: -1px;">
     <div class="container position-relative z-3">
-        <h1 class="xl-text text-primary header-text text-center mb-6">
+        <h1 class="xl-text text-primary header-text text-center mb-6" data-aos="fade-down" data-aos-delay="300">
             How To Apply To Get Money
         </h1>
         <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12"  data-aos="fade-right" data-aos-delay="500">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
@@ -226,7 +231,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-down" data-aos-delay="700">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
@@ -243,7 +248,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-left" data-aos-delay="900">
                 <div class="card p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
@@ -266,7 +271,7 @@
 <section id="about" class="contact pb-md-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-right" data-aos-delay="1200">
                 <div class="mt-6">
                     <h1 class="xl-text text-primary header-text">
                         About us
@@ -277,7 +282,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1">
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-left" data-aos-delay="1200">
                 <div>
                     <h1 class="xl-text text-primary header-text">
                         Contact us
@@ -341,7 +346,7 @@
                             <div class="d-flex justify-content-center">
                                 <button
                                         type="submit"
-                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button"
+                                        class="g-recaptcha btn btn-secondary btn-block text-white signin-button w-100"
                                         data-sitekey="{{config('services.recaptcha.site_key')}}"
                                         data-callback='onSubmit'
                                         data-action='submit'
@@ -408,6 +413,7 @@
 <script src="{{asset('guest/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('guest/js/toastr.min.js')}}"></script>
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
+<script src="{{ asset('guest/vendor/aos/aos.js') }}"></script>
 <script>
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -550,6 +556,9 @@
         });
     });
 
+</script>
+<script>
+    AOS.init();
 </script>
 </body>
 </html>
