@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('guest/vendor/aos/aos.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('guest/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
     <link rel="icon" href="{{asset('upload/favicon.png')}}">
@@ -63,7 +64,7 @@
     <title>Best Loan</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top navbar-light">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light py-3">
     <div class="container" data-aos="fade-down" data-aos-delay="200">
         <a class="navbar-brand p-0 fa fa-beat" href="#">
             <img src="{{asset('upload/logo.png')}}" width="96"/>
@@ -207,6 +208,20 @@
         </div>
     </div>
 </section>
+<svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none" style="transform: rotate(180deg);">
+    <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+    </defs>
+    <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(204,199,243, .1)">
+    </g>
+    <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(204,199,243, .2)">
+    </g>
+    <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#ccc7f3">
+    </g>
+</svg>
 {{--  How To Apply  --}}
 <section id="how_to_apply" class="how_to_apply py-6" style="margin-top: -1px;">
     <div class="container position-relative z-3">
@@ -271,7 +286,7 @@
 <section id="about" class="contact pb-md-6 position-relative about-back" style="">
     <div class="container position-relative z-3">
         <div class="row">
-            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-right" data-aos-delay="1200">
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-right" data-aos-delay="600">
                 <div class="mt-6">
                     <h1 class="xl-text text-primary header-text">
                         About us
@@ -282,7 +297,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-left" data-aos-delay="1200">
+            <div class="col-lg-6 col-sm-12 d-md-block position-relative mt-md-6 mt-sm-1" data-aos="fade-left" data-aos-delay="600">
                 <div>
                     <h1 class="xl-text text-primary header-text">
                         Contact us
