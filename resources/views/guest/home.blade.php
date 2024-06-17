@@ -59,6 +59,18 @@
         .nav-link{
             font-size: 1rem;
         }
+
+        .animated-2{
+            animation: up-down 1.5s ease-in-out infinite alternate-reverse both;
+        }
+        .animated-3{
+            animation: up-down 2s ease-in-out infinite alternate-reverse both;
+        }
+
+        .how-to-card{
+            border: 0;
+            box-shadow: 0 0 10px 4px #d7d2f5;
+        }
     </style>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <title>Best Loan</title>
@@ -230,10 +242,10 @@
         </h1>
         <div class="row">
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12"  data-aos="fade-right" data-aos-delay="500">
-                <div class="card p-4" style="min-height: 176px">
+                <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
-                            <img src="{{url('guest/images/loan-request.png')}}" class="how-to-image">
+                            <img src="{{url('guest/images/loan-request.png')}}" class="how-to-image animated-2">
                         </div>
                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
                             <h3 class="mb-0">1. Request Loan</h3>
@@ -246,10 +258,10 @@
             </div>
 
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-down" data-aos-delay="700">
-                <div class="card p-4" style="min-height: 176px">
+                <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
-                            <img src="{{url('guest/images/keep-contact.png')}}" class="how-to-image">
+                            <img src="{{url('guest/images/keep-contact.png')}}" class="how-to-image animated-3">
                         </div>
                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
                             <h3 class="mb-0">2. Keep Contact</h3>
@@ -262,10 +274,10 @@
             </div>
 
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-left" data-aos-delay="900">
-                <div class="card p-4" style="min-height: 176px">
+                <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
-                            <img src="{{url('guest/images/wait-money.png')}}" class="how-to-image">
+                            <img src="{{url('guest/images/wait-money.png')}}" class="how-to-image animated-2">
                         </div>
                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
                             <h3 class="mb-0">3. Wait Money</h3>
