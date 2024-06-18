@@ -94,7 +94,7 @@ if (!function_exists('get_due_detail')) {
             case 'fortnightly':
                 $repayment_number =  ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 14 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
-                $due_date = $payment_start_date->modify('+'. 7 * ( $repayment_number + 1) .' days');
+                $due_date = $payment_start_date->modify('+'. 15 * ( $repayment_number + 1) .' days');
                 break;
             case 'monthly':
                 $repayment_number = ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 30 );
@@ -104,11 +104,11 @@ if (!function_exists('get_due_detail')) {
             default:
                 $repayment_number =  ($payment_start_date > $current_date) ? -1 : floor( $interval_days / 7 );
                 $have_to_pay_amount = $payment_amount * ( $repayment_number + 1);
-                $due_date = $payment_start_date->modify('+'. ( $repayment_number + 1) .' days');
+                $due_date = $payment_start_date->modify('+'. 7 * ( $repayment_number + 1) .' days');
                 break;
         }
-//        if($loan->id == 6){
-//            dd($original_payment_start_date);
+//        if($loan->id == 102){
+//            dd($payment_frequency);
 //        }
         $due_amount = $have_to_pay_amount - $amount_repaid_to_date;
         $due_detail['repayment_number'] = ($original_payment_start_date > $current_date) ? 1 : $repayment_number + 2;

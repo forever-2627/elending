@@ -237,11 +237,11 @@
 {{--  How To Apply  --}}
 <section id="how_to_apply" class="how_to_apply py-6" style="margin-top: -1px;">
     <div class="container position-relative z-3">
-        <h1 class="xl-text text-primary header-text text-center mb-6" data-aos="fade-down" data-aos-delay="300">
+        <h1 class="xl-text text-primary header-text text-center mb-5" data-aos="fade-down" data-aos-delay="300">
             How To Apply To Get Money
         </h1>
         <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12"  data-aos="fade-right" data-aos-delay="500">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12 mt-4"  data-aos="fade-right" data-aos-delay="500">
                 <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
@@ -257,7 +257,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-down" data-aos-delay="700">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12 mt-4" data-aos="fade-down" data-aos-delay="700">
                 <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">
@@ -273,7 +273,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12" data-aos="fade-left" data-aos-delay="900">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12 mt-4" data-aos="fade-left" data-aos-delay="900">
                 <div class="card p-4 how-to-card" style="min-height: 176px">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-xs-6 position-relative">

@@ -127,7 +127,7 @@ class Loan extends Model
                 case 'fortnightly':
                     $interval_weeks =  floor( $interval_days / 14 );
                     $have_to_pay_amount = $payment_amount * ( $interval_weeks + 1);
-                    $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
+                    $due_date = $payment_start_date->modify('+'. 15 * $interval_weeks .' days');
                     break;
                 case 'monthly':
                     $interval_month = floor( $interval_days / 30 );
@@ -137,7 +137,7 @@ class Loan extends Model
                 default:
                     $interval_weeks =  floor( $interval_days / 7 );
                     $have_to_pay_amount = $payment_amount * ( $interval_weeks + 1);
-                    $due_date = $payment_start_date->modify('+'. $interval_weeks .' days');
+                    $due_date = $payment_start_date->modify('+'. 7 * $interval_weeks .' days');
                     break;
             }
             if($due_date >= $current_date) continue;
