@@ -40,3 +40,19 @@ require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/staff.php';
 require __DIR__.'/user.php';
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/send-test-email', function () {
+    $details = [
+        'title' => 'Test Email',
+        'body' => 'This is a test email.'
+    ];
+
+    try {
+        Mail::to('programmermh1@gmail.com')->send(new \App\Mail\TestEmail($details));
+        return 'Email sent successfully!';
+    } catch (\Exception $e) {
+        return 'Failed to send email. ' . $e->getMessage();
+    }
+});
