@@ -46,11 +46,11 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/send-test-email', function () {
     $details = [
         'title' => 'Test Email',
-        'body' => 'This is a test email.'
+        'body' => 'This is a test email from support@ismblending.com.'
     ];
 
     try {
-        Mail::to('programmermh1@gmail.com')->send(new \App\Mail\TestEmail($details));
+        Mail::to('daniellubis@outlook.com')->send(new \App\Mail\TestEmail($details));
         return 'Email sent successfully!';
     } catch (\Exception $e) {
         return 'Failed to send email. ' . $e->getMessage();
