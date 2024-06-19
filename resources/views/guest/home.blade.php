@@ -280,7 +280,7 @@
                             <img src="{{url('guest/images/wait-money.png')}}" class="how-to-image animated-2">
                         </div>
                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-xs-6 ">
-                            <h3 class="mb-0">3. Wait Money</h3>
+                            <h3 class="mb-0">3. Wait Decision</h3>
                             <p class="text-dark">You will receive a quick decision from our administrator and the funds will be made available to you.
                             </p>
                         </div>
