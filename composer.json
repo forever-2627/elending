@@ -10,7 +10,8 @@
         "illuminate/mail": "*",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-      "ext-openssl": "*"
+      "ext-openssl": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

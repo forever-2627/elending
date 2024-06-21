@@ -58,7 +58,23 @@ Route::get('/send-test-email', function () {
 });
 
 Route::get('/test', function () {
-    echo "<pre>";
-    print_r(openssl_get_cert_locations());
-    echo "</pre>";
+    $url = "https://ismblending.com"; // Replace with your actual domain
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+    ob_start();
+    curl_exec($ch);
+    $info = curl_getinfo($ch);
+    curl_close($ch);
+    $output = ob_get_clean();
+
+    if ($output === false) {
+        echo "Error: " . curl_error($ch);
+    } else {
+        echo "TLS Version: " . $info["ssl_version"] . PHP_EOL;
+    }
 });
