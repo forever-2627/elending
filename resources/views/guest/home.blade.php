@@ -466,7 +466,6 @@
         document.getElementById("contact_form").submit();
     }
 
-    <script>
     function validateCaptcha() {
         var response = grecaptcha.getResponse();
         if (response.length === 0) {
@@ -475,7 +474,6 @@
         }
         return true;
     }
-    </script>
 
     function onSubmitLoanAmountForm() {
         const agreed = $('#privacy').is(':checked');
