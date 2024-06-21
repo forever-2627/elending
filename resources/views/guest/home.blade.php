@@ -72,7 +72,7 @@
             box-shadow: 0 0 10px 4px #d7d2f5;
         }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Best Loan</title>
 </head>
 <body>
@@ -141,7 +141,7 @@
                         <input type="range" min="1000" max="25000" step="100" id="money_range" value="1000" class="mt-2">
                     </div>
                     <div class="card-body mt-2 px-5 pb-5">
-                        <form id="loan_amount_form" action="{{route('guest.loan.requested')}}" method="post">
+                        <form id="loan_amount_form" action="{{route('guest.loan.requested')}}" method="post" onsubmit="return validateCaptcha()">
                             @csrf
                             <div class="my-4">
                                 <input
@@ -465,6 +465,17 @@
     function onSubmit(token) {
         document.getElementById("contact_form").submit();
     }
+
+    <script>
+    function validateCaptcha() {
+        var response = grecaptcha.getResponse();
+        if (response.length === 0) {
+            alert('Please complete the CAPTCHA.');
+            return false;
+        }
+        return true;
+    }
+    </script>
 
     function onSubmitLoanAmountForm() {
         const agreed = $('#privacy').is(':checked');
