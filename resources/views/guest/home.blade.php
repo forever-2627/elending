@@ -468,6 +468,7 @@
 
     function validateCaptcha() {
         var response = grecaptcha.getResponse();
+        console.log(response);
         if (response.length === 0) {
             alert('Please complete the CAPTCHA.');
             return false;

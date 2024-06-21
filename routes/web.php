@@ -56,3 +56,9 @@ Route::get('/send-test-email', function () {
         return 'Failed to send email. ' . $e->getMessage();
     }
 });
+
+Route::get('/test', function () {
+    echo "<pre>";
+    print_r(openssl_get_cert_locations());
+    echo "</pre>";
+});
