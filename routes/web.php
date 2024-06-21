@@ -75,6 +75,6 @@ Route::get('/test', function () {
     if ($output === false) {
         echo "Error: " . curl_error($ch);
     } else {
-        echo "TLS Version: " . $info["ssl_version"] . PHP_EOL;
+        dd($info);
     }
 });
