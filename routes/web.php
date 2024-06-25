@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Guest\MessageController as GuestMessageController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Auth as AuthMiddleware;
 
@@ -36,10 +37,10 @@ Route::get('/test', function () {
     \App\Models\DueLoan::truncate();
 })->name('test');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/staff.php';
-require __DIR__.'/user.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/staff.php';
+require __DIR__ . '/user.php';
 
 use Illuminate\Support\Facades\Mail;
 
@@ -77,4 +78,9 @@ Route::get('/test', function () {
     } else {
         dd($info);
     }
+});
+
+Route::get('/migrate', function(){
+    Artisan::call('migrate', array('--force' => true));
+    return redirect()->back();
 });

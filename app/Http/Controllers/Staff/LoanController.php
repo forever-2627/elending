@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestedLoan;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Loan;
@@ -177,5 +178,16 @@ class LoanController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
+    }
+
+
+    public function requested_loans(){
+        $requested_loans = RequestedLoan::all();
+        return view('backend.loans.requested_loans', ['loans' => $requested_loans]);
+    }
+
+    public function view_requested_loan($id){
+        $loan = RequestedLoan::find($id);
+        return view('backend.loans.details_requested_loan', ['loan' => $loan]);
     }
 }

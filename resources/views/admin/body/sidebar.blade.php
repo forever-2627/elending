@@ -48,6 +48,9 @@
 						<li class="nav-item">
 							<a href="{{route('staff.loans', ['state' => 'bad'])}}" class="nav-link">Bad Loans</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{route('staff.loans.requested')}}" class="nav-link">Requested Loans</a>
+						</li>
 					</ul>
 				</div>
 			</li>

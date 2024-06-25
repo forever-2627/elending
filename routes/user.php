@@ -26,4 +26,8 @@ Route::middleware(UserMiddleware::class)->group(function (){
 
     Route::get('/user/contact', [ UserContactController::class, 'index' ])->name('user.contact');
     Route::post('/user/message', [ UserMessageController::class, 'store'])->name('user.message.store');
+
 });
+
+Route::get('/user/loans/request/{token}', [UserLoanController::class, 'request_loan'])->name('user.request.loan');
+Route::post('/user/loans/request', [UserLoanController::class, 'store_requested_loan'])->name('user.request.loan.store');

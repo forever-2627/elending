@@ -13,7 +13,7 @@ use App\Http\Controllers\Staff\MessageController as StaffMessageController;
 use App\Http\Controllers\Staff\NotificationController;
 use App\Http\Controllers\Staff\UserController;
 use App\Http\Controllers\Staff\RepaymentController;
-use App\Http\Controllers\Staff\SettingController;
+use App\Http\Controllers\Staff\EmailController;
 use App\Http\Controllers\Staff\CalendarController;
 
 Route::middleware(StaffMiddleware::class)->group(function (){
@@ -26,6 +26,8 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::post('staff/loans/edit', [StaffLoanController::class, 'update'])->name('staff.loans.update');
     Route::get('staff/loans/delete/{id}', [StaffLoanController::class, 'delete'])->name('staff.loans.delete');
     Route::get('staff/loans/state-change/{id}/{state}', [StaffLoanController::class, 'change_state'])->name('staff.loans.state.change');
+    Route::get('staff/loans/requested', [StaffLoanController::class, 'requested_loans'])->name('staff.loans.requested');
+    Route::get('staff/loans/requested/view/{id}', [StaffLoanController::class, 'view_requested_loan'])->name('staff.loans.requested.view');
 
     //Users Route
     Route::get('staff/users', [UserController::class, 'index'])->name('staff.users');
@@ -55,6 +57,9 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/repayments/edit/{id}', [RepaymentController::class, 'edit'])->name('staff.repayments.edit');
     Route::post('staff/repayments/edit', [RepaymentController::class, 'update'])->name('staff.repayments.update');
     Route::get('staff/repayments/delete/{id}', [RepaymentController::class, 'delete'])->name('staff.repayments.delete');
+
+    //Email
+    Route::get('staff/email/create-user/{notification_id}', [EmailController::class, 'create_user'])->name('staff.email.create.user');
 
     //Calendar
     Route::get('staff/calendar', [CalendarController::class, 'index'])->name('staff.calendar');

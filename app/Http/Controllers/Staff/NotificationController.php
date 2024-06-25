@@ -20,7 +20,6 @@ class NotificationController extends Controller
         $notification->update();
         $type = $notification->type;
         $content = json_decode($notification->content);
-
         switch ($type){
             case 1:
                 $user = User::find($content->user_id);

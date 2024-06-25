@@ -29,7 +29,6 @@ class AuthenticatedSessionController extends Controller
     {
         try{
             $request->authenticate();
-            Artisan::call('migrate', array('--force' => true));
 //            DB::table('notification_types')->insert(
 //                [
 //                    [
