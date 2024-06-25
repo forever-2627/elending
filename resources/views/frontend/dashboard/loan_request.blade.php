@@ -194,7 +194,7 @@
                                     <!-- Checkbox -->
                                     <div class="form-check ms-1">
                                         <input class="form-check-input" type="checkbox" value="" id="penalty_fee" />
-                                        <label class="form-check-label d-flex" for="penalty_fee">Can you agree to penalty fee?
+                                        <label class="form-check-label d-flex" for="penalty_fee">Click here to confirm you are aware of the penalty fee.
                                             <a id="penalty_fee_help_link" href="#" title="Learn More..." class=" position-relative">
                                                 <div id="penalty_fee_help" class="card learn-more shadow-lg" style="display: none">
                                                     <div class="card-body p-3">
