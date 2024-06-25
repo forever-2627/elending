@@ -3,13 +3,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <div class="page-content">
-        @php
-            $content = [
-                'email' => 'test@test.com',
-                'loan_amount' => 12000
-            ];
-            $content = (object)$content;
-        @endphp
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card flex-column">
                 <div class="card">
