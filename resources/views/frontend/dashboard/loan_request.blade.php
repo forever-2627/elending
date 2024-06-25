@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
     <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.css') }}">
     <link rel="icon" href="{{asset('upload/favicon.png')}}">
     <style>
         .auth-logo{
@@ -246,7 +247,7 @@
 <script src="{{asset('guest/js/toastr.min.js')}}"></script>
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/jquery-ui.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.js') }}"></script>
 <script>
     $(document).ready(() => {
         $('#payment_start_date').datepicker();
