@@ -190,4 +190,23 @@ class LoanController extends Controller
         $loan = RequestedLoan::find($id);
         return view('backend.loans.details_requested_loan', ['loan' => $loan]);
     }
+
+    public function delete_requested_loan($id){
+        $loan = RequestedLoan::find($id);
+        try{
+            $loan->delete();
+        }
+        catch (\Exception $e){
+            $notification = [
+                'message' => $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        $notification = [
+            'message' => 'Loan Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
 }

@@ -105,5 +105,10 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex justify-content-end align-items-center mt-3">
+            <a class="btn btn-primary" href="{{route('create.loan.requested.user', $loan->id)}}">
+                <i class="fa fa-user-check me-2"></i> Create User
+            </a>
+        </div>
     </div>
 @endsection

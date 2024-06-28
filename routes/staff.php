@@ -28,6 +28,7 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/loans/state-change/{id}/{state}', [StaffLoanController::class, 'change_state'])->name('staff.loans.state.change');
     Route::get('staff/loans/requested', [StaffLoanController::class, 'requested_loans'])->name('staff.loans.requested');
     Route::get('staff/loans/requested/view/{id}', [StaffLoanController::class, 'view_requested_loan'])->name('staff.loans.requested.view');
+    Route::get('staff/loans/requested/delete/{id}', [StaffLoanController::class, 'delete_requested_loan'])->name('staff.loans.requested.delete');
 
     //Users Route
     Route::get('staff/users', [UserController::class, 'index'])->name('staff.users');
@@ -36,6 +37,7 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::get('staff/users/edit/{id}', [UserController::class, 'edit'])->name('staff.users.edit');
     Route::post('staff/users/edit', [UserController::class, 'update'])->name('staff.users.update');
     Route::get('staff/users/delete/{id}', [UserController::class, 'delete'])->name('staff.users.delete');
+    Route::get('staff/users/create/{loan_id}', [UserController::class, 'create_by_loan'])->name('create.loan.requested.user');
 
     //Notifications
     Route::get('staff/notifications', [NotificationController::class, 'index'])->name('staff.notifications');

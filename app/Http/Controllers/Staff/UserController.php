@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Loan;
+use App\Models\RequestedLoan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -115,9 +116,48 @@ class UserController extends Controller
             return redirect(route('staff.users'))->with($notification);
         }
         $notification = [
-            'message' => 'User Deleted Successfully',
+            'message' => 'Requested Loan Deleted Successfully',
             'alert-type' => 'success'
         ];
         return redirect(route('staff.users'))->with($notification);
+    }
+
+    public function create_by_loan($loan_id){
+        $loan = RequestedLoan::find($loan_id);
+        $user_count = User::where(['email' => $loan->email])->count();
+        if($user_count > 0){
+            $notification = [
+                'message' => 'This email is already in use.',
+                'alert-type' => 'warning'
+            ];
+            return redirect()->back()->with($notification);
+        }else{
+            try{
+                User::updateOrCreate([
+                    'given_name' => $loan->first_name,
+                    'surname' => $loan->last_name,
+                    'email' => $loan->email,
+                    'phone_number' => $loan->phone_number,
+                    'address' => $loan->address,
+                    'employer_name' => $loan->employer_name,
+                    'occupation' => $loan->occupation,
+                    'role_id' => 1,
+                    'password' => Hash::make('password')
+                ]);
+
+                $notification = [
+                    'message' => 'User Created Successfully',
+                    'alert-type' => 'success'
+                ];
+                return redirect(route('staff.users'))->with($notification);
+            }
+            catch (\Exception $e){
+                $notification = [
+                    'message' => $e->getMessage(),
+                    'alert-type' => 'error'
+                ];
+                return redirect()->back()->with($notification);
+            }
+        }
     }
 }

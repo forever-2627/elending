@@ -67,7 +67,7 @@
                                         <td>
                                             <a href="{{route('staff.loans.requested.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
                                             {{--<a href="{{route('staff.loans.edit', $item->id)}}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>--}}
-                                            {{--<a href="{{route('staff.loans.delete', $item->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i></a>--}}
+                                            <a href="{{route('staff.loans.requested.delete', $item->id)}}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i></a>
                                             {{--<a href="#" class="btn dropdown-toggle btn-inverse-success"  type="button" data-bs-toggle="dropdown" aria-expanded="false"> <i data-feather="tag"></i></a>--}}
                                             {{--<ul class="dropdown-menu">--}}
                                                 {{--<li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 1 ])}}">Make Active</a></li>--}}

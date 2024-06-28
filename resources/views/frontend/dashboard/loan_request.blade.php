@@ -422,16 +422,24 @@
         const processingFeePercent = parseFloat($('#processing_fee').val());
         const interestRate = parseFloat($('#interest_rate').val());
         const loanPeriod = parseInt($('#loan_period').val());
+        const paymentFrequency = $('#payment_frequency').val();
+        let interval = 1;
+        if(paymentFrequency === 'fortnightly') interval = 2;
+        else if(paymentFrequency === 'monthly') interval = 4;
         const interests = interestRate * 0.01 * value * loanPeriod;
         const processingFee = processingFeePercent * 0.01 * value;
         const totalAmount = value + interests + processingFee;
         if(!isNaN(totalAmount)){
-            $('#repayment_amount').val(Math.round(totalAmount));
+            $('#repayment_amount').val(Math.round(totalAmount / (4 * loanPeriod / interval)));
         }
         else{
             $('#repayment_amount').val('');
         }
     };
+
+    $('#payment_frequency').on('change', () => {
+        calcRepaymentAmount();
+    });
 
     $('#loan_amount').on('input', (e) => {
         calcRepaymentAmount();
