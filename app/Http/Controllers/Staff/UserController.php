@@ -145,6 +145,9 @@ class UserController extends Controller
                     'password' => Hash::make('password')
                 ]);
 
+                $loan->user_created = 1;
+                $loan->update();
+
                 $notification = [
                     'message' => 'User Created Successfully',
                     'alert-type' => 'success'
