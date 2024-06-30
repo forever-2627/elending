@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     public function index(){
-        $messages = Message::all();
+        $messages = Message::orderBy('received_time', 'desc')->get();
         return view('backend.messages.all_message', ['messages' => $messages]);
     }
 
