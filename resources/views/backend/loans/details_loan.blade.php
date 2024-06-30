@@ -82,6 +82,10 @@
                                     <td>Outstanding Balance </td>
                                     <td><code>{{$loan->outstanding_balance}}</code></td>
                                 </tr>
+                                <tr>
+                                    <td>Initial Total To Be Repaid </td>
+                                    <td><code>{{$loan->initial_total_to_be_repaid}}</code></td>
+                                </tr>
                                 </tbody>
                             </table>
                             <br><br>
