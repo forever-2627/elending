@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('guest/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('guest/vendor/swiper/swiper-bundle.min.css') }}">
     <link rel="icon" href="{{asset('upload/favicon.png')}}">
     <style>
         #about{
@@ -128,10 +129,6 @@
                 </div>
             </div>
             <div class="col-lg-5 d-flex align-items-center">
-                {{--style="background: url('{{asset('guest/images/header.png')}}'); background-size: cover;"--}}
-                {{--<div class="image-container">--}}
-                    {{--<img src="" alt="" class="img-fluid">--}}
-                {{--</div>--}}
                 <div class="card shadow-md border-0 shadow-lg" data-aos="fade-left">
                     <div class="card-header border-0 px-5 pt-5 pb-4">
                         <h4 class="mt-2 text-center">How much money do you need?</h4>
@@ -183,7 +180,6 @@
                                 <button
                                         type="submit"
                                         class="g-recaptcha btn btn-secondary btn-block text-white signin-button w-100"
-                                        {{--class="btn btn-secondary btn-block text-white signin-button"--}}
                                         data-sitekey="{{config('services.recaptcha.site_key')}}"
                                         data-callback='onSubmitLoanAmountForm'
                                         data-action='submit'
@@ -290,6 +286,89 @@
         </div>
     </div>
 </section>
+
+{{--  Testimonials  --}}
+<h1 class="xl-text text-primary header-text text-center mt-6 mb-5" data-aos="fade-down" data-aos-delay="300">
+    What Our Clients Are Saying...
+</h1>
+<section id="testimonials" class="testimonials">
+    <div class="container">
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url('guest/images/testimonials-1.png')}}" class="testimonial-img" alt="">
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url('guest/images/testimonials-1.png')}}" class="testimonial-img" alt="">
+                        <h3>Sara Wilsson</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url('guest/images/testimonials-1.png')}}" class="testimonial-img" alt="">
+                        <h3>Jena Karlis</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url('guest/images/testimonials-1.png')}}" class="testimonial-img" alt="">
+                        <h3>Matt Brandon</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url('guest/images/testimonials-1.png')}}" class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->
+
 
 {{--  About US  --}}
 <section id="about" class="contact pb-md-6 position-relative about-back" style="">
@@ -438,6 +517,7 @@
 <script src="{{asset('guest/js/toastr.min.js')}}"></script>
 <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 <script src="{{ asset('guest/vendor/aos/aos.js') }}"></script>
+<script src="{{ asset('guest/vendor/swiper/swiper-bundle.min.js') }}"></script>
 <script>
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -593,6 +673,23 @@
 </script>
 <script>
     AOS.init();
+
+    new Swiper('.testimonials-slider', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+        }
+    });
 </script>
+
+
 </body>
 </html>

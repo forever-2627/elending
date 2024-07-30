@@ -971,8 +971,8 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials {
-  padding: 80px 0;
-  background: url("../img/cta-bg.jpg") no-repeat;
+  padding: 120px 0;
+  background: url("../images/cta-bg.jpg") no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -1012,7 +1012,7 @@ section {
 .testimonials .testimonial-item h3 {
   font-size: 20px;
   font-weight: bold;
-  margin: 10px 0 5px 0;
+  margin: 24px 0 5px 0;
   color: #fff;
 }
 
@@ -1044,7 +1044,7 @@ section {
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 0 auto 15px auto;
-  color: #eee;
+  color: #eee!important;
 }
 
 .testimonials .swiper-pagination {
