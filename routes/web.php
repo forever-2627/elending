@@ -84,3 +84,9 @@ Route::get('/migrate', function(){
     Artisan::call('migrate', array('--force' => true));
     return redirect()->back();
 });
+
+Route::get('/key-clear', function() {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    return 'Config and Cache Cleared';
+});
