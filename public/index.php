@@ -18,8 +18,8 @@ try {
     $app = require_once __DIR__.'/../bootstrap/app.php';
 
     // Clear configuration and cache
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
+//    Artisan::call('config:clear');
+//    Artisan::call('cache:clear');
 
     // Handle the request
     $kernel = $app->make(Kernel::class);
