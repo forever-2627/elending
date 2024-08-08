@@ -15,7 +15,8 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <select id="user_id" name="user_id" class="form-control">
+                    <label for="user_id" class="form-label">Select User</label>
+                    <select id="user_id" name="user_id" class="form-control loan-filter">
                         <option value="0">Select None</option>
                         @php
                             $users = \App\Models\User::where(['role_id' => config('constants.roles.user_role_id')])->get();
@@ -26,15 +27,24 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label for="loan_frequency" class="form-label">Select Frequency</label>
+                    <select id="loan_frequency" name="loan_frequency" class="form-control loan-filter">
+                        <option value="all" @if($loan_frequency == 'all') selected @endif>All</option>
+                        <option value="weekly" @if($loan_frequency == 'weekly') selected @endif>Weekly</option>
+                        <option value="fortnightly" @if($loan_frequency == 'fortnightly') selected @endif>Fortnightly</option>
+                        <option value="monthly" @if($loan_frequency == 'monthly') selected @endif>Monthly</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">{{ucfirst($state)}} Loans</h6>
-
                         <div class="table-responsive" style="overflow: hidden;">
                             <table id="dataTableExample" class="table">
                                 <thead>
@@ -132,10 +142,12 @@
                 $('#user_id').select2();
             });
 
-            $('#user_id').on('change', function (e) {
-                const value = e.target.value;
-                if(value !== 0){
-                    window.location.href = '{{route('staff.loans', $state)}}' + '?user_id=' + value;
+
+            $('.loan-filter').on('change', function (e) {
+                const userId = $('#user_id').val();
+                const loanFrequency = $('#loan_frequency').val();
+                if(userId !== 0){
+                    window.location.href = '{{route('staff.loans', $state)}}' + '?user_id=' + userId + '&loan_frequency=' + loanFrequency;
                 }
             })
         </script>

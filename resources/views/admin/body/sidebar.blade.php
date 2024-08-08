@@ -67,6 +67,12 @@
 				</a>
 			</li>
 			<li class="nav-item">
+				<a href="{{route('staff.track')}}" class="nav-link">
+					<span class="fal fa-book"></span>
+					<span class="link-title ms-3">Payment Tracking</span>
+				</a>
+			</li>
+			<li class="nav-item">
 				<a href="{{route('staff.messages')}}" class="nav-link">
 					<i class="link-icon" data-feather="message-circle"></i>
 					<span class="link-title">Messages</span>

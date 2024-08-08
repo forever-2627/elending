@@ -33,13 +33,25 @@ class LoanController extends Controller
         }
 
         $user_id = $request->user_id;
-        if($user_id){
-            $filtered_loans = filter_by_user($loans, $user_id, 'loan');
-            return view('backend.loans.all_loan', ['loans' => $filtered_loans, 'state' => $state, 'user_id' => $user_id]);
+        $loan_frequency = $request->loan_frequency;
+        if($user_id || $loan_frequency){
+            $filtered_loans_by_user = filter_by_user($loans, $user_id, 'loan');
+            $filtered_loans_by_frequency = filter_by_frequency($filtered_loans_by_user, $loan_frequency);
+            return view('backend.loans.all_loan', [
+                'loans' => $filtered_loans_by_frequency,
+                'state' => $state,
+                'user_id' => $user_id,
+                'loan_frequency' => $loan_frequency
+            ]);
         }
         else{
             $filtered_loans = auth()->user()->role_id != config('constants.roles.admin_role_id') ? filter_by_date($loans) : $loans;
-            return view('backend.loans.all_loan', ['loans' => $filtered_loans, 'state' => $state, 'user_id' => $user_id]);
+            return view('backend.loans.all_loan', [
+                'loans' => $filtered_loans,
+                'state' => $state,
+                'user_id' => $user_id,
+                'loan_frequency' => $loan_frequency
+                ]);
         }
     }
 
