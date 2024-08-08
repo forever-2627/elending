@@ -15,10 +15,20 @@ require __DIR__.'/../vendor/autoload.php';
 
 // Bootstrap Laravel and handle the request...
 try {
+    $app = require_once __DIR__.'/../bootstrap/app.php';
+
+    // Clear configuration and cache
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
-    (require_once __DIR__.'/../bootstrap/app.php')
-        ->handleRequest(Request::capture());
+
+    // Handle the request
+    $kernel = $app->make(Kernel::class);
+
+    $response = $kernel->handle(
+        $request = Request::capture()
+    )->send();
+
+    $kernel->terminate($request, $response);
 } catch (\Exception $e) {
     // Display a custom error message
     echo "<h1>An error occurred</h1>";
