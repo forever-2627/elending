@@ -13,5 +13,17 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 require __DIR__.'/../vendor/autoload.php';
 
 // Bootstrap Laravel and handle the request...
-(require_once __DIR__.'/../bootstrap/app.php')
-    ->handleRequest(Request::capture());
+try {
+    (require_once __DIR__.'/../bootstrap/app.php')
+        ->handleRequest(Request::capture());
+} catch (\Exception $e) {
+    // Display a custom error message
+    echo "<h1>An error occurred</h1>";
+    echo "<p>" . htmlspecialchars($e->getMessage()) . "</p>";
+
+    // Optionally, log the exception to Laravel's log file
+    // (requires that the logger is properly initialized)
+    file_put_contents(__DIR__.'/../storage/logs/laravel.log', $e->getMessage()."\n", FILE_APPEND);
+}
+
+
