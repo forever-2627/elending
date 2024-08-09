@@ -326,6 +326,7 @@ if (!function_exists('process_plan')) {
             }
             else{
                 if( calc_month_dist(  $payment_month - $current_month) == 0 ){
+                    if(calc_week($payment_date->format('d') * 1) < $data['current']['current_index']) $data['total'] += $amount;
                     $data['current']['name'] = $payment_date->format('F');
                     $data['current']['values'][calc_week($payment_date->format('d') * 1)] += $amount;
 
