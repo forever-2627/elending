@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th class="text-center">Sequence<br/> Number</th>
+                                    <th class="text-center">Name</th>
                                     <th class="text-center">Total</th>
                                     <th class="text-center">Before</th>
                                     <th class="text-center">{{Carbon\Carbon::now()->subMonth()->format('F')}}</th>
@@ -66,11 +67,15 @@
                                 <tbody>
                                 {{-- WEEKLY PAYMENT--}}
                                 @foreach($loans as $key => $item)
-                                    @php $item = (object) $item; @endphp
+                                    @php
+                                        $item = (object) $item;
+                                        $user = \App\Models\User::find($item->user_id);
+                                    @endphp
                                     @if($item->payment_frequency == 'weekly')
                                         <tr>
                                             <td>{{$key + 1}}</td>
                                             <td>{{ sprintf('%06d', $item->loan_number) }}</td>
+                                            <td>{{ $user->given_name . ', ' . $user->surname }}</td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>
@@ -177,6 +182,7 @@
                                         <tr>
                                             <td>{{$key + 1}}</td>
                                             <td>{{ sprintf('%06d', $item->loan_number) }}</td>
+                                            <td>{{ $user->given_name . ', ' . $user->surname }}</td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>
@@ -279,6 +285,7 @@
                                         <tr>
                                             <td>{{$key + 1}}</td>
                                             <td>{{ sprintf('%06d', $item->loan_number) }}</td>
+                                            <td>{{ $user->given_name . ', ' . $user->surname }}</td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>

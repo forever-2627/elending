@@ -194,6 +194,7 @@ if (!function_exists('track_loans')) {
             $plan = process_plan($item);
             $repayment = process_repayments($item);
             $data[] = [
+                'user_id' => $item->user_id,
                 'loan_number' => $item->id,
                 'payment_frequency' => $item->payment_frequency,
                 'total_to_be_repaid'=> $item->total_to_be_repaid,
