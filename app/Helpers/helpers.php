@@ -251,7 +251,7 @@ if (!function_exists('process_repayments')) {
                 elseif (calc_month_dist($current_month - $repaid_month) == 0){
                     if(calc_week($repaid_date->format('d') * 1) < $data['current']['current_index']) $data['total'] += $amount;
                     $data['current']['name'] = $repaid_date->format('F');
-                    $data['current']['values'][calc_week($repaid_date->format('d') * 1)] += $amount;
+                    $data['current']['values'][calc_week($current_date->format('d') * 1)] += $amount;
                 }
             }
             else{

@@ -74,32 +74,32 @@
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>
-                                                    <span>{{$item->repayment['total']}}</span>
+                                                    <span class="{{$item->total_to_be_repaid > $item->repayment['total'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['total']}}</span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->plan['before']}}</span>
-                                                    <span>{{$item->repayment['before']}}</span>
+                                                    <span class="{{$item->plan['before'] > $item->repayment['before'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['before']}}</span>
                                                 </div>
                                             </td>
                                             <td class="td-border">
                                                 <div class="d-flex justify-content-between gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][0]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][0]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][0] <= $item->repayment['previous']['values'][0] ? 'bg-success' : 'bg-warning'}}">{{$item->repayment['previous']['values'][0]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][1]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][1]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][1] <= $item->repayment['previous']['values'][1] ? 'bg-success' : 'bg-warning'}}">{{$item->repayment['previous']['values'][1]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][2]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][2]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][2] <= $item->repayment['previous']['values'][2] ? 'bg-success' : 'bg-warning'}}">{{$item->repayment['previous']['values'][2]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][3]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][3]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][3] <= $item->repayment['previous']['values'][3] ? 'bg-success' : 'bg-warning'}}">{{$item->repayment['previous']['values'][3]}}</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -108,19 +108,25 @@
                                                 <div class="d-flex justify-content-between gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(0, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][0]}}</span>
-                                                        <span class="badge {{check_weekly_repayment_badge(0, $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][0]}}</span>
+                                                        <span class="badge {{$item->plan['current']['values'][0] >= $item->repayment['current']['values'][0] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][0]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(1, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][1]}}</span>
-                                                        <span class="badge {{check_weekly_repayment_badge(1, $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][1]}}</span>
+                                                        @if($item->plan['current']['current_index'] >= 1)
+                                                            <span class="badge {{$item->plan['current']['values'][1] >= $item->repayment['current']['values'][1] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][1]}}</span>
+                                                        @endif
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(2, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][2]}}</span>
-                                                        <span class="badge {{check_weekly_repayment_badge(2, $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][2]}}</span>
+                                                        @if($item->plan['current']['current_index'] >= 2)
+                                                            <span class="badge {{$item->plan['current']['values'][2] >= $item->repayment['current']['values'][2] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][1]}}</span>
+                                                        @endif
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(3, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][3]}}</span>
-                                                        <span class="badge {{check_weekly_repayment_badge(3, $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][3]}}</span>
+                                                        @if($item->plan['current']['current_index'] >= 3)
+                                                            <span class="badge {{$item->plan['current']['values'][3] >= $item->repayment['current']['values'][3] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][1]}}</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
@@ -129,19 +135,19 @@
                                                 <div class="d-flex justify-content-between gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][0]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][0]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][1]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][1]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][2]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][2]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][3]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][3]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -150,7 +156,7 @@
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span>{{$item->plan['after']}}</span>
-                                                        <span>{{$item->repayment['after']}}</span>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -174,13 +180,13 @@
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>
-                                                    <span>{{$item->repayment['total']}}</span>
+                                                    <span class="{{$item->total_to_be_repaid > $item->repayment['total'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['total']}}</span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->plan['before']}}</span>
-                                                    <span>{{$item->repayment['before']}}</span>
+                                                    <span class="{{$item->plan['before'] > $item->repayment['before'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['before']}}</span>
                                                 </div>
                                             </td>
                                             <td class="td-border">
@@ -191,11 +197,11 @@
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][0] + $item->plan['previous']['values'][1]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][0] + $item->repayment['previous']['values'][1]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][0] + $item->plan['previous']['values'][1] > $item->repayment['previous']['values'][0] + $item->repayment['previous']['values'][1] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['previous']['values'][0] + $item->repayment['previous']['values'][1]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{$item->plan['previous']['values'][2] + $item->plan['previous']['values'][3]}}</span>
-                                                        <span class="badge bg-success">{{$item->repayment['previous']['values'][2] + $item->repayment['previous']['values'][3]}}</span>
+                                                        <span class="badge {{$item->plan['previous']['values'][2] + $item->plan['previous']['values'][3] > $item->repayment['previous']['values'][2] + $item->repayment['previous']['values'][3] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['previous']['values'][2] + $item->repayment['previous']['values'][3]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark"></span>
@@ -212,11 +218,13 @@
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_fortnightly_plan_badge([0, 1], $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][0] + $item->plan['current']['values'][1]}}</span>
-                                                        <span class="badge {{check_fortnightly_repayment_badge([0, 1], $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][0] + $item->repayment['current']['values'][1]}}</span>
+                                                        <span class="badge {{$item->plan['current']['values'][0] + $item->plan['current']['values'][1] > $item->repayment['current']['values'][0] + $item->repayment['current']['values'][1] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][0] + $item->repayment['current']['values'][1]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_fortnightly_plan_badge([2, 3], $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][2] + $item->plan['current']['values'][3]}}</span>
-                                                        <span class="badge {{check_fortnightly_repayment_badge([2, 3], $item->plan['current']['current_index'])}}">{{$item->repayment['current']['values'][2] + $item->repayment['current']['values'][3]}}</span>
+                                                        @if($item->plan['current']['current_index'] >=2)
+                                                            <span class="badge {{$item->plan['current']['values'][2] + $item->plan['current']['values'][3] > $item->repayment['current']['values'][2] + $item->repayment['current']['values'][3] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][2] + $item->repayment['current']['values'][3]}}</span>
+                                                        @endif
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary"></span>
@@ -233,11 +241,11 @@
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][0] + $item->plan['next']['values'][1]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][0] + $item->repayment['next']['values'][1]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{$item->plan['next']['values'][2] + $item->plan['next']['values'][3]}}</span>
-                                                        <span class="badge bg-warning">{{$item->repayment['next']['values'][2] + $item->repayment['next']['values'][3]}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary"></span>
@@ -250,7 +258,7 @@
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span>{{$item->plan['after']}}</span>
-                                                        <span>{{$item->repayment['after']}}</span>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -274,20 +282,20 @@
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->total_to_be_repaid}}</span>
-                                                    <span>{{$item->repayment['total']}}</span>
+                                                    <span class="{{$item->total_to_be_repaid > $item->repayment['total'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['total']}}</span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <span>{{$item->plan['before']}}</span>
-                                                    <span>{{$item->repayment['before']}}</span>
+                                                    <span class="{{$item->plan['before'] > $item->repayment['before'] ? 'text-danger' : 'text-success' }}">{{$item->repayment['before']}}</span>
                                                 </div>
                                             </td>
                                             <td class="td-border">
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-dark">{{array_sum($item->plan['previous']['values'])}}</span>
-                                                        <span class="badge bg-success">{{array_sum($item->repayment['previous']['values'])}}</span>
+                                                        <span class="badge {{array_sum($item->plan['previous']['values']) > array_sum($item->repayment['previous']['values']) ? 'bg-warning' : 'bg-success'}}">{{array_sum($item->repayment['previous']['values'])}}</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -296,7 +304,7 @@
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-primary">{{array_sum($item->plan['current']['values'])}}</span>
-                                                        <span class="badge bg-danger">{{array_sum($item->repayment['current']['values'])}}</span>
+                                                        <span class="badge {{array_sum($item->plan['current']['values']) > array_sum($item->repayment['current']['values']) ? 'bg-warning' : 'bg-success'}}">{{array_sum($item->repayment['current']['values'])}}</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -305,7 +313,7 @@
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-secondary">{{array_sum($item->plan['next']['values'])}}</span>
-                                                        <span class="badge bg-warning">{{array_sum($item->repayment['next']['values'])}}</span>
+                                                        <span class="badge bg-warning"></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -314,7 +322,7 @@
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span>{{$item->plan['after']}}</span>
-                                                        <span>{{$item->repayment['after']}}</span>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -328,7 +336,7 @@
                                             </td>
 
                                             <td>
-{{--                                                <a href="{{route('staff.loans.view', 1)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>--}}
+                                                {{--                                                <a href="{{route('staff.loans.view', 1)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>--}}
                                             </td>
                                         </tr>
                                     @endif
