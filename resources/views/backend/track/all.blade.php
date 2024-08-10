@@ -337,7 +337,7 @@
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge bg-primary">{{$item->plan['total']}}</span>
-                                                        <span class="badge bg-danger">{{$item->repayment['total']}}</span>
+                                                        <span class="badge {{ $item->plan['total'] <= $item->repayment['total'] ? 'bg-success' : 'bg-danger' }}">{{$item->repayment['total']}}</span>
                                                     </div>
                                                 </div>
                                             </td>
