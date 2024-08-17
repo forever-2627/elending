@@ -105,7 +105,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 1 ])}}">Make Active</a></li>
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 2 ])}}">Make Repaid</a></li>
-                                                <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 3 ])}}">Make Bad</a></li>
+                                                <li><button id="make_bad_button" class="dropdown-item">Make Bad</button></li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -136,8 +136,41 @@
         @endif
     </div>
 
+    <div class="modal" id="add_penalty_modal" style="display: block">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Make Loan Bad</h5>
+                    <button id="modal_bad_cancel_icon" type="button" class="btn border-1 close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{route('staff.loans.state.change', [ $item->id, 3 ])}}" id="myForm"
+                          enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <input type="hidden" name="loan_id" value="">
+                            <div class="col-sm-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="loan_amount">Penalty Amount</label>
+                                    <input type="text" id="loan_amount" name="loan_amount" class="form-control loan-input" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal_bad_save" type="button" class="btn btn-primary"><i class="feather icon-save me-2"></i> Save </button>
+                    <button id="modal_bad_cancel_btn" type="button" class="btn btn-danger" data-dismiss="modal"><i class="feather icon-x me-2"></i> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @push('script')
         <script>
+
             $(document).ready(() => {
                 $('#user_id').select2();
             });
@@ -149,7 +182,24 @@
                 if(userId !== 0){
                     window.location.href = '{{route('staff.loans', $state)}}' + '?user_id=' + userId + '&loan_frequency=' + loanFrequency;
                 }
-            })
+            });
+
+            $('#make_bad_button').on('click', () => {
+                $('#add_penalty_modal').show();
+            });
+
+            $('#modal_bad_save').on('click', () => {
+                $('#add_penalty_modal').hide();
+            });
+
+            $('#modal_bad_cancel_btn').on('click', () => {
+                $('#add_penalty_modal input').val('');
+                $('#add_penalty_modal').hide();
+            });
+
+            $('#modal_bad_cancel_icon').on('click', () => {
+                $('#modal_bad_cancel_btn').click();
+            });
         </script>
     @endpush
 

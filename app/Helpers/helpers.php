@@ -201,6 +201,7 @@ if (!function_exists('track_loans')) {
                 'plan' => $plan,
                 'repayment' => $repayment,
             ];
+
         }
 
         return (object) $data;
@@ -252,7 +253,8 @@ if (!function_exists('process_repayments')) {
                 elseif (calc_month_dist($current_month - $repaid_month) == 0){
                     if(calc_week($repaid_date->format('d') * 1) < $data['current']['current_index']) $data['total'] += $amount;
                     $data['current']['name'] = $repaid_date->format('F');
-                    $data['current']['values'][calc_week($current_date->format('d') * 1)] += $amount;
+                    $data['current']['values'][calc_week($repaid_date->format('d') * 1)] += $amount;
+
                 }
             }
             else{
@@ -271,6 +273,7 @@ if (!function_exists('process_repayments')) {
             }
 
         }
+//        if($item->id == 118) dd($data);
         return $data;
     }
 }
@@ -323,6 +326,7 @@ if (!function_exists('process_plan')) {
                     if(calc_week($payment_date->format('d') * 1) <= $data['current']['current_index']) $data['total'] += $amount;
                     $data['current']['name'] = $payment_date->format('F');
                     $data['current']['values'][calc_week($payment_date->format('d') * 1)] += $amount;
+
                 }
             }
             else{
@@ -330,6 +334,7 @@ if (!function_exists('process_plan')) {
                     if(calc_week($payment_date->format('d') * 1) <= $data['current']['current_index']) $data['total'] += $amount;
                     $data['current']['name'] = $payment_date->format('F');
                     $data['current']['values'][calc_week($payment_date->format('d') * 1)] += $amount;
+
 
                 }
                 elseif (calc_month_dist($payment_month - $current_month) == 1){
@@ -340,7 +345,9 @@ if (!function_exists('process_plan')) {
                     $data['after'] += $amount;
                 }
             }
+//
         }
+
         return $data;
     }
 }

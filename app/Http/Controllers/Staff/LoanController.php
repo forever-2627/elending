@@ -175,6 +175,9 @@ class LoanController extends Controller
     public function change_state($loan_id, $state){
         $loan = Loan::find($loan_id);
         $loan->state = $state;
+        if($state * 1 == 3){
+
+        }
         try{
             $loan->update();
         }
