@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TrackController extends Controller
 {
     public function index(Request $request){
-        $loans =  Loan::where(['state' => 1])->orderBy('created_at', 'desc')->get();
+        $loans =  Loan::where(['state' => 1])->orWhere(['state' => 3])->orderBy('created_at', 'desc')->get();
         $user_id = $request->user_id;
         $loan_frequency = $request->loan_frequency;
         if($user_id || $loan_frequency){

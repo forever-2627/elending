@@ -34,7 +34,7 @@ class UpdateLoanAmount
         //Admin can input amount repaid to date not to only zero. so when update it we have to consider about it.
         //$loan->amount_repaid_to_date = $loan->total_to_be_repaid - $loan->initial_total_to_be_repaid + $total_repaid;
 		$loan->amount_repaid_to_date = $total_repaid;
-        $loan->outstanding_balance = $loan->initial_total_to_be_repaid - $total_repaid;
+        $loan->outstanding_balance = $loan->initial_total_to_be_repaid - $total_repaid + $loan->penalty_amount;
         $loan->update();
     }
 }

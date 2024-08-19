@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Staff;
 
+use App\Events\RepaymentUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\RequestedLoan;
 use DateTime;
@@ -195,13 +196,14 @@ class LoanController extends Controller
     public function make_loan_bad(Request $request){
         $state = $request->state;
         $penalty_amount = $request->penalty_amount;
+        $action_type = $request->action_type;
         $loan = Loan::find($request->loan_id);
-        dd($penalty_amount);
+        $origin_penalty_amount = $loan->penalty_amount;
         try{
-            $loan->update([
-                'penalty_amount' => $penalty_amount,
-                'state' => $state
-            ]);
+            $loan->penalty_amount = $penalty_amount;
+            $loan->state = $state;
+            $loan->total_to_be_repaid = $action_type == 'new' ? $loan->total_to_be_repaid * 1 + $penalty_amount * 1 : $loan->total_to_be_repaid - $origin_penalty_amount + $penalty_amount;
+            $loan->update();
         }
         catch (\Exception $e){
             $notification = [
@@ -210,11 +212,12 @@ class LoanController extends Controller
             ];
             return redirect()->back()->with($notification);
         }
+        RepaymentUpdated::dispatch($loan->id);
         $notification = [
-            'message' => 'Loan Added Successfully',
+            'message' => 'Penalty Amount Added',
             'alert-type' => 'success'
         ];
-        return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
+        return redirect(route('staff.loans', ['state' => 'bad']))->with($notification);
     }
 
 

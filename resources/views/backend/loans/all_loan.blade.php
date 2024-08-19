@@ -67,6 +67,9 @@
                                     <th>Amount <br/>Repaid <br/>To Date</th>
                                     <th>Due Amount</th>
                                     <th>Outstanding<br/> Balance</th>
+                                    @if($state == 'bad')
+                                        <th>Penalty<br/> Amount</th>
+                                    @endif
                                     <th>Added By</th>
                                     <th>Action </th>
                                 </tr>
@@ -96,6 +99,9 @@
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->amount_repaid_to_date, 2, '.', ',') }}</td>
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($due_detail->amount, 2, '.', ',') }}</td>
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ number_format($item->outstanding_balance, 2, '.', ',') }}</td>
+                                        @if($state == 'bad')
+                                            <td>{{$item->penalty_amount}}</td>
+                                        @endif
                                         <td title="{{ $user->given_name }} {{ $user->surname }}">{{ get_username($item->by_who) }}</td>
                                         <td>
                                             <a href="{{route('staff.loans.view', $item->id)}}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
@@ -105,7 +111,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 1 ])}}">Make Active</a></li>
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 2 ])}}">Make Repaid</a></li>
-                                                <li><button loan_id="{{$item->id}}" class="dropdown-item make-bad-button">Make Bad</button></li>
+                                                <li><button loan_id="{{$item->id}}" class="dropdown-item make-bad-button">{{$state != 'bad' ? 'Make Bad' : 'Edit Penalty Amount'}}</button></li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -151,6 +157,7 @@
                         @csrf
                         <div class="row">
                             <input type="hidden" id="penalty_loan_id" name="loan_id" value="">
+                            <input type="hidden" id="action_type" name="action_type" value="{{$state != 'bad' ? 'new' : 'edit'}}">
                             <input type="hidden" name="state" value="3">
                             <div class="col-sm-12">
                                 <div class="form-group mb-3">
