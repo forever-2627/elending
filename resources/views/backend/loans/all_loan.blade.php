@@ -105,7 +105,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 1 ])}}">Make Active</a></li>
                                                 <li><a class="dropdown-item" href="{{route('staff.loans.state.change', [ $item->id, 2 ])}}">Make Repaid</a></li>
-                                                <li><button id="make_bad_button" class="dropdown-item">Make Bad</button></li>
+                                                <li><button loan_id="{{$item->id}}" class="dropdown-item make-bad-button">Make Bad</button></li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -136,7 +136,7 @@
         @endif
     </div>
 
-    <div class="modal" id="add_penalty_modal" style="display: block">
+    <div class="modal" id="add_penalty_modal" style="display: none;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,15 +146,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{route('staff.loans.state.change', [ $item->id, 3 ])}}" id="myForm"
-                          enctype="multipart/form-data">
+                    <form method="post" action="{{route('staff.loans.state.make.bad')}}" id="penalty_form" enctype="multipart/form-data">
+
                         @csrf
                         <div class="row">
-                            <input type="hidden" name="loan_id" value="">
+                            <input type="hidden" id="penalty_loan_id" name="loan_id" value="">
+                            <input type="hidden" name="state" value="3">
                             <div class="col-sm-12">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="loan_amount">Penalty Amount</label>
-                                    <input type="text" id="loan_amount" name="loan_amount" class="form-control loan-input" value="">
+                                    <input type="number" id="penalty_amount" name="penalty_amount" class="form-control loan-input" value="">
                                 </div>
                             </div>
                         </div>
@@ -184,12 +185,14 @@
                 }
             });
 
-            $('#make_bad_button').on('click', () => {
+            $('.make-bad-button').on('click', function (e) {
+                $('#penalty_loan_id').val(e.target.attributes.loan_id.nodeValue);
                 $('#add_penalty_modal').show();
             });
 
             $('#modal_bad_save').on('click', () => {
                 $('#add_penalty_modal').hide();
+                $('#penalty_form').submit();
             });
 
             $('#modal_bad_cancel_btn').on('click', () => {

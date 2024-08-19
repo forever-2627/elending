@@ -27,6 +27,7 @@ Route::middleware(StaffMiddleware::class)->group(function (){
     Route::post('staff/loans/edit', [StaffLoanController::class, 'update'])->name('staff.loans.update');
     Route::get('staff/loans/delete/{id}', [StaffLoanController::class, 'delete'])->name('staff.loans.delete');
     Route::get('staff/loans/state-change/{id}/{state}', [StaffLoanController::class, 'change_state'])->name('staff.loans.state.change');
+    Route::post('staff/loans/state-change', [StaffLoanController::class, 'make_loan_bad'])->name('staff.loans.state.make.bad');
     Route::get('staff/loans/requested', [StaffLoanController::class, 'requested_loans'])->name('staff.loans.requested');
     Route::get('staff/loans/requested/view/{id}', [StaffLoanController::class, 'view_requested_loan'])->name('staff.loans.requested.view');
     Route::get('staff/loans/requested/delete/{id}', [StaffLoanController::class, 'delete_requested_loan'])->name('staff.loans.requested.delete');

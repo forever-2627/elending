@@ -113,24 +113,24 @@
                                                 <div class="d-flex justify-content-between gap-2">
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(0, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][0]}}</span>
-                                                        <span class="badge {{$item->plan['current']['values'][0] >= $item->repayment['current']['values'][0] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][0]}}</span>
+                                                        <span class="badge {{$item->plan['current']['values'][0] > $item->repayment['current']['values'][0] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][0]}}</span>
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(1, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][1]}}</span>
                                                         @if($item->plan['current']['current_index'] >= 1)
-                                                            <span class="badge {{$item->plan['current']['values'][1] >= $item->repayment['current']['values'][1] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][1]}}</span>
+                                                            <span class="badge {{$item->plan['current']['values'][1] > $item->repayment['current']['values'][1] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][1]}}</span>
                                                         @endif
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(2, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][2]}}</span>
                                                         @if($item->plan['current']['current_index'] >= 2)
-                                                            <span class="badge {{$item->plan['current']['values'][2] >= $item->repayment['current']['values'][2] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][2]}}</span>
+                                                            <span class="badge {{$item->plan['current']['values'][2] > $item->repayment['current']['values'][2] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][2]}}</span>
                                                         @endif
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center gap-1">
                                                         <span class="badge {{check_weekly_plan_badge(3, $item->plan['current']['current_index'])}}">{{$item->plan['current']['values'][3]}}</span>
                                                         @if($item->plan['current']['current_index'] >= 3)
-                                                            <span class="badge {{$item->plan['current']['values'][3] >= $item->repayment['current']['values'][3] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][3]}}</span>
+                                                            <span class="badge {{$item->plan['current']['values'][3] > $item->repayment['current']['values'][3] ? 'bg-warning' : 'bg-success'}}">{{$item->repayment['current']['values'][3]}}</span>
                                                         @endif
                                                     </div>
                                                 </div>

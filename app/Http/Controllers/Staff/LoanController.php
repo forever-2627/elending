@@ -175,9 +175,6 @@ class LoanController extends Controller
     public function change_state($loan_id, $state){
         $loan = Loan::find($loan_id);
         $loan->state = $state;
-        if($state * 1 == 3){
-
-        }
         try{
             $loan->update();
         }
@@ -193,6 +190,31 @@ class LoanController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
+    }
+
+    public function make_loan_bad(Request $request){
+        $state = $request->state;
+        $penalty_amount = $request->penalty_amount;
+        $loan = Loan::find($request->loan_id);
+        dd($penalty_amount);
+        try{
+            $loan->update([
+                'penalty_amount' => $penalty_amount,
+                'state' => $state
+            ]);
+        }
+        catch (\Exception $e){
+            $notification = [
+                'message' => $e->getMessage(),
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        $notification = [
+            'message' => 'Loan Added Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect(route('staff.loans', ['state' => 'all']))->with($notification);
     }
 
 
